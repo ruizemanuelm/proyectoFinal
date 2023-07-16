@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import Menu from './components/common/Menu';
-import AdminPacientes from './components/views/Aministrador/AdminPacientes';
+import AdminPacientes from './components/views/Administrador/AdminPacientes';
 
 function App() {
 
