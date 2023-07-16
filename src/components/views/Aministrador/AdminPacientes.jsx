@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button,Table } from 'react-bootstrap';
+import ItemPacientes from './pacientes/ItemPacientes';
 
 const AdminPacientes = () => {
     return (
@@ -19,10 +20,13 @@ const AdminPacientes = () => {
               <th>Email</th>
               <th>Teléfono</th>
               <th>Dirección</th>
+              <th>Mascota</th>
               <th>Opciones</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            <ItemPacientes></ItemPacientes>
+          </tbody>
         </Table>
       </section>
     );
