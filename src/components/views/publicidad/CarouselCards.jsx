@@ -52,7 +52,9 @@ const CarouselCards = () => {
           }
         ];
 
-        
+        const [cards, setCards] = useState(initialCards);
+
+
   return (
     <Container className="mt-5 mb-5">
       <h5>Marcas con las que trabajamos</h5>
