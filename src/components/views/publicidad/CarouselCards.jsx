@@ -78,7 +78,7 @@ const CarouselCards = () => {
         <Slider {...settings}>
           {cards.map((card) => (
             <div key={card.id}>
-              <Card className="cards-disenio border-0">
+              <Card>
                 <Card.Body className="justify-content-center">
                   <img
                     src={card.image}

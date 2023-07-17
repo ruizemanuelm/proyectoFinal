@@ -88,7 +88,7 @@ const Inicio = () => {
           <hr />
           <CardGroup className="mt-5 mb-5">
             <Col md={4} ld={3} className="mb-3 px-3">
-              <Card className="h-100 cards-disenio border-0">
+              <Card className="h-100">
                 <Card.Img
                   variant="top"
                   src="https://www.snau.es/blog/wp-content/uploads/2019/03/cachorro-1.jpg"
@@ -102,7 +102,7 @@ const Inicio = () => {
               </Card>
             </Col>
             <Col md={4} ld={3} className="mb-3 px-3">
-              <Card className="h-100 cards-disenio border-0">
+              <Card className="h-100">
                 <Card.Img
                   variant="top"
                   src="https://1.bp.blogspot.com/-OLIPJNvqFTQ/V7Xl1mdOX8I/AAAAAAAABPw/ZffsOb8ptIQFUMFW34TEgwwUxvZOXaYxQCLcB/s1600/perromediano.jpg"
@@ -116,7 +116,7 @@ const Inicio = () => {
               </Card>
             </Col>
             <Col md={4} ld={3} className="mb-3 px-3">
-              <Card className="h-100 cards-disenio border-0">
+              <Card className="h-100">
                 <Card.Img
                   variant="top"
                   src="https://cdn.shopify.com/s/files/1/0081/7007/8272/files/perro-adulto_large.png?v=1573252556"
