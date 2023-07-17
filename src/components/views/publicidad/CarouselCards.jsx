@@ -54,6 +54,22 @@ const CarouselCards = () => {
 
         const [cards, setCards] = useState(initialCards);
 
+        const settings = {
+            infinite: true,
+            slidesToShow: 6,
+            slidesToScroll: 1,
+            autoplay: true,
+            speed: 2000,
+            responsive: [
+              {
+                breakpoint: 768,
+                settings: {
+                  slidesToShow: 2,
+                },
+              },
+            ],
+          };
+
 
   return (
     <Container className="mt-5 mb-5">

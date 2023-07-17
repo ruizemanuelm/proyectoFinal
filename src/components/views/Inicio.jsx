@@ -6,6 +6,10 @@ import {
     Carousel,
     Button,
   } from "react-bootstrap";
+import banner from '../../assets/banner.jpg'
+import banner1 from '../../assets/banner1.png'
+import banner2 from '../../assets/banner2.png'
+import CarouselCards from "./publicidad/CarouselCards";
 
 const Inicio = () => {
     return (
@@ -78,6 +82,7 @@ const Inicio = () => {
         </CardGroup>
         <hr className="mt-5" />
       </Container>
+      <CarouselCards></CarouselCards>
         </section>
     );
 };
