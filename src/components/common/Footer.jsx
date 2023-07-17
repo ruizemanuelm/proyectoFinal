@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-bootstrap-icons';
+import {FaLocationPin,} from 'react-icons/fa6'
+import {AiOutlineWhatsApp, AiOutlineInstagram, AiOutlineTwitter, AiFillFacebook} from 'react-icons/ai'
+
 
 const Footer = () => {
     return (
@@ -16,13 +19,17 @@ const Footer = () => {
                 </ul>
 
                 <ul className='col-12 col-md-3 list-unstyled'>
-                    <li className='mb-2 text-center'>Huellitas</li>
-                    <li className='text-center'>En este sitio web podras encontrar servicios que ofrecemos de veterinaria</li>
+                    <li className='mb-3 text-center'> Contactanos </li>
+                    <li className='text-center mb-1'><FaLocationPin/> Gral Paz 556 </li>
+                    <li className='text-center mb-1' as={Link} to='/'><AiOutlineWhatsApp/> + 3816422895</li>
+                    <li className='text-center'>Huellitas@gmail.com</li>
                 </ul>
 
                 <ul className='col-12 col-md-3 list-unstyled'>
-                    <li className='mb-2 text-center'>Huellitas</li>
-                    <li className='text-center'>En este sitio web podras encontrar servicios que ofrecemos de veterinaria</li>
+                    <li className='mb-2 text-center'>Siguenos en nuestras Redes</li>
+                    <li className='text-center '><AiFillFacebook/> Facebook</li>
+                    <li className='text-center '><AiOutlineInstagram/> Instagram</li>
+                    <li className='text-center '><AiOutlineTwitter/> Twitter</li>
                 </ul>
 
 
