@@ -2,17 +2,17 @@ import React from 'react';
 import { Link } from 'react-bootstrap-icons';
 import {FaLocationPin,} from 'react-icons/fa6'
 import {AiOutlineWhatsApp, AiOutlineInstagram, AiOutlineTwitter, AiFillFacebook} from 'react-icons/ai'
-import logoveterinaria from '../../assets/react.svg'
-
+import { NavLink } from 'react-router-dom';
 
 
 const Footer = () => {
     return (
         <footer className="bg-dark text-light py-5">
+            <nav>
             <div className='container'>
                 <nav className='row'>
                 <Link to='/' className='col-12 col-md-3 d-flex align-items-center justify-content-center'>
-                <img src={logoveterinaria} alt="logo"  width='150' height='90' />
+                <img src='' alt="logo"  width='150' height='90' />
                 </Link>
 
                 <ul className='col-12 col-md-3 list-unstyled'>
@@ -38,6 +38,7 @@ const Footer = () => {
 
                 </nav>
             </div>
+            </nav>
         </footer>
     );
 };
