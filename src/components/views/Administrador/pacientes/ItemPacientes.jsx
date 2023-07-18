@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, ListGroup } from "react-bootstrap";
+import { Eye, PencilFill, TrashFill } from "react-bootstrap-icons";
 
 const ItemPacientes = () => {
   const [ShowModal, setShowModal] = useState(false);
@@ -14,15 +15,15 @@ const ItemPacientes = () => {
         <td>24 de septiembre 129</td>
         <td className="text-center">
           <Button onClick={() => setShowModal(true)} variant="info">
-            🐶
+            <Eye />
           </Button>
         </td>
         <td className="text-center ">
           <Button className="m-1" variant="success">
-            Editar
+            <PencilFill />
           </Button>
           <Button className="m-1" variant="danger">
-            Borrar
+            <TrashFill />
           </Button>
         </td>
       </tr>

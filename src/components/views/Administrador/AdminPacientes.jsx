@@ -4,7 +4,7 @@ import ItemPacientes from './pacientes/ItemPacientes';
 
 const AdminPacientes = () => {
     return (
-        <section className="container mainSection">
+        <section className="container-fluid mainSection">
         <div className="d-flex justify-content-between align-items-center mt-5">
           <h1 className="display-4 "> Lista de pacientes</h1>
           <Button className="btn btn-primary">Nuevo paciente</Button>
