@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-bootstrap-icons';
+import {logoveterinaria} from '../../assets/logoveteria'
 import {FaLocationPin,} from 'react-icons/fa6'
 import {AiOutlineWhatsApp, AiOutlineInstagram, AiOutlineTwitter, AiFillFacebook} from 'react-icons/ai'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 
 const Footer = () => {
@@ -12,7 +12,7 @@ const Footer = () => {
             <div className='container'>
                 <nav className='row'>
                 <Link to='/' className='col-12 col-md-3 d-flex align-items-center justify-content-center'>
-                <img src='' alt="logo"  width='150' height='90' />
+                <img src={logoveterinaria} alt="logo"  width='150' height='90' />
                 </Link>
 
                 <ul className='col-12 col-md-3 list-unstyled'>
@@ -24,7 +24,8 @@ const Footer = () => {
                     <li className='mb-3 text-center'> Contactanos </li>
                     <li className='text-center mb-1'><FaLocationPin/> Gral Paz 556 </li>
                     <li className='text-center mb-1' as={Link} to='/'><AiOutlineWhatsApp/> + 3816422895</li>
-                    <li className='text-center'>Huellitas@gmail.com</li>
+                    <Link className='text-center'>Huellitas@gmail.com</Link>
+                    
                     
                 </ul>
 
