@@ -1,5 +1,5 @@
 import React from 'react';
-import {logoveterinaria} from '../../assets/logoveteria'
+import logoveterinaria from '../../assets/logoveterinaria.png'
 import {FaLocationPin,} from 'react-icons/fa6'
 import {AiOutlineWhatsApp, AiOutlineInstagram, AiOutlineTwitter, AiFillFacebook} from 'react-icons/ai'
 import { NavLink, Link } from 'react-router-dom';
@@ -8,7 +8,7 @@ import { NavLink, Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <footer className="bg-dark text-light py-5">
-            <nav>
+            
             <div className='container'>
                 <nav className='row'>
                 <Link to='/' className='col-12 col-md-3 d-flex align-items-center justify-content-center'>
@@ -24,22 +24,20 @@ const Footer = () => {
                     <li className='mb-3 text-center'> Contactanos </li>
                     <li className='text-center mb-1'><FaLocationPin/> Gral Paz 556 </li>
                     <li className='text-center mb-1' as={Link} to='/'><AiOutlineWhatsApp/> + 3816422895</li>
-                    <Link className='text-center'>Huellitas@gmail.com</Link>
+                    <li to='/' className='text-center'>Huellitas@gmail.com</li>
                     
                     
                 </ul>
 
                 <ul className='col-12 col-md-3 list-unstyled'>
                     <li className='mb-2 text-center'>Siguenos en nuestras Redes</li>
-                    <li className='text-center '><AiFillFacebook/> Facebook</li>
-                    <li className='text-center '><AiOutlineInstagram/> Instagram</li>
-                    <li className='text-center '><AiOutlineTwitter/> Twitter</li>
+                    <Link><li className='text-center text-white'><AiFillFacebook/> Facebook</li></Link>
+                    <Link><li className='text-center text-white text-decoration-none'><AiOutlineInstagram/> Instagram</li></Link>
+                    <Link><li className='text-center text-white text-decoration-none'><AiOutlineTwitter/> Twitter</li></Link>
                 </ul>
-
 
                 </nav>
             </div>
-            </nav>
         </footer>
     );
 };
