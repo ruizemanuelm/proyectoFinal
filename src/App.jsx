@@ -9,7 +9,6 @@ function App() {
   return (
     <>
       <Menu></Menu>
-      <AdminTurnos></AdminTurnos>
       <CrearTurno></CrearTurno>
     </>
   )

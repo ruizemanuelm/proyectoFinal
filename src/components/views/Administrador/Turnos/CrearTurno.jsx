@@ -3,11 +3,10 @@ import { Button, Col, Form, Row } from 'react-bootstrap';
 
 const CrearTurno = () => {
     return (
-        <section className="container mainSection">
-        <h1 className="display-4 mt-5">Nuevo Turno</h1>
+        <section className="container mainSection my-2">
+        <h1 className="display-4 my-4">Nuevo Turno</h1>
         <Form>
             <Row>
-
         <Col sm={12} md={4}>
           <Form.Group className="mb-3" controlId="Fecha">
             <Form.Label>Fecha</Form.Label>
@@ -34,8 +33,8 @@ const CrearTurno = () => {
               <Form.Label>Detalle de la cita</Form.Label>
               <Form.Control as="textarea" type="text" />
             </Form.Group>
-          <Button variant="primary" type="submit">
-            Guardar
+          <Button className='w-100' variant="primary" type="submit">
+            Enviar
           </Button>
         </Form>
       </section>
