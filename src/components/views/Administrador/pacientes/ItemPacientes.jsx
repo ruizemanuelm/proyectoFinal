@@ -1,8 +1,20 @@
 import React, { useState } from "react";
 import { Button, Modal, ListGroup } from "react-bootstrap";
 import { Eye, PencilFill, TrashFill } from "react-bootstrap-icons";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 const ItemPacientes = () => {
+  const BotonEditar = (props) => (
+    <Tooltip id="botonEditar" {...props}>
+      Editar
+    </Tooltip>
+  );
+  const BotonEliminar = (props) => (
+    <Tooltip id="botonEliminar" {...props}>
+      Eliminar
+    </Tooltip>
+  );
   const [ShowModal, setShowModal] = useState(false);
   return (
     <>
@@ -19,12 +31,24 @@ const ItemPacientes = () => {
           </Button>
         </td>
         <td className="text-center ">
+        <OverlayTrigger
+      placement="top"
+      delay={{ show: 250, hide: 400 }}
+      overlay={BotonEditar}
+    >
           <Button className="m-1" variant="success">
             <PencilFill />
           </Button>
+          </OverlayTrigger>
+          <OverlayTrigger
+      placement="top"
+      delay={{ show: 250, hide: 400 }}
+      overlay={BotonEliminar}
+    >
           <Button className="m-1" variant="danger">
             <TrashFill />
           </Button>
+          </OverlayTrigger>
         </td>
       </tr>
       <Modal
