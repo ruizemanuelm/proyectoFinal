@@ -1,14 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import Menu from './components/common/Menu';
-import AdminPacientes from './components/views/Administrador/AdminPacientes';
+import AdminTurnos from './components/views/Administrador/AdminTurnos';
 
 function App() {
 
   return (
     <>
       <Menu></Menu>
-      <AdminPacientes></AdminPacientes>
+      <AdminTurnos></AdminTurnos>
     </>
   )
 }
