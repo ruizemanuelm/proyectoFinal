@@ -12,6 +12,7 @@ import {
 const CardsOfertas = () => {
     return (
         <>
+        <Container>
         <div className="d-flex">
         <h2>Ofertas</h2>
         <a className="ms-auto text-danger" href=""><h2>Ver ofertas</h2></a>
@@ -122,6 +123,7 @@ const CardsOfertas = () => {
             </CardGroup>
           </Carousel.Item>
         </Carousel>
+        </Container>
         </>
     );
 };
