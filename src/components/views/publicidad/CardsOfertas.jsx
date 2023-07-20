@@ -19,7 +19,7 @@ const CardsOfertas = () => {
         </div>
         <Carousel>
           <Carousel.Item>
-            <CardGroup className="mt-5 mb-5">
+            <CardGroup className="mt-1 mb-5">
               <Col md={3} ld={3} className="mb-3 px-3">
                 <Card className="h-100">
                   <Card.Img
@@ -123,6 +123,7 @@ const CardsOfertas = () => {
             </CardGroup>
           </Carousel.Item>
         </Carousel>
+        <hr />
         </Container>
         </>
     );

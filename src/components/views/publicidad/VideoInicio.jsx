@@ -8,11 +8,11 @@ import {
     Button,
     Row
   } from "react-bootstrap";
-  
+
 const VideoInicio = () => {
   return (
     <>
-      <Container>
+      <Container className="mt-5 mb-5">
         <Row>
           <Col md={8}>
             {/* Inserta aquí el iframe del video de YouTube */}

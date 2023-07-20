@@ -77,7 +77,7 @@ const CarouselCards = () => {
     <Container className="mt-5 mb-5">
       <hr />
       <h5>Marcas con las que trabajamos</h5>
-      <div className="mt-5" style={{ overflowX: "hidden" }}>
+      <div className="mt-5 mb-5" style={{ overflowX: "hidden" }}>
         <Slider {...settings}>
           {cards.map((card) => (
             <div key={card.id}>
@@ -98,6 +98,7 @@ const CarouselCards = () => {
           ))}
         </Slider>
       </div>
+      <hr />
     </Container>
   );
 };

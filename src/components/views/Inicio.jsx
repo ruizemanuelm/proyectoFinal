@@ -88,9 +88,7 @@ const Inicio = () => {
       </Container>
         <CardsPlanes></CardsPlanes>
       <CarouselCards></CarouselCards>
-      <hr />
       <CardsOfertas></CardsOfertas>
-      <hr />
       <VideoInicio></VideoInicio>
     </section>
   );
