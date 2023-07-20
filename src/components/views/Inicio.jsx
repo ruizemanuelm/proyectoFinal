@@ -10,6 +10,10 @@ import banner from "../../assets/banner.jpg";
 import banner1 from "../../assets/banner1.png";
 import banner2 from "../../assets/banner2.png";
 import CarouselCards from "./publicidad/CarouselCards";
+import CardsPlanes from "./publicidad/CardsPlanes";
+import CardsOfertas from "./publicidad/CardsOfertas";
+import VideoInicio from "./publicidad/VideoInicio";
+
 
 const Inicio = () => {
   return (
@@ -82,58 +86,10 @@ const Inicio = () => {
         </CardGroup>
         <hr className="mt-5" />
       </Container>
+        <CardsPlanes></CardsPlanes>
       <CarouselCards></CarouselCards>
-      <article>
-        <Container>
-          <hr />
-          <CardGroup className="mt-5 mb-5">
-            <Col md={4} ld={3} className="mb-3 px-3">
-              <Card className="h-100">
-                <Card.Img
-                  variant="top"
-                  src="https://www.snau.es/blog/wp-content/uploads/2019/03/cachorro-1.jpg"
-                  alt="Cachorro"
-                />
-                <Card.Body>
-                  <Card.Title>Plan primeros pasos</Card.Title>
-                  <Card.Text>Servicios para mascotas de 0 a 5 años</Card.Text>
-                  <Button variant="primary">Hacer consulta</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={4} ld={3} className="mb-3 px-3">
-              <Card className="h-100">
-                <Card.Img
-                  variant="top"
-                  src="https://1.bp.blogspot.com/-OLIPJNvqFTQ/V7Xl1mdOX8I/AAAAAAAABPw/ZffsOb8ptIQFUMFW34TEgwwUxvZOXaYxQCLcB/s1600/perromediano.jpg"
-                  alt="Perro mediano"
-                />
-                <Card.Body>
-                  <Card.Title>Plan Madurando</Card.Title>
-                  <Card.Text>Servicios para mascotas de 5 a 10 años</Card.Text>
-                  <Button variant="primary">Hacer consulta</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={4} ld={3} className="mb-3 px-3">
-              <Card className="h-100">
-                <Card.Img
-                  variant="top"
-                  src="https://cdn.shopify.com/s/files/1/0081/7007/8272/files/perro-adulto_large.png?v=1573252556"
-                  alt="Perro adulto"
-                />
-                <Card.Body>
-                  <Card.Title>Plan adultos</Card.Title>
-                  <Card.Text>
-                    Servicios para mascotas de más de 10 años.
-                  </Card.Text>
-                  <Button variant="primary">Hacer consulta</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          </CardGroup>
-        </Container>
-      </article>
+      <CardsOfertas></CardsOfertas>
+      <VideoInicio></VideoInicio>
     </section>
   );
 };
