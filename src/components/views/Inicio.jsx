@@ -12,6 +12,7 @@ import banner2 from "../../assets/banner2.png";
 import CarouselCards from "./publicidad/CarouselCards";
 import CardsPlanes from "./publicidad/CardsPlanes";
 import CardsOfertas from "./publicidad/CardsOfertas";
+import VideoInicio from "./publicidad/VideoInicio";
 
 
 const Inicio = () => {
@@ -89,6 +90,8 @@ const Inicio = () => {
       <CarouselCards></CarouselCards>
       <hr />
       <CardsOfertas></CardsOfertas>
+      <hr />
+      <VideoInicio></VideoInicio>
     </section>
   );
 };
