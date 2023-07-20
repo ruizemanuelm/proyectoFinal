@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 
-import Inicio from './components/views/Inicio';
+
 
 
 function App() {
@@ -9,7 +9,6 @@ function App() {
   return (
     <>
 
-      <Inicio></Inicio>
 
     </>
   )
