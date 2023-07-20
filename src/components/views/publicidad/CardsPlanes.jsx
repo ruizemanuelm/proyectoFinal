@@ -4,9 +4,7 @@ import {
     Col,
     Card,
     CardGroup,
-    Carousel,
     Button,
-    Row
   } from "react-bootstrap";
 
 const CardsPlanes = () => {

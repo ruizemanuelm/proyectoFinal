@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const CarouselCards = () => {
   const initialCards = [
-    // ... (mismos datos que en el ejemplo anterior)
+
     {
       id: 1,
       title: "Zoetis",

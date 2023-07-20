@@ -2,10 +2,6 @@ import React from "react";
 import {
     Container,
     Col,
-    Card,
-    CardGroup,
-    Carousel,
-    Button,
     Row
   } from "react-bootstrap";
 
