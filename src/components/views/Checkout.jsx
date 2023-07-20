@@ -14,7 +14,7 @@ import Pagos from './publicidad/Pagos'
       
     return (
       <>
-      <section className="bg-negro">
+      <section className="bg-color">
         <Container className="d-flex justify-content-center align-items-center">
           <Card className="mt-5 mb-5" style={{ width: "400px" }}>
             <Card.Body>
