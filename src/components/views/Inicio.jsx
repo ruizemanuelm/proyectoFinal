@@ -10,6 +10,8 @@ import banner from "../../assets/banner.jpg";
 import banner1 from "../../assets/banner1.png";
 import banner2 from "../../assets/banner2.png";
 import CarouselCards from "./publicidad/CarouselCards";
+import CardsPlanes from "./publicidad/CardsPlanes";
+
 
 const Inicio = () => {
   return (
@@ -81,6 +83,7 @@ const Inicio = () => {
           </Card>
         </CardGroup>
         <hr className="mt-5" />
+        <CardsPlanes></CardsPlanes>
       </Container>
       <CarouselCards></CarouselCards>
       <article>
