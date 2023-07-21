@@ -7,7 +7,8 @@ const AdminTurnos = () => {
     return (
         <section className="container-fluid mainSection">
         <div className="mt-1">
-          <h1 className="display-4 text-center">Turnos</h1>
+          <h1 className="display-6 text-center">Turnos</h1>
+          <hr />
         </div>
         <Table responsive striped bordered hover>
           <thead>

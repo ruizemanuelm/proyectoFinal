@@ -3,6 +3,7 @@ import Tab from "react-bootstrap/Tab";
 import { Tabs, Card, Table, Col, Row, ListGroup } from "react-bootstrap";
 import ItemAdmin from "./Administrador/ItemAdmin";
 import AdminPacientes from "./Administrador/AdminPacientes";
+import AdminTurnos from "./Administrador/AdminTurnos";
 const Admin = () => {
   return (
     <section className="container-fluid mainSection">
@@ -88,8 +89,10 @@ const Admin = () => {
         </Card>
         </Tab>
         <Tab eventKey="Turnos" title="Turnos">
-          Tab content for Contact
-        </Tab>
+        <Card className="bg-success-subtle">
+<AdminTurnos></AdminTurnos>
+        </Card>
+          </Tab>
       </Tabs>
     </section>
   );
