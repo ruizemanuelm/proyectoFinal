@@ -1,6 +1,7 @@
 import React from 'react';
 import Tab from 'react-bootstrap/Tab';
 import {Tabs, Card, Table} from 'react-bootstrap';
+import ItemAdmin from './Administrador/ItemAdmin';
 
 const Admin = () => {
     return (
@@ -28,9 +29,11 @@ const Admin = () => {
             <th>Paciente</th>
             <th>Dueño</th>
             <th>Detalle de la consulta</th>
+            <th>Opciones</th>
           </tr>
         </thead>
         <tbody>
+          <ItemAdmin></ItemAdmin>
         </tbody>
       </Table>
       </Card.Body>
@@ -40,7 +43,7 @@ const Admin = () => {
         Tab content for Profile
       </Tab>
       <Tab eventKey="Pacientes" title="Pacientes">
-        Tab content for Loooonger Tab
+        Tab content for Tab
       </Tab>
       <Tab eventKey="Turnos" title="Turnos" >
         Tab content for Contact
