@@ -6,7 +6,7 @@ const AdminPacientes = () => {
     return (
         <section className="container-fluid mainSection">
         <div className="mt-1">
-          <h1 className="display-4 text-center"> Lista de pacientes</h1>
+          <h1 className="display-6 text-center"> Lista de pacientes</h1>
         </div>
         <hr />
         <h2>Información de dueños</h2>

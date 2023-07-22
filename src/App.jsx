@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
-import Checkout from './components/views/Checkout'
+import Menu from './components/common/Menu';
+import Admin from './components/views/Admin';
 
 
 
@@ -9,7 +10,8 @@ function App() {
 
   return (
     <>
-    <Checkout></Checkout>
+      <Menu></Menu>
+      <Admin></Admin>
     </>
   )
 }

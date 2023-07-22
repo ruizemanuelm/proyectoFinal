@@ -62,35 +62,53 @@ const ItemPacientes = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ListGroup as="ol">
-            <ListGroup.Item
-              as="li"
-              className="d-flex justify-content-between align-items-start"
-            >
-              <div className="ms-2 me-auto fs-3">
-                <div className="fw-bold fs-4 text-danger">Nombre:</div>
-                Meijas
-              </div>
-            </ListGroup.Item>
-            <ListGroup.Item
-              as="li"
-              className="d-flex justify-content-between align-items-start"
-            >
-              <div className="ms-2 me-auto fs-3">
-                <div className="fw-bold fs-4 text-danger">Especie:</div>
-                Perro
-              </div>
-            </ListGroup.Item>
-            <ListGroup.Item
-              as="li"
-              className="d-flex justify-content-between align-items-start"
-            >
-              <div className="ms-2 me-auto fs-3">
-                <div className="fw-bold fs-4 text-danger">Raza:</div>
-                Hamilton
-              </div>
-            </ListGroup.Item>
-          </ListGroup>
+        <ListGroup variant="flush" className="align-content-center">
+                    <ListGroup.Item
+                      action
+                      active
+                      variant="primary"
+                      className="fs-2 text-center"
+                    >
+                      Nombre
+                    </ListGroup.Item>
+                    <ListGroup.Item
+                      action
+                      variant="primary"
+                      className="fs-3"
+                    >
+                      firulais
+                    </ListGroup.Item>
+                    <ListGroup.Item
+                      action
+                      active
+                      variant="danger"
+                      className="fs-2 mt-3 text-center"
+                    >
+                      Especie
+                    </ListGroup.Item>
+                    <ListGroup.Item
+                      action
+                      variant="danger"
+                      className="fs-3"
+                    >
+                     Perro
+                    </ListGroup.Item>
+                    <ListGroup.Item
+                      action
+                      active
+                      variant="warning"
+                      className="fs-2  mt-3 text-center"
+                    >
+                      Raza
+                    </ListGroup.Item>
+                    <ListGroup.Item
+                      action
+                      variant="warning"
+                      className="fs-3"
+                    >
+                      Hamilton
+                    </ListGroup.Item>
+                  </ListGroup>
         </Modal.Body>
       </Modal>
     </>
