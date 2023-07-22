@@ -7,8 +7,8 @@ import {
   Form,
   Carousel,
 } from "react-bootstrap";
-import bannercontacto from "../assets/Contact.png";
-import bannercontacto2 from "../assets/Home.png";
+import bannercontacto from "../../assets/Contact.png";
+import bannercontacto2 from "../../assets/Home.png";
 
 const Contacto = () => {
   return (

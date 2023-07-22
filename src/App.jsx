@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
-import Checkout from './components/views/Checkout'
+import Contacto from './components/views/Contacto'
 
 
 
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-    <Checkout></Checkout>
+    <Contacto></Contacto>
     </>
   )
 }
