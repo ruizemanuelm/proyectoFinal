@@ -70,7 +70,7 @@ const Contacto = () => {
                   </Form>
                 </Col>
                 <Col md={6}>
-                  <Card className="info-box mt-2 border-0">
+                  <Card className="info-box mt-4 border-0">
                     <Card.Body>
                       <h4 className="mb-4">Información de Contacto</h4>
                       <p className="mt-4">
