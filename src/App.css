@@ -16,3 +16,10 @@
   position: fixed;
   padding-top: 18px;
 }
+
+.buttonSolicitar{
+  
+  color: #FDFD5D;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+}
