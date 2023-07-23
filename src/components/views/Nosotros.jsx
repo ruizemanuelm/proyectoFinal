@@ -52,8 +52,8 @@ const Nosotros = () => {
                 <div className="col-md-6 ">
                   <div className="card-body">
                     <h5 className="card-title ">{miembro.nombre}</h5>
-                    <p className="card-text ">{miembro.descripcion}</p>
-                    <p className="card-text ">{miembro.edad}</p>
+                    <h5 className="card-text ">{miembro.descripcion}</h5>
+                    <h6 className="card-text ">{miembro.edad}</h6>
                   </div>
                 </div>
               </div>
