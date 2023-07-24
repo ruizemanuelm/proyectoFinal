@@ -7,3 +7,26 @@
 .mainSection{
   flex-grow: 1;
 }
+
+.mainFooter
+{
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 18px;
+}
+
+.buttonSolicitar{
+  color: #FDFD5D;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+}
+
+.bg-color {
+  background-color: rgba(0, 0, 0, 0.281)
+}
+
+.cardacerca {
+  border-radius: 50%;
+}
+
