@@ -18,7 +18,7 @@ const CardsPlanes = () => {
                 <Card.Title className="text-danger">
                   <h2>Plan cachorros</h2>
                 </Card.Title>
-                <Card.Text>9.99 USD al mes</Card.Text>
+                <Card.Text className="fw-bold">9.99 USD al mes</Card.Text>
                 <hr />
                 <Card.Text>Vacunas y desparasitación</Card.Text>
                 <Card.Text>Revisiones y chequeos regulares</Card.Text>
@@ -39,7 +39,7 @@ const CardsPlanes = () => {
                 <Card.Title className="text-danger">
                   <h2>Plan madurando</h2>
                 </Card.Title>
-                <Card.Text>7.99 USD al mes</Card.Text>
+                <Card.Text className="fw-bold">7.99 USD al mes</Card.Text>
                 <hr />
                 <Card.Text>Vacunas y desparasitación</Card.Text>
                 <Card.Text>Revisiones y chequeos regulares</Card.Text>
@@ -60,12 +60,12 @@ const CardsPlanes = () => {
                 <Card.Title className="text-danger">
                   <h2>Plan adultos</h2>
                 </Card.Title>
-                <Card.Text>11.99 USD al mes</Card.Text>
+                <Card.Text className="fw-bold">11.99 USD al mes</Card.Text>
                 <hr />
                 <Card.Text>Chequeos de salud regulares</Card.Text>
                 <Card.Text>Vacunas de refuerzo</Card.Text>
                 <Card.Text>
-                  ADesparasitación y control de pulgas/ticks
+                  Desparasitación y control de pulgas/ticks
                 </Card.Text>
                 <Card.Text>Análisis de sangre y orina</Card.Text>
                 <Card.Text>Alimentación adaptada a la edad</Card.Text>
