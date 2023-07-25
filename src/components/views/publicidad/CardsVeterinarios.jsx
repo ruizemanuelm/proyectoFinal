@@ -13,6 +13,7 @@ const CardsVeterinarios = () => {
     return (
         <>
               <Container>
+                <hr />
         <CardGroup className="mt-5 mb-5">
           <Col md={6} ld={3} className="mb-3 px-3">
           <Card className="h-100">
