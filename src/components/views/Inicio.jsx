@@ -13,6 +13,10 @@ import CarouselCards from "./publicidad/CarouselCards";
 import CardsPlanes from "./publicidad/CardsPlanes";
 import CardsOfertas from "./publicidad/CardsOfertas";
 import VideoInicio from "./publicidad/VideoInicio";
+import CardsVeterinarios from "./publicidad/CardsVeterinarios";
+import Comentarios from "./publicidad/Comentarios";
+
+
 
 
 const Inicio = () => {
@@ -90,6 +94,8 @@ const Inicio = () => {
       <CarouselCards></CarouselCards>
       <CardsOfertas></CardsOfertas>
       <VideoInicio></VideoInicio>
+      <CardsVeterinarios></CardsVeterinarios>
+      <Comentarios></Comentarios>
     </section>
   );
 };
