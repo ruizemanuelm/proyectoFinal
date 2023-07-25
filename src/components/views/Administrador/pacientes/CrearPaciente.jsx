@@ -9,29 +9,37 @@ const CrearPaciente = () => {
       <h2>Información del dueño</h2>
       <Form>
         <Row className="mb-3">
-          <Form.Group as={Col} className="mb-3" controlId="NombreDueño">
+          <Col sm={12} md={4}>
+          <Form.Group  className="mb-3" controlId="NombreDueño">
             <Form.Label>Nombre</Form.Label>
             <Form.Control type="text" placeholder="Ej: Leo" />
           </Form.Group>
-          <Form.Group as={Col} className="mb-3" controlId="ApellidoDueño">
+          </Col>
+          <Col sm={12} md={4}>
+          <Form.Group  className="mb-3" controlId="ApellidoDueño">
             <Form.Label>Apellido</Form.Label>
             <Form.Control type="text" placeholder="Ej: Messi" />
           </Form.Group>
-        </Row>
-        <Row className="mb-3">
-          <Form.Group as={Col} className="mb-3" controlId="Email">
+          </Col>
+          <Col sm={12} md={4}>
+          <Form.Group  className="mb-3" controlId="Email">
             <Form.Label>Email</Form.Label>
             <Form.Control type="Email" placeholder="Huellitas@mail.com" />
           </Form.Group>
-          <Form.Group as={Col} className="mb-3" controlId="Telefono">
+          </Col>
+          <Col sm={12} md={6}>
+          <Form.Group  className="mb-3" controlId="Telefono">
             <Form.Label>Teléfono</Form.Label>
             <Form.Control type="number" placeholder="3812233445" />
           </Form.Group>
-        </Row>
+          </Col>
+          <Col sm={12} md={6}>
         <Form.Group className="mb-3" controlId="Direccion">
           <Form.Label>Dirección</Form.Label>
           <Form.Control type="text" />
         </Form.Group>
+        </Col>
+        </Row>
         <hr />
         <h2>Información de mascota</h2>
         <Form.Group className="mb-3" controlId="NombreMascota">
@@ -39,7 +47,8 @@ const CrearPaciente = () => {
           <Form.Control type="text" placeholder="Firulais" />
         </Form.Group>
         <Row>
-          <Form.Group as={Col} className="mb-3" controlId="Especie">
+        <Col sm={12} md={6}>
+          <Form.Group  className="mb-3" controlId="Especie">
             <Form.Label>Especie</Form.Label>
             <Form.Select defaultValue="Perro">
               <option value="perro">Perro</option>
@@ -47,12 +56,15 @@ const CrearPaciente = () => {
               <option value="Conejo">Conejo</option>
             </Form.Select>
           </Form.Group>
-          <Form.Group as={Col} className="mb-3" controlId="Raza">
+          </Col>
+          <Col sm={12} md={6}>
+          <Form.Group  className="mb-3" controlId="Raza">
             <Form.Label>Raza</Form.Label>
             <Form.Control type="text" />
           </Form.Group>
+          </Col>
         </Row>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" className="mb-3">
           Guardar
         </Button>
       </Form>

@@ -8,10 +8,19 @@ import {BsHouseDoorFill, BsFillPersonFill, BsPersonAdd, BsFillPersonPlusFill, Bs
 import {FaCartShopping} from 'react-icons/fa6'
 import {RiServiceFill} from 'react-icons/ri'
 import {AiFillFileText} from 'react-icons/ai'
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 
-const Menu = () => {
+
+const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
+
+  const navegacion = useNavigate();
+
+  const logout = ()=>{
+  sessionStorage.removeItem('usuario');
+  setUsuarioLogueado({});
+  navegacion('/');
+  }
 
     const [show, setShow] = useState(false);
     const [showRegister, setShowRegister] = useState(false);
@@ -29,26 +38,34 @@ const Menu = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav " />
         <Navbar.Collapse id="responsive-navbar-nav" >
             <Nav className="m-auto " >
-                <NavLink /*end to={'/'}*/ className={'nav-item nav-link'}><BsHouseDoorFill/> Inicio</NavLink>
-                <Nav.Link /*end to={'/'}*/ className={'nav-item nav-link'}><FaCartShopping/> Tienda</Nav.Link>
-            <NavDropdown title={<span className='' id="collasible-nav-dropdown"><RiServiceFill/> Servicios</span>}>
-                <NavDropdown.Item /*end to ={'/'}*/ className={'text-dark'}>Primeros Pasos</NavDropdown.Item>
-                <NavDropdown.Item /*end to ={'/'}*/>Madurando</NavDropdown.Item>
-                <NavDropdown.Item /*end to ={'/'}*/>Adultos</NavDropdown.Item>
+                <NavLink end to={'/'} className={'nav-item nav-link'}><BsHouseDoorFill/> Inicio</NavLink>
+                <NavLink end to={'/error404'} className={'nav-item nav-link'}><FaCartShopping/> Tienda</NavLink>
+            <NavDropdown title={<span className='' id="collasible-nav-dropdown" to={'/error404'}><RiServiceFill/> Servicios</span>}>
+                <NavDropdown.Item end to ={'/error404'} className={'text-dark'}>Primeros Pasos</NavDropdown.Item>
+                <NavDropdown.Item end to ={'/error404'}>Madurando</NavDropdown.Item>
+                <NavDropdown.Item end to ={'/error404'}>Adultos</NavDropdown.Item>
                 
             </NavDropdown>
-            {/*<Nav.Link /*end to={'/contacto'} className={'nav-item nav-link'}>{/*<BsTelephoneFill/>} Contacto</Nav.Link>*/}
-            <Nav.Link   /*end to={'/contacto'}*/  className={'nav-item nav-link '}  ><BsTelephoneFill/> Contacto</Nav.Link>
-            <Nav.Link   /*end to={'/contacto'}*/  className={'nav-item nav-link buttonSolicitar'}  ><AiFillFileText/> Solicitar Turno</Nav.Link>
-            
+            <NavLink   end to={'/contacto'}  className={'nav-item nav-link '}  ><BsTelephoneFill/> Contacto</NavLink>
+            <NavLink   end to={'/crearturno'}  className={'nav-item nav-link buttonSolicitar'}  ><AiFillFileText/> Solicitar Turno</NavLink>
             </Nav>
             
+            {
+                (usuarioLogueado.nombreUsuario)?
+                <>
             <Nav>
-            
-            <Nav.Link /*end to={'/'}*/ onClick={handleShowRegister} className={'nav-item nav-link '}>{<BsFillPersonPlusFill/>} Registrar</Nav.Link>
-            <Nav.Link eventKey={2} onClick={handleShow} /*end to={'/'}*/ className={'nav-item nav-link '}><BsFillPersonFill/> Iniciar sesion</Nav.Link>
+            <NavLink end to={'/admin'}  className={'nav-item nav-link '}>{<BsFillPersonPlusFill/>} Administrador</NavLink>
+            <Button variant='dark' onClick={logout}>Logout</Button>
             </Nav>
-
+                </>:
+            <>
+            <Nav>
+            <NavLink onClick={handleShowRegister} className={'nav-item nav-link'}>{<BsFillPersonPlusFill/>} Registrar</NavLink>
+            <NavLink eventKey={2} onClick={handleShow} className={'nav-item nav-link'}><BsFillPersonFill/> Iniciar sesion</NavLink>
+            </Nav>
+            </>
+            }
+            
         </Navbar.Collapse>
         </Container>
         <Modal show={show} onHide={handleClose}>

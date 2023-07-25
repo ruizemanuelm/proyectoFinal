@@ -15,6 +15,7 @@ const ItemPacientes = () => {
       Eliminar
     </Tooltip>
   );
+  
   const [ShowModal, setShowModal] = useState(false);
   return (
     <>
@@ -45,6 +46,7 @@ const ItemPacientes = () => {
       delay={{ show: 250, hide: 400 }}
       overlay={BotonEliminar}
     >
+          
           <Button className="m-1" variant="danger">
             <TrashFill />
           </Button>
