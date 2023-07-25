@@ -40,7 +40,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
             <Nav className="m-auto " >
                 <NavLink end to={'/'} className={'nav-item nav-link'}><BsHouseDoorFill/> Inicio</NavLink>
                 <NavLink end to={'/error404'} className={'nav-item nav-link'}><FaCartShopping/> Tienda</NavLink>
-            <NavDropdown title={<span className='' id="collasible-nav-dropdown"><RiServiceFill/> Servicios</span>}>
+            <NavDropdown title={<span className='' id="collasible-nav-dropdown" to={'/error404'}><RiServiceFill/> Servicios</span>}>
                 <NavDropdown.Item end to ={'/error404'} className={'text-dark'}>Primeros Pasos</NavDropdown.Item>
                 <NavDropdown.Item end to ={'/error404'}>Madurando</NavDropdown.Item>
                 <NavDropdown.Item end to ={'/error404'}>Adultos</NavDropdown.Item>
@@ -60,11 +60,12 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
                 </>:
             <>
             <Nav>
-            <NavLink onClick={handleShowRegister} className={'nav-item nav-link '}>{<BsFillPersonPlusFill/>} Registrar</NavLink>
-            <NavLink eventKey={2} onClick={handleShow} className={'nav-item nav-link '}><BsFillPersonFill/> Iniciar sesion</NavLink>
+            <NavLink onClick={handleShowRegister} className={'nav-item nav-link'}>{<BsFillPersonPlusFill/>} Registrar</NavLink>
+            <NavLink eventKey={2} onClick={handleShow} className={'nav-item nav-link'}><BsFillPersonFill/> Iniciar sesion</NavLink>
             </Nav>
             </>
             }
+            
         </Navbar.Collapse>
         </Container>
         <Modal show={show} onHide={handleClose}>

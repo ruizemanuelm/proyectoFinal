@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Menu from './components/common/Menu';
 import Footer from './components/common/Footer';
 import Inicio from './components/views/Inicio';
-/*import Admin from './components/views/Admin';*/
+import Admin from './components/views/Admin';
 import Nosotros from './components/views/Nosotros';
 import Error404 from './components/views/Error404'
 import Contacto from './components/views/Contacto'
@@ -12,7 +12,11 @@ import Login from './components/views/Login'
 import Checkout from './components/views/Checkout'
 import Registro from './components/views/Registro';
 import CrearTurno from './components/views/Administrador/Turnos/CrearTurno'
+import CrearPaciente from './components/views/Administrador/pacientes/CrearPaciente'
 import { useState } from 'react';
+import RutasProtegidas from './components/Routes/RutasProtegidas';
+import RutasAdministrador from './components/Routes/RutasAdministrador';
+import AdminPacientes from './components/views/Administrador/AdminPacientes';
 
 
 function App() {
@@ -32,8 +36,17 @@ function App() {
         <Route exact path='/nosotros' element={<Nosotros/>}></Route>
         <Route exact path='/checkout' element={<Checkout/>}></Route>
         <Route exact path='/crearturno' element={<CrearTurno/>}></Route>
+        <Route exact path='/adminpaciente' element={<AdminPacientes/>}></Route>
+        <Route exact path='/crearpaciente' element={<CrearPaciente/>}></Route>
+        <Route exact path='/admin' element={<Admin/>}></Route>
         
+        <Route path="/admin/*" element={
+          <RutasProtegidas>
+            <RutasAdministrador></RutasAdministrador>
+          </RutasProtegidas>
+        }></Route>
       </Routes>
+      
       <Footer></Footer>
       </BrowserRouter>
     </>
