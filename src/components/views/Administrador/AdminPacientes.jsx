@@ -1,13 +1,19 @@
 import React from 'react';
 import { Button,Table } from 'react-bootstrap';
 import ItemPacientes from './pacientes/ItemPacientes';
+import { Link } from 'react-router-dom';
 
 const AdminPacientes = () => {
     return (
+      
         <section className="container-fluid mainSection">
-        <div className="mt-1">
-          <h1 className="display-6 text-center"> Lista de pacientes</h1>
+        <div className="d-flex justify-content-end  align-items-center mt-1">
+          <h1 className="display-6 text-center col-md-12"> Lista de pacientes</h1>
+          <Link className="btn btn-primary" to="/crearpaciente">
+          Agregar
+        </Link>
         </div>
+        
         <hr />
         <h2>Información de dueños</h2>
         <Table responsive striped bordered hover>
@@ -28,6 +34,8 @@ const AdminPacientes = () => {
             <ItemPacientes></ItemPacientes>
           </tbody>
         </Table>
+
+        
       </section>
     );
 };

@@ -51,7 +51,7 @@ const Nosotros = () => {
                     style={{ height: '200px', width: '200px', objectFit: 'cover' }}
                   />
                 </div>
-                <div className="col-md-6 ">
+                <div className="col-md-6 text-center">
                   <div className="card-body">
                     <h5 className="card-title ">{miembro.nombre}</h5>
                     <h5 className="card-text ">{miembro.descripcion}</h5>
