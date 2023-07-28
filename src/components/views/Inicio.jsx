@@ -12,7 +12,6 @@ import banner2 from "../../assets/banner2.png";
 import CarouselCards from "./publicidad/CarouselCards";
 import CardsPlanes from "./publicidad/CardsPlanes";
 import CardsOfertas from "./publicidad/CardsOfertas";
-import VideoInicio from "./publicidad/VideoInicio";
 import CardsVeterinarios from "./publicidad/CardsVeterinarios";
 import Comentarios from "./publicidad/Comentarios";
 
@@ -93,7 +92,6 @@ const Inicio = () => {
         <CardsPlanes></CardsPlanes>
       <CarouselCards></CarouselCards>
       <CardsOfertas></CardsOfertas>
-      <VideoInicio></VideoInicio>
       <CardsVeterinarios></CardsVeterinarios>
       <Comentarios></Comentarios>
     </section>

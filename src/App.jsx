@@ -8,9 +8,7 @@ import Admin from './components/views/Admin';
 import Nosotros from './components/views/Nosotros';
 import Error404 from './components/views/Error404'
 import Contacto from './components/views/Contacto'
-import Login from './components/views/Login'
 import Checkout from './components/views/Checkout'
-import Registro from './components/views/Registro';
 import CrearTurno from './components/views/Administrador/Turnos/CrearTurno'
 import CrearPaciente from './components/views/Administrador/pacientes/CrearPaciente'
 import { useState } from 'react';
@@ -29,8 +27,6 @@ function App() {
       <Menu usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado} />
       <Routes>
       <Route exact path='/' element={<Inicio/>}></Route>
-        <Route exact path='/login' element={<Login/>}></Route>
-        <Route exact path='/registro' element={<Registro/>}></Route>
         <Route exact path='*' element={<Error404/>}></Route>
         <Route exact path='/contacto' element={<Contacto/>}></Route>
         <Route exact path='/nosotros' element={<Nosotros/>}></Route>
