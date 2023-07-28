@@ -30,10 +30,13 @@ const CrearTurno = () => {
   };
   const validacionHora = () => {
     const horaSeleccionada = getValues("hora");
-    const horaActual = obtenerHora();
+    const horaActual = obtenerHora(); 
 
-    if (horaSeleccionada < horaActual) {
-      return "La hora debe ser igual o posterior a la hora actual";
+    if (obtenerFecha() === getValues("fecha") ) {
+
+      if (horaSeleccionada < horaActual) {
+        return "La hora debe ser igual o posterior a la hora actual";
+      }
     }
 
     return true;
