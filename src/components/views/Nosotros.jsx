@@ -2,8 +2,7 @@ import React from 'react';
 import sebastian from '../../assets/sebastian.jpeg'
 import lucio from '../../assets/lucio.jpg'
 import emanuel from '../../assets/emanuel.jpg'
-import { NavLink, Link } from 'react-router-dom';
-import { Facebook, Git, Github, Linkedin } from 'react-bootstrap-icons';
+import { Facebook, Github, Linkedin } from 'react-bootstrap-icons';
 
 
 const Nosotros = () => {
@@ -41,7 +40,7 @@ const Nosotros = () => {
           <hr/>
       <article className="row">
         {miembros.map((miembro, index) => (
-          <aside className="col-md-12 card mb-5 border-0">
+          <aside className="col-md-12 card mb-5 border-0" key={index}>
               <div className="row m-5">
                 <div className="col-md-6">
                   <img
