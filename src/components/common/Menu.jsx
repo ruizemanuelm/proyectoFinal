@@ -10,16 +10,21 @@ import {RiServiceFill} from 'react-icons/ri'
 import {AiFillFileText} from 'react-icons/ai'
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { login, register } from '../helpers/queries';
+import Swal from 'sweetalert2';
+
 
 const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
   const navegacion = useNavigate();
-  const { register, handleSubmit, formState: { errors}, reset} = useForm ()
   const [show, setShow] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleCloseRegister = () => setShowRegister(false);
   const handleShowRegister = () => setShowRegister(true);
+  const formRegistro = useForm();
+  const formLogin = useForm();
+
 
   const onSubmit = (usuario)=>{
     console.log('entro funcion');
@@ -33,6 +38,22 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
         Swal.fire(
           'Ocurrio un error',
           'El email o usuario son erroneos',
+          'error'
+        )
+      }
+    })
+  }
+  const onRegistro = (usuario)=>{
+    console.log('onregistro');
+    register(usuario).then((respuesta)=>{
+      console.log(respuesta)
+      if(respuesta){
+        Swal.fire(
+          'Se creo un usuario nuevo'
+        )
+      }else{
+        Swal.fire(
+          'Ocurrio un error',
           'error'
         )
       }
@@ -63,7 +84,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
             <NavLink   end to={'/crearturno'}  className={'nav-item nav-link buttonSolicitar'}  ><AiFillFileText/> Solicitar Turno</NavLink>
           </Nav>
           {
-            (usuarioLogueado.nombreUsuario)?
+            (usuarioLogueado.status)?
             <>
               <Nav>
                 <NavLink end to={'/admin'}  className={'nav-item nav-link '}>{<BsFillPersonPlusFill/>} Administrador</NavLink>
@@ -73,7 +94,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
             <>
               <Nav>
                 <NavLink onClick={handleShowRegister} className={'nav-item nav-link'}>{<BsFillPersonPlusFill/>} Registrar</NavLink>
-                <NavLink eventKey={2} onClick={handleShow} className={'nav-item nav-link'}><BsFillPersonFill/> Iniciar sesion</NavLink>
+                <NavLink  onClick={handleShow} className={'nav-item nav-link'}><BsFillPersonFill/> Iniciar sesion</NavLink>
               </Nav>
             </>
           }
@@ -81,82 +102,29 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
             
         </Navbar.Collapse>
         </Container>
-        <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Iniciar sesion</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form onSubmit={handleSubmit(onSubmit)}>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Correo electronico</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="name@example.com"
-                autoFocus
-                { ...register('email', {
-                  required:'El email es un dato obligatorio',
-                  pattern: {
-                    value: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
-                    message:'El email debe tener un formato valido (mail@dominio.com)'
-                  }
-                 })}
-                />
-                <Form.Text className="text-danger">
-                 { errors.email?.message}
-                </Form.Text>
-              
-            </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
-              <Form.Label>Contraseña</Form.Label>
-              <Form.Control type='password' rows={3} 
-               {
-                ...register('password',{
-                  required: 'El password es un dato obligatorio',
-                  pattern:{
-                    value: /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/,
-                    message: 'El password debe contener entre 8 y 16 caracteres y debe incluir numeros, caracteres en mayuscula, miniscula y almenos un caracter especial'
-                  }
-                })
-               }/>
-            </Form.Group>
-            <Button variant="secondary" onClick={handleClose}>
-            Cerrar
-          </Button>
-          <Button variant="primary" type='submit'>
-            Ingresar
-          </Button>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          
-        </Modal.Footer>
-      </Modal>
 
-              <Modal show={showRegister} onHide={handleCloseRegister}>
+        <Modal show={showRegister} onHide={handleCloseRegister}>
         <Modal.Header closeButton>
           <Modal.Title>Registrarse</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleSubmit(onSubmit)}> 
+          <Form onSubmit={formRegistro.handleSubmit(onRegistro)}> 
             <Form.Group className="mb-3" controlId="emailForm">
               <Form.Label>Correo electronico</Form.Label>
               <Form.Control
                 type="email"
                 placeholder="email@ejemplo.com"
                 autoFocus
-                { ...register('emailr', {
+                { ...formRegistro.register('email', {
                   required:'El email es un dato obligatorio',
                   pattern: {
                     value: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
                     message:'El email debe tener un formato valido (mail@dominio.com)'
                   }
-                 })}
+                })}
                 />
                 <Form.Text className="text-danger">
-                 { errors.emailr?.message}
+                {formRegistro.formState.errors.email?.message}
                 </Form.Text>
 
             </Form.Group>
@@ -167,17 +135,16 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
                 placeholder="Joe Doe"
                 autoFocus
                 {
-                  ...register('usernamer',
+                  ...formRegistro.register('nombreUsuario',
                   {required:'ingrese el nombre y apellido',
                   pattern:{
                     value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s']+$/,
                     message: 'ingrese el nombre correctamente'
                   }})
-                  
                 }
               />
               <Form.Text className="text-danger">
-                { errors.usernamer?.message}
+                { formRegistro.formState.errors.nombreUsuario?.message}
                 </Form.Text>
             </Form.Group>
             <Form.Group
@@ -186,7 +153,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
               <Form.Label>Contraseña</Form.Label>
               <Form.Control type='password' rows={3} 
                {
-                ...register('passwordr',{
+                ...formRegistro.register('password',{
                   required: 'El password es un dato obligatorio',
                   pattern:{
                     value: /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/,
@@ -196,7 +163,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
                }
               />
             <Form.Text className="text-danger">
-              { errors.passwordr?.message}
+              { formRegistro.formState.errors.password?.message}
               </Form.Text>
             </Form.Group>
             <Button variant="secondary" onClick={handleCloseRegister}>
@@ -204,6 +171,62 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
           </Button>
           <Button variant="primary" type='submit'>
             Registrarse
+          </Button>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+        </Modal.Footer>
+      </Modal>
+
+        <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Iniciar sesion</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={formLogin.handleSubmit(onSubmit)}>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Correo electronico</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="name@example.com"
+                autoFocus
+                { ...formLogin.register('email', {
+                  required:'El email es un dato obligatorio',
+                  pattern: {
+                    value: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
+                    message:'El email debe tener un formato valido (mail@dominio.com)'
+                  }
+                 })}
+                />
+                <Form.Text className="text-danger">
+                 { formLogin.formState.errors.email?.message}
+                </Form.Text>
+              
+            </Form.Group>
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label>Contraseña</Form.Label>
+              <Form.Control type='password' rows={3} 
+               {
+                ...formLogin.register('password',{
+                  required: 'El password es un dato obligatorio',
+                  pattern:{
+                    value: /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/,
+                    message: 'El password debe contener entre 8 y 16 caracteres y debe incluir numeros, caracteres en mayuscula, miniscula y almenos un caracter especial'
+                  }
+                })
+               }/>
+               <Form.Text className="text-danger">
+                 { formLogin.formState.errors.password?.message}
+                </Form.Text>
+            </Form.Group>
+            <Button variant="secondary" onClick={handleClose}>
+            Cerrar
+          </Button>
+          <Button variant="primary" type='submit'>
+            Ingresar
           </Button>
           </Form>
         </Modal.Body>

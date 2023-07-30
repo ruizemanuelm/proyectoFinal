@@ -1,3 +1,6 @@
+const URL_usuarios = import.meta.env.VITE_API_USUARIOS;
+
+
 export const obtenerFecha = () => {
     const fecha = new Date();
     const year = fecha.getFullYear();
@@ -15,21 +18,41 @@ export const obtenerHora = () => {
     return horaActual
   };
 
-export const login = async (usuario)=>{
+export const login = async (user)=>{
     try{
-        const respuesta = await fetch(URL_usuario,{
+        const respuesta = await fetch(URL_usuarios+'login',{
             method: "POST",
             headers: {
                 "Content-type": "application/json"
             },
-            body: JSON.stringify(usuario)
+            body: JSON.stringify(user)
         });
         
         const usuario = await respuesta.json();
         return {
             status: respuesta.status,
             mensaje: usuario.mensaje,
-            nombre: usuario.nombreUsuario
+            nombreUsuario: usuario.nombreUsuario
+        }
+        
+    }catch(error){
+        console.log(error)
+    }
+}
+export const register = async (user)=>{
+    try{
+        const respuesta = await fetch(URL_usuarios+'register',{
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(user)
+        });
+        
+        const usuario = await respuesta.json();
+        return {
+            status: respuesta.status,
+            mensaje: usuario.mensaje,
         }
         
     }catch(error){
