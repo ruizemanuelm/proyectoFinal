@@ -102,7 +102,6 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
             
         </Navbar.Collapse>
         </Container>
-
         <Modal show={showRegister} onHide={handleCloseRegister}>
         <Modal.Header closeButton>
           <Modal.Title>Registrarse</Modal.Title>
@@ -126,7 +125,6 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
                 <Form.Text className="text-danger">
                 {formRegistro.formState.errors.email?.message}
                 </Form.Text>
-
             </Form.Group>
             <Form.Group className="mb-3" controlId="namesForm">
               <Form.Label>Nombre y apellido</Form.Label>
@@ -152,7 +150,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
               controlId="passwordForm">
               <Form.Label>Contraseña</Form.Label>
               <Form.Control type='password' rows={3} 
-               {
+              {
                 ...formRegistro.register('password',{
                   required: 'El password es un dato obligatorio',
                   pattern:{
