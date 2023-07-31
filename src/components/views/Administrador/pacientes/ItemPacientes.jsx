@@ -1,31 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Modal, ListGroup } from "react-bootstrap";
 import { Eye, PencilFill, TrashFill } from "react-bootstrap-icons";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import { borrarPaciente, obtenerPacientes } from "../../../helpers/queries";
+import Swal from "sweetalert2";
 
-const ItemPacientes = () => {
+const ItemPacientes = ({ paciente, setPaciente }) => {
+  const eliminarPaciente = () => {
+    borrarPaciente(paciente._id).then((respuesta)=> {
+      if (respuesta && respuesta.status === 200) {
+        Swal.fire(
+          "Producto eliminado",
+          `El producto ${paciente.nombreDueno} fue eliminado correctamente`,
+          "success"
+        );
+        obtenerPacientes().then((respuesta) => {
+          if (respuesta) {
+            setPaciente(respuesta)
+          }
+        })
+      }
+    })
+  }
   const BotonEditar = (props) => (
     <Tooltip id="botonEditar" {...props}>
       Editar
     </Tooltip>
+
+    
   );
+
   const BotonEliminar = (props) => (
-    <Tooltip id="botonEliminar" {...props}>
+    <Tooltip id="botonEditar" {...props}>
       Eliminar
     </Tooltip>
+
+    
   );
+
   
   const [ShowModal, setShowModal] = useState(false);
   return (
     <>
       <tr>
-        <td>1</td>
-        <td>Emanuel Ruiz</td>
-        <td>Ruiz</td>
-        <td>Ruizemanuelok@gmail.com</td>
-        <td>3813153665</td>
-        <td>24 de septiembre 129</td>
+        <td>{paciente._id}</td>
+        <td>{paciente.nombreDueno}</td>
+        <td>{paciente.apellidoDueno}</td>
+        <td>{paciente.email}</td>
+        <td>{paciente.telefono}</td>
+        <td>{paciente.direccion}</td>
         <td className="text-center">
           <Button onClick={() => setShowModal(true)} variant="info">
             <Eye />
@@ -47,7 +71,7 @@ const ItemPacientes = () => {
       overlay={BotonEliminar}
     >
           
-          <Button className="m-1" variant="danger">
+          <Button className="m-1" variant="danger" onClick={eliminarPaciente}>
             <TrashFill />
           </Button>
           </OverlayTrigger>
@@ -78,7 +102,7 @@ const ItemPacientes = () => {
                       variant="primary"
                       className="fs-3"
                     >
-                      firulais
+                      {paciente.nombreMascota}
                     </ListGroup.Item>
                     <ListGroup.Item
                       action
@@ -93,7 +117,7 @@ const ItemPacientes = () => {
                       variant="danger"
                       className="fs-3"
                     >
-                     Perro
+                     {paciente.especie}
                     </ListGroup.Item>
                     <ListGroup.Item
                       action
@@ -108,7 +132,7 @@ const ItemPacientes = () => {
                       variant="warning"
                       className="fs-3"
                     >
-                      Hamilton
+                      {paciente.raza}
                     </ListGroup.Item>
                   </ListGroup>
         </Modal.Body>

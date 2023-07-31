@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Tab from "react-bootstrap/Tab";
 import { Tabs, Card, Table, Col, Row, ListGroup } from "react-bootstrap";
 import ItemAdmin from "./Administrador/ItemAdmin";
 import AdminPacientes from "./Administrador/AdminPacientes";
 import AdminTurnos from "./Administrador/AdminTurnos";
 const Admin = () => {
+  
+
+  const [activeTab, setActiveTab] = useState(localStorage.getItem('activeTab') || 'tabla1');
+
+  const handleTabSelect = (selectedTab) => {
+    setActiveTab(selectedTab);
+    localStorage.setItem('activeTab', selectedTab);
+  };
+
   return (
     <section className="container-fluid mainSection">
       <Tabs
-        defaultActiveKey="Inicio"
+        activeKey={activeTab} 
+        onSelect={handleTabSelect}
         id="AdminGeneral"
         className="mb-3"
         fill
