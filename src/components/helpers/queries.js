@@ -1,6 +1,20 @@
 const URL_usuarios = import.meta.env.VITE_API_USUARIOS;
+const URL_turnos = import.meta.env.VITE_API_TURNOS;
 
-
+export const crearTurno = async (turno)=>{
+    try{
+        const respuesta = await fetch(URL_turnos,{
+            method: "POST",
+            headers: {
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(turno)
+        });
+        return respuesta;
+    }catch (error){
+        console.log(error)
+    }
+}
 export const obtenerFecha = () => {
     const fecha = new Date();
     const year = fecha.getFullYear();

@@ -1,7 +1,8 @@
 import React from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { obtenerFecha, obtenerHora } from "../../../helpers/queries";
+import { crearTurno, obtenerFecha, obtenerHora } from "../../../helpers/queries";
+import Swal from "sweetalert2";
 
 const CrearTurno = () => {
   const {
@@ -11,9 +12,21 @@ const CrearTurno = () => {
     reset,
     getValues,
   } = useForm();
-  const onSubmit = (turno) => {
-    console.log(turno);
-  };
+  const onSubmit = (nuevoTurno) => {
+    
+    if (nuevoTurno.veterinario && nuevoTurno.hora){
+
+    }
+    console.log(nuevoTurno);
+    crearTurno(nuevoTurno).then((respuesta)=>{
+      if(respuesta && respuesta.status === 201){
+        Swal.fire('Producto creado', `El producto fue creado correctamente`, 'success');
+        reset();
+      }else{
+        Swal.fire('Ocurrio un error', `El producto no pudo ser creado, intente en unos minutos`, 'error');
+      }
+    })
+  }
 
   obtenerFecha();
   obtenerHora();
@@ -30,18 +43,19 @@ const CrearTurno = () => {
   };
   const validacionHora = () => {
     const horaSeleccionada = getValues("hora");
-    const horaActual = obtenerHora(); 
+    const horaActual = obtenerHora();
     const horaMinima1 = "08:00";
     const horaMaxima1 = "12:00";
     const horaMinima2 = "14:00";
     const horaMaxima2 = "18:00";
 
-    if (obtenerFecha() === getValues("fechaTurno") ) {
+    if (obtenerFecha() === getValues("fechaTurno")) {
       if (horaSeleccionada < horaActual) {
         return "La hora debe ser igual o posterior a la hora actual";
       } else {
         if (
-          (horaSeleccionada >= horaMinima1 && horaSeleccionada <= horaMaxima1) ||
+          (horaSeleccionada >= horaMinima1 &&
+            horaSeleccionada <= horaMaxima1) ||
           (horaSeleccionada >= horaMinima2 && horaSeleccionada <= horaMaxima2)
         ) {
           return true;
@@ -72,7 +86,7 @@ const CrearTurno = () => {
                   message: "El nombre debe tener al menos 2 caracteres",
                 },
                 maxLength: {
-                  value: 10,
+                  value: 15,
                   message: "El nombre no debe exceder los 15 caracteres",
                 },
               })}
@@ -122,8 +136,8 @@ const CrearTurno = () => {
                 <option disabled value="">
                   Seleccione una opción
                 </option>
-                <option value="Veterinario">Juan Jose</option>
-                <option value="Veterinaria">Maria Jose</option>
+                <option value="Juan Carlos">Juan Carlos</option>
+                <option value="Maria Jose">Maria Jose</option>
               </Form.Select>
               <Form.Text className="text-danger">
                 {errors.veterinario?.message}
