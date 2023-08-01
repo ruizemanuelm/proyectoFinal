@@ -15,6 +15,15 @@ export const crearTurno = async (turno)=>{
         console.log(error)
     }
 }
+export const obtenerTurnos = async ()=>{
+    try{
+        const respuesta = await fetch(URL_turnos);
+        const listaDeturnos = await respuesta.json();
+        return listaDeturnos;
+    }catch (error){
+        console.log(error)
+    }
+}
 export const obtenerFecha = () => {
     const fecha = new Date();
     const year = fecha.getFullYear();

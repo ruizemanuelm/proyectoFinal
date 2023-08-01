@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { PencilFill, TrashFill } from 'react-bootstrap-icons';
 
-const ItemTurnos = () => {
+const ItemTurnos = ({turnos,setTurnos}) => {
     const BotonEditar = (props) => (
         <Tooltip id="botonEditar" {...props}>
           Editar
@@ -16,11 +16,11 @@ const ItemTurnos = () => {
       return (
         <>
           <tr>
-            <td>21/07</td>
-            <td>12:00</td>
-            <td>Algún detalle</td>
-            <td>Lucio</td>
-            <td>Firulais</td>
+            <td>{turnos.fechaTurno}</td>
+            <td>{turnos.hora}</td>
+            <td>{turnos.detalleCita}</td>
+            <td>{turnos.veterinario}</td>
+            <td>{turnos.nombMascota}</td>
             <td className="text-center ">
             <OverlayTrigger
           placement="top"
