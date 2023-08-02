@@ -20,10 +20,10 @@ const CrearTurno = () => {
     console.log(nuevoTurno);
     crearTurno(nuevoTurno).then((respuesta)=>{
       if(respuesta && respuesta.status === 201){
-        Swal.fire('Producto creado', `El producto fue creado correctamente`, 'success');
+        Swal.fire('Turno solicitado', `El turno fue creado correctamente`, 'success');
         reset();
       }else{
-        Swal.fire('Ocurrio un error', `El producto no pudo ser creado, intente en unos minutos`, 'error');
+        Swal.fire('Ocurrió un error', `El turno no pudo ser solicitado, intente nuevamente en unos minutos`, 'error');
       }
     })
   }
@@ -53,6 +53,20 @@ const CrearTurno = () => {
     const horaMaxima2 = "18:00";
     
     if (obtenerFecha() === getValues("fechaTurno")) {
+      if (horaSeleccionada < horaActual) {
+        return "La hora debe ser igual o posterior a la hora actual";
+      } else {
+        if (
+          (horaSeleccionada >= horaMinima1 &&
+            horaSeleccionada <= horaMaxima1) ||
+          (horaSeleccionada >= horaMinima2 && horaSeleccionada <= horaMaxima2)
+        ) {
+          return true;
+        } else {
+          return "La hora debe estar entre las 08:00 y 12:00, o entre las 14:00 y 18:00.";
+        }
+      }    
+    } else {
       if (
         (horaSeleccionada >= horaMinima1 &&
           horaSeleccionada <= horaMaxima1) ||
@@ -62,13 +76,7 @@ const CrearTurno = () => {
       } else {
         return "La hora debe estar entre las 08:00 y 12:00, o entre las 14:00 y 18:00.";
       }
-    } else {
-      if (horaSeleccionada < horaActual) {
-        return "La hora debe ser igual o posterior a la hora actual";
-      }    
     }
-
-    return true;
   };
 
   return (
