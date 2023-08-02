@@ -4,7 +4,7 @@ import { Tabs, Card, Table, Col, Row, ListGroup } from "react-bootstrap";
 import ItemAdmin from "./Administrador/ItemAdmin";
 import AdminPacientes from "./Administrador/AdminPacientes";
 import AdminTurnos from "./Administrador/AdminTurnos";
-const Admin = () => {
+const Admin = ({usuarioLogueado}) => {
   return (
     <section className="container-fluid mainSection">
       <Tabs
@@ -41,7 +41,7 @@ const Admin = () => {
         </Tab>
         <Tab eventKey="Perfil" title="Perfil">
           <Card className="bg-dark-subtle">
-            <Card.Header className="display-6">Nombre del Admin</Card.Header>
+            <Card.Header className="display-6">Bienvenido {usuarioLogueado?.nombreUsuario}</Card.Header>
             <Card.Body className="">
               <Row>
                 <Col className="mx-1" sm={12} md={4}>
@@ -59,7 +59,7 @@ const Admin = () => {
                       variant="primary"
                       className="fs-3 rounded-3"
                     >
-                      User123
+                      {usuarioLogueado?.nombreUsuario}
                     </ListGroup.Item>
                     <p className="fs-4 mt-3">Correo</p>
                     <ListGroup.Item
@@ -67,7 +67,7 @@ const Admin = () => {
                       variant="danger"
                       className="fs-3 rounded-3"
                     >
-                      User123@mail.com
+                      {usuarioLogueado?.email}
                     </ListGroup.Item>
                     <p className="fs-4 mt-3">Contraseña</p>
                     <ListGroup.Item
@@ -75,7 +75,7 @@ const Admin = () => {
                       variant="warning"
                       className="fs-3 rounded-3"
                     >
-                      12345678
+                      {usuarioLogueado?.password}
                     </ListGroup.Item>
                   </ListGroup>
                 </Col>

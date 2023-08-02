@@ -17,11 +17,11 @@ export const obtenerHora = () => {
     const minutos = String(fecha.getMinutes()).padStart(2, '0');
     const horaActual = `${hora}:${minutos}`;
     return horaActual
-  };
+ };
 
 export const login = async (user)=>{
     try{
-        const respuesta = await fetch(URL_usuarios+'login',{
+        const respuesta = await fetch(URL_usuarios+'/login',{
             method: "POST",
             headers: {
                 "Content-type": "application/json"
@@ -33,7 +33,9 @@ export const login = async (user)=>{
         return {
             status: respuesta.status,
             mensaje: usuario.mensaje,
-            nombreUsuario: usuario.nombreUsuario
+            nombreUsuario: usuario.nombreUsuario,
+            email: usuario.email,
+            password: usuario.password
         }
         
     }catch(error){
@@ -42,7 +44,7 @@ export const login = async (user)=>{
 }
 export const register = async (user)=>{
     try{
-        const respuesta = await fetch(URL_usuarios+'register',{
+        const respuesta = await fetch(URL_usuarios+'/register',{
             method: "POST",
             headers: {
                 "Content-type": "application/json"
