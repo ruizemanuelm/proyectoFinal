@@ -30,11 +30,14 @@ const CrearTurno = () => {
 
   obtenerFecha();
   obtenerHora();
-
+  console.log(obtenerHora());
+  console.log(obtenerFecha());
+  
   const validacionFecha = () => {
     const fechaSeleccionada = getValues("fechaTurno");
     const fechaActual = obtenerFecha();
 
+    
     if (fechaSeleccionada < fechaActual) {
       return "La fecha debe ser igual o posterior al día de hoy";
     }
@@ -48,21 +51,21 @@ const CrearTurno = () => {
     const horaMaxima1 = "12:00";
     const horaMinima2 = "14:00";
     const horaMaxima2 = "18:00";
-
+    
     if (obtenerFecha() === getValues("fechaTurno")) {
+      if (
+        (horaSeleccionada >= horaMinima1 &&
+          horaSeleccionada <= horaMaxima1) ||
+        (horaSeleccionada >= horaMinima2 && horaSeleccionada <= horaMaxima2)
+      ) {
+        return true;
+      } else {
+        return "La hora debe estar entre las 08:00 y 12:00, o entre las 14:00 y 18:00.";
+      }
+    } else {
       if (horaSeleccionada < horaActual) {
         return "La hora debe ser igual o posterior a la hora actual";
-      } else {
-        if (
-          (horaSeleccionada >= horaMinima1 &&
-            horaSeleccionada <= horaMaxima1) ||
-          (horaSeleccionada >= horaMinima2 && horaSeleccionada <= horaMaxima2)
-        ) {
-          return true;
-        } else {
-          return "La hora debe estar entre las 08:00 y 12:00, o entre las 14:00 y 18:00.";
-        }
-      }
+      }    
     }
 
     return true;
