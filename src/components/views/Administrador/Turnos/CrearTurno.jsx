@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { crearTurno, obtenerFecha, obtenerHora } from "../../../helpers/queries";
+import { crearTurno, obtenerFecha, obtenerHora, obtenerTurnos } from "../../../helpers/queries";
 import Swal from "sweetalert2";
 
 const CrearTurno = () => {
@@ -13,11 +13,16 @@ const CrearTurno = () => {
     getValues,
   } = useForm();
   const onSubmit = (nuevoTurno) => {
-    
-    if (nuevoTurno.veterinario && nuevoTurno.hora){
-
-    }
-    console.log(nuevoTurno);
+    obtenerTurnos().then((listaDeTurnos) => {
+      const turnoExistente = listaDeTurnos.find((turno) => {      return (
+        turno.fechaTurno === nuevoTurno.fechaTurno &&
+        turno.hora === nuevoTurno.hora &&
+        turno.veterinario === nuevoTurno.veterinario 
+      );
+    }); 
+      if (turnoExistente) {
+        Swal.fire('Turno existente', `Ya existe un turno para esa fecha y hora`, 'error')
+      } else {
     crearTurno(nuevoTurno).then((respuesta)=>{
       if(respuesta && respuesta.status === 201){
         Swal.fire('Turno solicitado', `El turno fue creado correctamente`, 'success');
@@ -25,8 +30,10 @@ const CrearTurno = () => {
       }else{
         Swal.fire('Ocurrió un error', `El turno no pudo ser solicitado, intente nuevamente en unos minutos`, 'error');
       }
-    })
+    });
   }
+});
+};
 
   obtenerFecha();
   obtenerHora();
@@ -52,31 +59,21 @@ const CrearTurno = () => {
     const horaMinima2 = "14:00";
     const horaMaxima2 = "18:00";
     
-    if (obtenerFecha() === getValues("fechaTurno")) {
-      if (horaSeleccionada < horaActual) {
-        return "La hora debe ser igual o posterior a la hora actual";
-      } else {
-        if (
-          (horaSeleccionada >= horaMinima1 &&
-            horaSeleccionada <= horaMaxima1) ||
-          (horaSeleccionada >= horaMinima2 && horaSeleccionada <= horaMaxima2)
-        ) {
-          return true;
-        } else {
-          return "La hora debe estar entre las 08:00 y 12:00, o entre las 14:00 y 18:00.";
-        }
-      }    
-    } else {
+    if (obtenerFecha() !== getValues("fechaTurno")) {
       if (
-        (horaSeleccionada >= horaMinima1 &&
-          horaSeleccionada <= horaMaxima1) ||
-        (horaSeleccionada >= horaMinima2 && horaSeleccionada <= horaMaxima2)
+        horaSeleccionada < horaMinima1 ||
+        horaSeleccionada > horaMaxima2
       ) {
-        return true;
-      } else {
         return "La hora debe estar entre las 08:00 y 12:00, o entre las 14:00 y 18:00.";
       }
+    } else if (
+      horaSeleccionada < horaActual ||
+      (horaSeleccionada < horaMinima1 || horaSeleccionada > horaMaxima1) &&
+      (horaSeleccionada < horaMinima2 || horaSeleccionada > horaMaxima2)
+    ) {
+      return "La hora debe ser igual o posterior a la hora actual y estar entre las 08:00 y 12:00, o entre las 14:00 y 18:00.";
     }
+    return true;
   };
 
   return (

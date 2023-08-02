@@ -1,6 +1,9 @@
 const URL_usuarios = import.meta.env.VITE_API_USUARIOS;
 const URL_turnos = import.meta.env.VITE_API_TURNOS;
 
+const buscarTurnoExistente = (fecha, hora) => {
+    
+}
 export const crearTurno = async (turno)=>{
     try{
         const respuesta = await fetch(URL_turnos,{
