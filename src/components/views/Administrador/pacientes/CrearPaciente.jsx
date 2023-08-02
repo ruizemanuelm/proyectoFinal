@@ -1,6 +1,9 @@
 import React from "react";
 import { Form, Button, Col, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { crearPacientes } from "../../../helpers/queries";
+import Swal from "sweetalert2";
+
 
 const CrearPaciente = () => {
   const {
@@ -9,8 +12,16 @@ const CrearPaciente = () => {
     formState: { errors },
     reset,
   } = useForm();
-  const onSubmit = (usuario) => {
-    console.log(usuario);
+  const onSubmit = (pacienteNuevo) => {
+    console.log(pacienteNuevo);
+    crearPacientes(pacienteNuevo).then((respuesta)=>{
+      if(respuesta && respuesta.status === 201){
+        Swal.fire('Paciente creado', `El paciente fue creado correctamente`, 'success');
+        reset();
+      }else{
+        Swal.fire('Oops! Ocurrio un error', `El paciente no fue creado correctamente, intente nuevamente mas tarde`, 'error');
+      }
+    })
   };
   return (
     <section className="container mainSection">
@@ -95,7 +106,7 @@ const CrearPaciente = () => {
               <Form.Control
                 type="number"
                 placeholder="3812233445"
-                {...register("teléfono", {
+                {...register("telefono", {
                   required: "este campo es obligatorio",
                   pattern: {
                     value: /^[0-9]{10}$/,
@@ -104,7 +115,7 @@ const CrearPaciente = () => {
                 })}
               />
               <Form.Text className="text-danger">
-                {errors.teléfono?.message}
+                {errors.telefono?.message}
               </Form.Text>
             </Form.Group>
           </Col>
@@ -115,7 +126,7 @@ const CrearPaciente = () => {
                 type="text"
                 maxLength={61}
                 minLength={2}
-                {...register("dirección", {
+                {...register("direccion", {
                   required: "este campo es obligatorio",
                   minLength: {
                     value: 2,
@@ -128,7 +139,7 @@ const CrearPaciente = () => {
                 })}
               />
               <Form.Text className="text-danger">
-                {errors.dirección?.message}
+                {errors.direccion?.message}
               </Form.Text>
             </Form.Group>
           </Col>
@@ -169,8 +180,8 @@ const CrearPaciente = () => {
                 <option disabled value="">
                   Seleccione una opción
                 </option>
-                <option value="perro">Perro</option>
-                <option value="gato">Gato</option>
+                <option value="Perro">Perro</option>
+                <option value="Gato">Gato</option>
                 <option value="Conejo">Conejo</option>
               </Form.Select>
               <Form.Text className="text-danger">
