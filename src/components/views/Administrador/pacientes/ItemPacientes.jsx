@@ -1,45 +1,47 @@
 import React, { useEffect, useState } from "react";
 import { Button, Modal, ListGroup } from "react-bootstrap";
 import { Eye, PencilFill, TrashFill } from "react-bootstrap-icons";
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import { borrarPaciente, obtenerPacientes } from "../../../helpers/queries";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ItemPacientes = ({ paciente, setPaciente }) => {
   const eliminarPaciente = () => {
-    borrarPaciente(paciente._id).then((respuesta)=> {
+    borrarPaciente(paciente._id).then((respuesta) => {
       if (respuesta && respuesta.status === 200) {
         Swal.fire(
           "Producto eliminado",
-          `El producto ${paciente.nombreDueno} fue eliminado correctamente`,
+          `El producto fue eliminado correctamente`,
           "success"
         );
         obtenerPacientes().then((respuesta) => {
           if (respuesta) {
-            setPaciente(respuesta)
+            setPaciente(respuesta);
           }
-        })
+        });
+      } else {
+        Swal.fire(
+          "No se pudo eliminar",
+          `El producto no fue eliminado correctamente`,
+          "error"
+        );
       }
-    })
-  }
+    });
+  };
   const BotonEditar = (props) => (
     <Tooltip id="botonEditar" {...props}>
       Editar
     </Tooltip>
-
-    
   );
 
   const BotonEliminar = (props) => (
     <Tooltip id="botonEditar" {...props}>
       Eliminar
     </Tooltip>
-
-    
   );
 
-  
   const [ShowModal, setShowModal] = useState(false);
   return (
     <>
@@ -56,24 +58,28 @@ const ItemPacientes = ({ paciente, setPaciente }) => {
           </Button>
         </td>
         <td className="text-center ">
-        <OverlayTrigger
-      placement="top"
-      delay={{ show: 250, hide: 400 }}
-      overlay={BotonEditar}
-    >
-          <Button className="m-1" variant="success">
-            <PencilFill />
-          </Button>
+          <OverlayTrigger
+            placement="top"
+            delay={{ show: 250, hide: 400 }}
+            overlay={BotonEditar}
+          >
+            <Button
+              className="m-1"
+              variant="success"
+              as={Link}
+              to={"/admin/editar-paciente/"+paciente._id}
+            >
+              <PencilFill />
+            </Button>
           </OverlayTrigger>
           <OverlayTrigger
-      placement="top"
-      delay={{ show: 250, hide: 400 }}
-      overlay={BotonEliminar}
-    >
-          
-          <Button className="m-1" variant="danger" onClick={eliminarPaciente}>
-            <TrashFill />
-          </Button>
+            placement="top"
+            delay={{ show: 250, hide: 400 }}
+            overlay={BotonEliminar}
+          >
+            <Button className="m-1" variant="danger" onClick={eliminarPaciente}>
+              <TrashFill />
+            </Button>
           </OverlayTrigger>
         </td>
       </tr>
@@ -88,53 +94,41 @@ const ItemPacientes = ({ paciente, setPaciente }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <ListGroup variant="flush" className="align-content-center">
-                    <ListGroup.Item
-                      action
-                      active
-                      variant="primary"
-                      className="fs-2 text-center"
-                    >
-                      Nombre
-                    </ListGroup.Item>
-                    <ListGroup.Item
-                      action
-                      variant="primary"
-                      className="fs-3"
-                    >
-                      {paciente.nombreMascota}
-                    </ListGroup.Item>
-                    <ListGroup.Item
-                      action
-                      active
-                      variant="danger"
-                      className="fs-2 mt-3 text-center"
-                    >
-                      Especie
-                    </ListGroup.Item>
-                    <ListGroup.Item
-                      action
-                      variant="danger"
-                      className="fs-3"
-                    >
-                     {paciente.especie}
-                    </ListGroup.Item>
-                    <ListGroup.Item
-                      action
-                      active
-                      variant="warning"
-                      className="fs-2  mt-3 text-center"
-                    >
-                      Raza
-                    </ListGroup.Item>
-                    <ListGroup.Item
-                      action
-                      variant="warning"
-                      className="fs-3"
-                    >
-                      {paciente.raza}
-                    </ListGroup.Item>
-                  </ListGroup>
+          <ListGroup variant="flush" className="align-content-center">
+            <ListGroup.Item
+              action
+              active
+              variant="primary"
+              className="fs-2 text-center"
+            >
+              Nombre
+            </ListGroup.Item>
+            <ListGroup.Item action variant="primary" className="fs-3">
+              {paciente.nombreMascota}
+            </ListGroup.Item>
+            <ListGroup.Item
+              action
+              active
+              variant="danger"
+              className="fs-2 mt-3 text-center"
+            >
+              Especie
+            </ListGroup.Item>
+            <ListGroup.Item action variant="danger" className="fs-3">
+              {paciente.especie}
+            </ListGroup.Item>
+            <ListGroup.Item
+              action
+              active
+              variant="warning"
+              className="fs-2  mt-3 text-center"
+            >
+              Raza
+            </ListGroup.Item>
+            <ListGroup.Item action variant="warning" className="fs-3">
+              {paciente.raza}
+            </ListGroup.Item>
+          </ListGroup>
         </Modal.Body>
       </Modal>
     </>
