@@ -1,17 +1,18 @@
 import React, { useEffect } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { crearTurno, obtenerFecha, obtenerHora, obtenerTurnos, obtenerUnTurno } from "../../../helpers/queries";
+import { editarTurno, obtenerFecha, obtenerHora, obtenerTurnos, obtenerUnTurno } from "../../../helpers/queries";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EditarTurno = () => {
-    
+
     const {
         register,
         handleSubmit,
         formState: { errors },
         reset,
+        getValues,
         setValue
       } = useForm();
       const {id} = useParams();
@@ -29,28 +30,46 @@ const EditarTurno = () => {
         })
       }, [])
 
-      const onSubmit = (nuevoTurno) => {
+      const onSubmit = (TurnoNuevo) => {
+        console.log(TurnoNuevo);
+      
         obtenerTurnos().then((listaDeTurnos) => {
-          const turnoExistente = listaDeTurnos.find((turno) => {      return (
-            turno.fechaTurno === nuevoTurno.fechaTurno &&
-            turno.hora === nuevoTurno.hora &&
-            turno.veterinario === nuevoTurno.veterinario
-          );
-        }); 
+          const turnoExistente = listaDeTurnos.find((turno) => {
+            return (
+              turno.fechaTurno === TurnoNuevo.fechaTurno &&
+              turno.hora === TurnoNuevo.hora &&
+              turno.veterinario === TurnoNuevo.veterinario &&
+              turno.id !== TurnoNuevo.id
+            );
+          });
+      
           if (turnoExistente) {
-            Swal.fire('Turno existente', `Ya existe un turno para esa fecha y hora`, 'error')
+            Swal.fire(
+              "Error",
+              "El turno no pudo ser editado. El horario, fecha o veterinario no están disponibles.",
+              "error"
+            );
           } else {
-        crearTurno(nuevoTurno).then((respuesta)=>{
-          if(respuesta && respuesta.status === 201){
-            Swal.fire('Turno solicitado', `El turno fue creado correctamente`, 'success');
-            reset();
-          }else{
-            Swal.fire('Ocurrió un error', `El turno no pudo ser solicitado, intente nuevamente en unos minutos`, 'error');
+            editarTurno(TurnoNuevo, id).then((res) => {
+              if (res && res.status === 200) {
+                Swal.fire(
+                  "Turno editado",
+                  "El Turno fue editado correctamente",
+                  "success"
+                );
+                navegacion("/admin");
+              } else {
+                Swal.fire(
+                  "Ocurrió un error",
+                  "El Turno no pudo ser editado",
+                  "error"
+                );
+              }
+            });
           }
         });
-      }
-    });
-    };
+      };
+      
     
 obtenerFecha();
 obtenerHora();
