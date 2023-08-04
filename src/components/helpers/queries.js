@@ -1,8 +1,15 @@
 const URL_usuarios = import.meta.env.VITE_API_USUARIOS;
 const URL_turnos = import.meta.env.VITE_API_TURNOS;
 
-const buscarTurnoExistente = (fecha, hora) => {
-    
+export const obtenerUnTurno = async (id)=>{
+    try{
+        console.log(id)
+        const respuesta = await fetch(URL_turnos+'/'+id);
+        const turno = await respuesta.json();
+        return turno;
+    }catch (error){
+        console.log(error)
+    }
 }
 export const crearTurno = async (turno)=>{
     try{
@@ -18,6 +25,7 @@ export const crearTurno = async (turno)=>{
         console.log(error)
     }
 }
+
 export const obtenerTurnos = async ()=>{
     try{
         const respuesta = await fetch(URL_turnos);
@@ -27,6 +35,7 @@ export const obtenerTurnos = async ()=>{
         console.log(error)
     }
 }
+
 export const obtenerFecha = () => {
     const fecha = new Date();
     const year = fecha.getFullYear();

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { PencilFill, TrashFill } from 'react-bootstrap-icons';
+import { Link } from 'react-router-dom';
 
 const ItemTurnos = ({turnos,setTurnos}) => {
     const BotonEditar = (props) => (
@@ -27,9 +28,9 @@ const ItemTurnos = ({turnos,setTurnos}) => {
           delay={{ show: 250, hide: 400 }}
           overlay={BotonEditar}
         >
-              <Button className="m-1" variant="success">
+              <Link className="m-1 btn btn-success"  to={'/admin/editarturno/'+turnos._id}>
                 <PencilFill />
-              </Button>
+              </Link>
               </OverlayTrigger>
               <OverlayTrigger
           placement="top"
