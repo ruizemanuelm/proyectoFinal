@@ -63,9 +63,9 @@ export const register = async (user)=>{
     }
 }
 
-export const obtenerPacientePorId = async (id)=> {
+export const obtenerPacientePorId = async (_id)=> {
     try{
-        const respuesta = await fetch(URL_pacientes+'/'+id);
+        const respuesta = await fetch(URL_pacientes+'/'+_id);
         const paciente = await respuesta.json();
         return paciente;
     }catch{
@@ -96,7 +96,7 @@ export const crearPacientes = async (pacientes) => {
         },
         body: JSON.stringify(pacientes)
       });
-  
+      
       return respuesta;
     } catch(error){
       console.log(error);
@@ -109,6 +109,7 @@ export const borrarPaciente = async (id)=> {
         const respuesta = await fetch(URL_pacientes+'/'+id,{
             method: "DELETE"
         });
+        window.location.reload();
         return respuesta;
     }catch{
         console.log(error)

@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button,Table } from 'react-bootstrap';
 import ItemPacientes from './pacientes/ItemPacientes';
 import { Link } from 'react-router-dom';
+import { obtenerPacientes } from '../../helpers/queries';
+import Swal from 'sweetalert2';
+
 
 const AdminPacientes = () => {
+  const [paciente, setPaciente] = useState([]);
+
+useEffect(()=>{
+  obtenerPacientes().then((respuesta)=>{
+    if(respuesta){
+      setPaciente(respuesta)
+    }else{
+      Swal.fire('Ocurrio un error', 'Intente realizar esta operacion en unos minutos', 'error')
+    }
+  })
+},[])
     return (
       
         <section className="container-fluid mainSection">
@@ -30,8 +44,9 @@ const AdminPacientes = () => {
             </tr>
           </thead>
           <tbody>
-            <ItemPacientes></ItemPacientes>
-            <ItemPacientes></ItemPacientes>
+            {
+              paciente.map((paciente)=> <ItemPacientes paciente ={paciente} key={paciente._id} setPaciente={paciente}></ItemPacientes>)
+            }
           </tbody>
         </Table>
 
