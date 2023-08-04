@@ -1,22 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { crearTurno, obtenerFecha, obtenerHora, obtenerTurnos, obtenerUnTurno } from "../../../helpers/queries";
 import Swal from "sweetalert2";
+import { useNavigate, useParams } from "react-router-dom";
+
 const EditarTurno = () => {
+    
     const {
         register,
         handleSubmit,
         formState: { errors },
         reset,
-        getValues,
+        setValue
       } = useForm();
+      const {id} = useParams();
+      const navegacion = useNavigate();
+    
+      useEffect(()=>{
+        obtenerUnTurno(id).then((respuesta)=>{
+          console.log(respuesta)
+          setValue('fechaTurno', respuesta.fechaTurno)
+          setValue('hora', respuesta.hora)
+          setValue('nombMascota', respuesta.nombMascota)
+          setValue('veterinario', respuesta.veterinario)
+          setValue('detalleCita', respuesta.detalleCita)
+    
+        })
+      }, [])
+
       const onSubmit = (nuevoTurno) => {
         obtenerTurnos().then((listaDeTurnos) => {
           const turnoExistente = listaDeTurnos.find((turno) => {      return (
             turno.fechaTurno === nuevoTurno.fechaTurno &&
             turno.hora === nuevoTurno.hora &&
-            turno.veterinario === nuevoTurno.veterinario 
+            turno.veterinario === nuevoTurno.veterinario
           );
         }); 
           if (turnoExistente) {
@@ -34,11 +52,9 @@ const EditarTurno = () => {
     });
     };
     
-      obtenerFecha();
-      obtenerHora();
-      console.log(obtenerHora());
-      console.log(obtenerFecha());
-      
+obtenerFecha();
+obtenerHora();
+
       const validacionFecha = () => {
         const fechaSeleccionada = getValues("fechaTurno");
         const fechaActual = obtenerFecha();
