@@ -1,6 +1,22 @@
 const URL_usuarios = import.meta.env.VITE_API_USUARIOS;
 const URL_turnos = import.meta.env.VITE_API_TURNOS;
 
+export const editarTurno = async (turno,id) => {
+    try {
+        const respuesta = await fetch(URL_turnos+'/'+id, {
+            method: "PUT", 
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(turno)
+        });
+
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export const obtenerUnTurno = async (id)=>{
     try{
         console.log(id)

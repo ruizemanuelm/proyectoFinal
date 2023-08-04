@@ -174,8 +174,8 @@ const EditarTurno = () => {
               {errors.detalleCita?.message}
             </Form.Text>
           </Form.Group>
-          <Button className="w-100" variant="primary" type="submit" onClick={obtenerUnTurno}>
-            Enviar
+          <Button className="w-100" variant="primary" type="submit" >
+            Guardar cambios
           </Button>
         </Form>
       </section>
