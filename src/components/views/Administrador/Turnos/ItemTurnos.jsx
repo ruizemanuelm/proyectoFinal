@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { PencilFill, TrashFill } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
-import { borrarTurnos } from '../../../helpers/queries';
+import { borrarTurnos, obtenerTurnos } from '../../../helpers/queries';
 import Swal from 'sweetalert2';
 
 const ItemTurnos = ({turnos,setTurnos}) => {
+  useEffect(()=>{
+    obtenerTurnos().then((respuesta)=>{
+      if(respuesta){
+        setTurnos(respuesta)
+      }else{
+        Swal.fire('Ocurrio un error', 'Intente realizar esta operacion en unos minutos', 'error')
+      }
+    })
+  },[])
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
       confirmButton: 'btn btn-success m-1',
