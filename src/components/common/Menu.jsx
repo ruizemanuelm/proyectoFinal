@@ -4,7 +4,7 @@ import { Navbar, Form, Modal, Button} from 'react-bootstrap';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import React, { useState } from 'react';
 import logoveterinaria from '../../assets/logoveterinaria.png'
-import {BsHouseDoorFill, BsFillPersonFill, BsPersonAdd, BsFillPersonPlusFill, BsTelephoneFill } from 'react-icons/bs'
+import {BsHouseDoorFill, BsFillPersonFill, BsFillPersonPlusFill, BsTelephoneFill } from 'react-icons/bs'
 import {FaCartShopping} from 'react-icons/fa6'
 import {RiServiceFill} from 'react-icons/ri'
 import {AiFillFileText} from 'react-icons/ai'
@@ -12,7 +12,6 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { login, register } from '../helpers/queries';
 import Swal from 'sweetalert2';
-
 
 const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
   const navegacion = useNavigate();
@@ -25,7 +24,6 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
   const formRegistro = useForm();
   const formLogin = useForm();
 
-
   const onSubmit = (usuario)=>{
     console.log('entro funcion');
     login(usuario).then((respuesta)=>{
@@ -33,6 +31,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
       if(respuesta){
         sessionStorage.setItem('usuario', JSON.stringify(respuesta));
         setUsuarioLogueado(respuesta);
+        setShow(false);
         navegacion('/admin');
       }else{
         Swal.fire(
@@ -43,14 +42,15 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
       }
     })
   }
+
   const onRegistro = (usuario)=>{
-    console.log('onregistro');
     register(usuario).then((respuesta)=>{
-      console.log(respuesta)
-      if(respuesta){
+      
+      if(respuesta?.status===201){
         Swal.fire(
           'Se creo un usuario nuevo'
         )
+        setShowRegister(false)
       }else{
         Swal.fire(
           'Ocurrio un error',
@@ -84,29 +84,27 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
             <NavLink   end to={'/crearturno'}  className={'nav-item nav-link buttonSolicitar'}  ><AiFillFileText/> Solicitar Turno</NavLink>
           </Nav>
           {
-            (usuarioLogueado.status)?
-            <>
+          (usuarioLogueado.nombreUsuario)?
+              <>
               <Nav>
                 <NavLink end to={'/admin'}  className={'nav-item nav-link '}>{<BsFillPersonPlusFill/>} Administrador</NavLink>
                 <Button variant='dark' onClick={logout}>Logout</Button>
               </Nav>
-            </>:
-            <>
+              </>:
+              <>
               <Nav>
                 <NavLink onClick={handleShowRegister} className={'nav-item nav-link'}>{<BsFillPersonPlusFill/>} Registrar</NavLink>
                 <NavLink  onClick={handleShow} className={'nav-item nav-link'}><BsFillPersonFill/> Iniciar sesion</NavLink>
               </Nav>
-            </>
+              </>
           }
-            
-            
         </Navbar.Collapse>
-        </Container>
+      </Container>
 
-        <Modal show={showRegister} onHide={handleCloseRegister}>
-        <Modal.Header closeButton>
-          <Modal.Title>Registrarse</Modal.Title>
-        </Modal.Header>
+      <Modal show={showRegister} onHide={handleCloseRegister}>
+          <Modal.Header closeButton>
+            <Modal.Title>Registrarse</Modal.Title>
+          </Modal.Header>
         <Modal.Body>
           <Form onSubmit={formRegistro.handleSubmit(onRegistro)}> 
             <Form.Group className="mb-3" controlId="emailForm">
@@ -115,63 +113,61 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
                 type="email"
                 placeholder="email@ejemplo.com"
                 autoFocus
-                { ...formRegistro.register('email', {
-                  required:'El email es un dato obligatorio',
-                  pattern: {
+                {...formRegistro.register('email', {
+                    required:'El email es un dato obligatorio',
+                    pattern: {
                     value: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
                     message:'El email debe tener un formato valido (mail@dominio.com)'
-                  }
-                })}
+                  }})
+                }
                 />
                 <Form.Text className="text-danger">
                 {formRegistro.formState.errors.email?.message}
                 </Form.Text>
-
             </Form.Group>
             <Form.Group className="mb-3" controlId="namesForm">
-              <Form.Label>Nombre y apellido</Form.Label>
+              <Form.Label>Nombre de Usuario</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Joe Doe"
+                placeholder="nombre de usuario"
                 autoFocus
                 {
                   ...formRegistro.register('nombreUsuario',
-                  {required:'ingrese el nombre y apellido',
+                  {required:'ingrese el nombre de usuario',
                   pattern:{
-                    value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s']+$/,
-                    message: 'ingrese el nombre correctamente'
+                  value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s']+$/,
+                  message: 'ingrese el nombre de usuario'
                   }})
                 }
               />
               <Form.Text className="text-danger">
                 { formRegistro.formState.errors.nombreUsuario?.message}
-                </Form.Text>
+              </Form.Text>
             </Form.Group>
             <Form.Group
               className="mb-3"
               controlId="passwordForm">
               <Form.Label>Contraseña</Form.Label>
               <Form.Control type='password' rows={3} 
-               {
+              {
                 ...formRegistro.register('password',{
                   required: 'El password es un dato obligatorio',
                   pattern:{
-                    value: /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/,
-                    message: 'El password debe contener entre 8 y 16 caracteres y debe incluir numeros, caracteres en mayuscula, miniscula y almenos un caracter especial'
-                  }
-                })
-               }
+                  value: /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/,
+                  message: 'El password debe contener entre 8 y 16 caracteres y debe incluir numeros, caracteres en mayuscula, miniscula y almenos un caracter especial'
+                  }})
+              }
               />
-            <Form.Text className="text-danger">
-              { formRegistro.formState.errors.password?.message}
+              <Form.Text className="text-danger">
+                { formRegistro.formState.errors.password?.message}
               </Form.Text>
             </Form.Group>
             <Button variant="secondary" onClick={handleCloseRegister}>
-            Cerrar
-          </Button>
-          <Button variant="primary" type='submit'>
-            Registrarse
-          </Button>
+              Cerrar
+            </Button>
+            <Button variant="primary" type='submit'>
+              Registrarse
+            </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -179,9 +175,9 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
       </Modal>
 
         <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Iniciar sesion</Modal.Title>
-        </Modal.Header>
+          <Modal.Header closeButton>
+            <Modal.Title>Iniciar sesion</Modal.Title>
+          </Modal.Header>
         <Modal.Body>
           <Form onSubmit={formLogin.handleSubmit(onSubmit)}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -193,41 +189,39 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
                 { ...formLogin.register('email', {
                   required:'El email es un dato obligatorio',
                   pattern: {
-                    value: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
-                    message:'El email debe tener un formato valido (mail@dominio.com)'
+                  value: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
+                  message:'El email debe tener un formato valido (mail@dominio.com)'
                   }
-                 })}
+                })}
                 />
                 <Form.Text className="text-danger">
-                 { formLogin.formState.errors.email?.message}
+                  { formLogin.formState.errors.email?.message}
                 </Form.Text>
-              
             </Form.Group>
             <Form.Group
               className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
+              controlId="exampleForm.ControlTextarea1">
               <Form.Label>Contraseña</Form.Label>
               <Form.Control type='password' rows={3} 
-               {
+              {
                 ...formLogin.register('password',{
                   required: 'El password es un dato obligatorio',
                   pattern:{
-                    value: /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/,
-                    message: 'El password debe contener entre 8 y 16 caracteres y debe incluir numeros, caracteres en mayuscula, miniscula y almenos un caracter especial'
-                  }
-                })
-               }/>
-               <Form.Text className="text-danger">
-                 { formLogin.formState.errors.password?.message}
+                  value: /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/,
+                  message: 'El password debe contener entre 8 y 16 caracteres y debe incluir numeros, caracteres en mayuscula, miniscula y almenos un caracter especial'
+                  }})
+              }
+              />
+                <Form.Text className="text-danger">
+                  { formLogin.formState.errors.password?.message}
                 </Form.Text>
             </Form.Group>
             <Button variant="secondary" onClick={handleClose}>
-            Cerrar
-          </Button>
-          <Button variant="primary" type='submit'>
-            Ingresar
-          </Button>
+              Cerrar
+            </Button>
+            <Button variant="primary" type='submit'>
+              Ingresar
+            </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>

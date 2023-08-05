@@ -1,5 +1,6 @@
 const URL_usuarios = import.meta.env.VITE_API_USUARIOS;
 const URL_turnos = import.meta.env.VITE_API_TURNOS;
+const URL_pacientes = import.meta.env.VITE_API_PACIENTES;
 
 export const borrarTurnos = async (id)=>{
     try{
@@ -77,11 +78,11 @@ export const obtenerHora = () => {
     const minutos = String(fecha.getMinutes()).padStart(2, '0');
     const horaActual = `${hora}:${minutos}`;
     return horaActual
-  };
+ };
 
 export const login = async (user)=>{
     try{
-        const respuesta = await fetch(URL_usuarios+'login',{
+        const respuesta = await fetch(URL_usuarios+'/login',{
             method: "POST",
             headers: {
                 "Content-type": "application/json"
@@ -93,7 +94,9 @@ export const login = async (user)=>{
         return {
             status: respuesta.status,
             mensaje: usuario.mensaje,
-            nombreUsuario: usuario.nombreUsuario
+            nombreUsuario: usuario.nombreUsuario,
+            email: usuario.email,
+            password: usuario.password
         }
         
     }catch(error){
@@ -102,7 +105,7 @@ export const login = async (user)=>{
 }
 export const register = async (user)=>{
     try{
-        const respuesta = await fetch(URL_usuarios+'register',{
+        const respuesta = await fetch(URL_usuarios+'/register',{
             method: "POST",
             headers: {
                 "Content-type": "application/json"
@@ -119,5 +122,75 @@ export const register = async (user)=>{
     }catch(error){
         console.log(error)
     }
+}
+
+export const obtenerPacientePorId = async (_id)=> {
+    try{
+        const respuesta = await fetch(URL_pacientes+'/'+_id);
+        const paciente = await respuesta.json();
+        return paciente;
+    }catch{
+        console.log(error)
+    }
+
+}
+
+
+export const obtenerPacientes = async ()=> {
+    try{
+        const respuesta = await fetch(URL_pacientes);
+        const listaPacientes = await respuesta.json();
+        return listaPacientes;
+    }catch{
+        console.log(error)
+    }
+
+}
+
+
+export const crearPacientes = async (pacientes) => {
+    try {
+      const respuesta = await fetch(URL_pacientes, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(pacientes)
+      });
+      
+      return respuesta;
+    } catch(error){
+      console.log(error);
+    }
+  };
+  
+  
+export const borrarPaciente = async (id)=> {
+    try{
+        const respuesta = await fetch(URL_pacientes+'/'+id,{
+            method: "DELETE"
+        });
+        window.location.reload();
+        return respuesta;
+    }catch{
+        console.log(error)
+    }
+
+}
+
+export const editarPaciente = async (paciente, id)=> {
+    try{
+        const respuesta = await fetch(URL_pacientes+'/'+id,{
+            method: "PUT",
+            headers: {
+                "Content-Type":"application/json"
+            },
+            body : JSON.stringify(paciente)
+        });
+        return respuesta;
+    }catch{
+        console.log(error)
+    }
+
 }
 
