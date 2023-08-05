@@ -1,6 +1,67 @@
 const URL_usuarios = import.meta.env.VITE_API_USUARIOS;
+const URL_turnos = import.meta.env.VITE_API_TURNOS;
 const URL_pacientes = import.meta.env.VITE_API_PACIENTES;
 
+export const borrarTurnos = async (id)=>{
+    try{
+        const respuesta = await fetch(URL_turnos+'/'+id,{
+            method: "DELETE"
+        });
+        return respuesta;
+    }catch (error){
+        console.log(error)
+    }
+}
+export const editarTurno = async (turno,id) => {
+    try {
+        const respuesta = await fetch(URL_turnos+'/'+id, {
+            method: "PUT", 
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(turno)
+        });
+
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const obtenerUnTurno = async (id)=>{
+    try{
+        console.log(id)
+        const respuesta = await fetch(URL_turnos+'/'+id);
+        const turno = await respuesta.json();
+        return turno;
+    }catch (error){
+        console.log(error)
+    }
+}
+export const crearTurno = async (turno)=>{
+    try{
+        const respuesta = await fetch(URL_turnos,{
+            method: "POST",
+            headers: {
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(turno)
+        });
+        return respuesta;
+    }catch (error){
+        console.log(error)
+    }
+}
+
+export const obtenerTurnos = async ()=>{
+    try{
+        const respuesta = await fetch(URL_turnos);
+        const listaDeturnos = await respuesta.json();
+        return listaDeturnos;
+    }catch (error){
+        console.log(error)
+    }
+}
 
 export const obtenerFecha = () => {
     const fecha = new Date();
