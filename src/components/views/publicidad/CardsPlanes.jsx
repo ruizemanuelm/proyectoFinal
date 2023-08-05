@@ -28,7 +28,7 @@ const CardsPlanes = () => {
                 <Card.Text className="mb-5">
                   Descuentos en servicios adicionales
                 </Card.Text>
-                <Button as={Link} to={'/checkout'} className="w-100 mt-5" variant="primary">
+                <Button as={Link} to={'/checkout-cachorros'} className="w-100 mt-5" variant="primary">
                   Ver plan
                 </Button>
               </Card.Body>
@@ -49,7 +49,7 @@ const CardsPlanes = () => {
                 <Card.Text className="mb-5">
                   Descuentos en servicios adicionales
                 </Card.Text>
-                <Button as={Link} to={'/checkout'} className="w-100 mt-5" variant="primary">
+                <Button as={Link} to={'/checkout-madurando'} className="w-100 mt-5" variant="primary">
                   Ver plan
                 </Button>
               </Card.Body>
@@ -72,7 +72,7 @@ const CardsPlanes = () => {
                 <Card.Text>Alimentación adaptada a la edad</Card.Text>
                 <Card.Text>Descuentos en procedimientos médicos</Card.Text>
                 <Card.Text>Consejos de cuidado en el hogar</Card.Text>
-                <Button as={Link} to={'/checkout'} className="w-100" variant="primary">
+                <Button as={Link} to={'/checkout-adultos'} className="w-100" variant="primary">
                   Ver plan
                 </Button>
               </Card.Body>
