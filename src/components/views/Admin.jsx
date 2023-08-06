@@ -1,21 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Tab from "react-bootstrap/Tab";
-import { Tabs, Card, Table, Col, Row, ListGroup } from "react-bootstrap";
+import { Tabs, Card, Table, Col, Row, ListGroup,CardGroup } from "react-bootstrap";
 import ItemAdmin from "./Administrador/ItemAdmin";
 import AdminPacientes from "./Administrador/AdminPacientes";
 import AdminTurnos from "./Administrador/AdminTurnos";
+import { obtenerTurnos } from "../helpers/queries";
 
 
 const Admin = ({usuarioLogueado}) => {
   const [activeTab, setActiveTab] = useState(localStorage.getItem('activeTab') || 'tabla1');
+  const [turnos, setTurnos] = useState([]);
 
+useEffect(()=>{
+  obtenerTurnos().then((respuesta)=>{
+    if(respuesta){
+      setTurnos(respuesta)
+    }else{
+      Swal.fire('Ocurrio un error', 'Intente realizar esta operacion en unos minutos', 'error')
+    }
+  })
+},[])
   const handleTabSelect = (selectedTab) => {
     setActiveTab(selectedTab);
     localStorage.setItem('activeTab', selectedTab);
   };
 
   return (
-    <section className="container-fluid mainSection">
+    <section className="container-fluid mainSection my-3">
       <Tabs
         activeKey={activeTab} 
         onSelect={handleTabSelect}
@@ -28,24 +39,9 @@ const Admin = ({usuarioLogueado}) => {
           <Card className="bg-primary-subtle">
             <Card.Header className="display-6">Bienvenido</Card.Header>
             <Card.Body>
-              <Card.Title className="fs-3 text-center">
-                Turnos del dia
-              </Card.Title>
-              <Table className="my-3" responsive striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Horario</th>
-                    <th>Paciente</th>
-                    <th>Dueño</th>
-                    <th>Detalle de la consulta</th>
-                    <th>Opciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <ItemAdmin></ItemAdmin>
-                </tbody>
-              </Table>
+                  <CardGroup>
+                  {turnos.map((turnos)=><ItemAdmin turnos={turnos} key={turnos._id} setTurnos={setTurnos}></ItemAdmin>)}
+    </CardGroup>
             </Card.Body>
           </Card>
         </Tab>

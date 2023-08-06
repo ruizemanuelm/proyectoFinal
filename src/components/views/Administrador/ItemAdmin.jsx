@@ -1,13 +1,8 @@
 import React from 'react';
-import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { PencilFill, TrashFill } from 'react-bootstrap-icons';
+import { Button, Card, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
-const ItemAdmin = () => {
-    const BotonEditar = (props) => (
-        <Tooltip id="botonEditar" {...props}>
-          Editar
-        </Tooltip>
-      );
+const ItemAdmin = ({turnos}) => {
+
       const BotonEliminar = (props) => (
         <Tooltip id="botonEliminar" {...props}>
           Eliminar
@@ -15,33 +10,20 @@ const ItemAdmin = () => {
       );
     return (
         <>
-        <tr>
-          <td>1</td>
-          <td>12:00</td>
-          <td>Firulas</td>
-          <td>Lucio</td>
-          <td>algun detalle</td>
-          <td className="text-center ">
-          <OverlayTrigger
-        placement="top"
-        delay={{ show: 250, hide: 400 }}
-        overlay={BotonEditar}
-      >
-            <Button className="m-1" variant="success">
-              <PencilFill />
-            </Button>
-            </OverlayTrigger>
-            <OverlayTrigger
-        placement="top"
-        delay={{ show: 250, hide: 400 }}
-        overlay={BotonEliminar}
-      >
-            <Button className="m-1" variant="danger">
-              <TrashFill />
-            </Button>
-            </OverlayTrigger>
-          </td>
-        </tr>
+         <Card>
+        <div className="text-center">
+        <Card.Img className="imagen" variant="top" src="https://img.freepik.com/vector-premium/avatar-perros-lindos-retrato-cabeza-perrito-adorable-hocico-cachorro-pura-raza-labrador-cara-cachorros-felices-lengua-fuera-ilustracion-vector-plano-hocico-mascotas-encantador-aislado-sobre-fondo-blanco_633472-124.jpg" />
+        </div>
+        <Card.Body>
+          <Card.Title><b className='text-danger'>Mascota:  </b>  {turnos.nombMascota}</Card.Title>
+          <Card.Text> <b className='text-danger'>Detalle de la cita: </b> 
+           {turnos.detalleCita}
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-muted">{turnos.hora + " " + turnos.fechaTurno}</small>
+        </Card.Footer>
+      </Card>
       </>
     );
 };
