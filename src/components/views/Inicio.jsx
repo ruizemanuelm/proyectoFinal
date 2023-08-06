@@ -9,11 +9,12 @@ import {
 import banner from "../../assets/banner.jpg";
 import banner1 from "../../assets/banner1.png";
 import banner2 from "../../assets/banner2.png";
-import CarouselCards from "./publicidad/CarouselCards";
-import CardsPlanes from "./publicidad/CardsPlanes";
-import CardsOfertas from "./publicidad/CardsOfertas";
-import CardsVeterinarios from "./publicidad/CardsVeterinarios";
-import Comentarios from "./publicidad/Comentarios";
+import CarouselCards from "./Inicio/CarouselCards";
+import CardsPlanes from "./Inicio/CardsPlanes";
+import CardsOfertas from "./Inicio/CardsOfertas";
+import CardsVeterinarios from "./Inicio/CardsVeterinarios";
+import Comentarios from "./Inicio/Comentarios";
+import ItemComentario from "./Inicio/ItemComentario";
 
 
 
@@ -95,6 +96,7 @@ const Inicio = ({usuarioLogueado}) => {
       <CardsOfertas></CardsOfertas>
       <CardsVeterinarios></CardsVeterinarios>
       <Comentarios usuarioLogueado={usuarioLogueado}></Comentarios>
+      <ItemComentario usuarioLogueado={usuarioLogueado}></ItemComentario>
     </section>
   );
 };

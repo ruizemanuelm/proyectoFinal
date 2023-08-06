@@ -30,15 +30,10 @@ const Comentarios = ({usuarioLogueado}) => {
       <Container className="mb-5">
         <hr />
         <Row>
-          <Col className="mt-5" md={2}>
-            <Card>
-              <Card.Img src="https://junkmailimages.blob.core.windows.net/large/fa685acad3d44539bd3d0ffba39c913b.jpg"></Card.Img>
-            </Card>
-          </Col>
           <Col>
             <Form onSubmit={handleSubmit(onSubmit)} 
-            className="mt-5">
-              <h5>{usuarioLogueado.email}</h5>
+            className="mt-5 mb-5">
+              <h5 className="mb-4">{usuarioLogueado.email}</h5>
               <Form.Group controlId="formComentario">
                 <Form.Control
                   as="textarea"
