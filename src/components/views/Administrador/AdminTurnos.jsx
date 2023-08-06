@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import ItemTurnos from './Turnos/ItemTurnos';
+import { obtenerTurnos } from '../../helpers/queries';
 
 
 const AdminTurnos = () => {
+  const [turnos, setTurnos] = useState([]);
+
+useEffect(()=>{
+  obtenerTurnos().then((respuesta)=>{
+    if(respuesta){
+      setTurnos(respuesta)
+    }else{
+      Swal.fire('Ocurrio un error', 'Intente realizar esta operacion en unos minutos', 'error')
+    }
+  })
+},[])
     return (
         <section className="container-fluid mainSection">
         <div className="mt-1">
@@ -22,7 +34,7 @@ const AdminTurnos = () => {
             </tr>
           </thead>
           <tbody>
-           <ItemTurnos></ItemTurnos>
+         {turnos.map((turnos)=><ItemTurnos turnos={turnos} key={turnos._id} setTurnos={setTurnos}></ItemTurnos>)}
           </tbody>
         </Table>
       </section>

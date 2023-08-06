@@ -27,9 +27,7 @@ import Pagos from './publicidad/Pagos'
               <Card.Text>Revisiones y chequeos regulares</Card.Text>
               <Card.Text>Asesoramiento sobre entrenamiento</Card.Text>
               <Card.Text>Microchip y/o identificación</Card.Text>
-              <Card.Text className="mb-5">
-                Descuentos en servicios adicionales
-              </Card.Text>
+              <Card.Text className="mb-5">Descuentos en servicios adicionales</Card.Text>
               <Card.Link href="#">Cambiar plan</Card.Link>
             </Card.Body>
           </Card>
