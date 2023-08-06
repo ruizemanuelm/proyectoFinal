@@ -1,34 +1,48 @@
 import React, { useEffect, useState } from "react";
 import Tab from "react-bootstrap/Tab";
-import { Tabs, Card, Table, Col, Row, ListGroup,CardGroup } from "react-bootstrap";
+import {
+  Tabs,
+  Card,
+  Table,
+  Col,
+  Row,
+  ListGroup,
+  CardGroup,
+} from "react-bootstrap";
 import ItemAdmin from "./Administrador/ItemAdmin";
 import AdminPacientes from "./Administrador/AdminPacientes";
 import AdminTurnos from "./Administrador/AdminTurnos";
-import { obtenerTurnos } from "../helpers/queries";
+import { compararHorasFecha, obtenerTurnos } from "../helpers/queries";
 
-
-const Admin = ({usuarioLogueado}) => {
-  const [activeTab, setActiveTab] = useState(localStorage.getItem('activeTab') || 'tabla1');
+const Admin = ({ usuarioLogueado }) => {
+  const [activeTab, setActiveTab] = useState(
+    localStorage.getItem("activeTab") || "tabla1"
+  );
   const [turnos, setTurnos] = useState([]);
 
-useEffect(()=>{
-  obtenerTurnos().then((respuesta)=>{
-    if(respuesta){
-      setTurnos(respuesta)
-    }else{
-      Swal.fire('Ocurrio un error', 'Intente realizar esta operacion en unos minutos', 'error')
-    }
-  })
-},[])
+  useEffect(() => {
+    obtenerTurnos().then((respuesta) => {
+      if (respuesta) {
+        setTurnos(respuesta);
+      } else {
+        Swal.fire(
+          "Ocurrio un error",
+          "Intente realizar esta operacion en unos minutos",
+          "error"
+        );
+      }
+    });
+  }, []);
   const handleTabSelect = (selectedTab) => {
     setActiveTab(selectedTab);
-    localStorage.setItem('activeTab', selectedTab);
+    localStorage.setItem("activeTab", selectedTab);
   };
+  turnos.sort(compararHorasFecha);
 
   return (
     <section className="container-fluid mainSection my-3">
       <Tabs
-        activeKey={activeTab} 
+        activeKey={activeTab}
         onSelect={handleTabSelect}
         id="AdminGeneral"
         className="mb-3"
@@ -39,15 +53,23 @@ useEffect(()=>{
           <Card className="bg-primary-subtle">
             <Card.Header className="display-6">Bienvenido</Card.Header>
             <Card.Body>
-                  <CardGroup>
-                  {turnos.map((turnos)=><ItemAdmin turnos={turnos} key={turnos._id} setTurnos={setTurnos}></ItemAdmin>)}
-    </CardGroup>
+              <CardGroup>
+                {turnos.map((turnos) => (
+                  <ItemAdmin
+                    turnos={turnos}
+                    key={turnos._id}
+                    setTurnos={setTurnos}
+                  ></ItemAdmin>
+                ))}
+              </CardGroup>
             </Card.Body>
           </Card>
         </Tab>
         <Tab eventKey="Perfil" title="Perfil">
           <Card className="bg-dark-subtle">
-            <Card.Header className="display-6">Bienvenido {usuarioLogueado?.nombreUsuario}</Card.Header>
+            <Card.Header className="display-6">
+              Bienvenido {usuarioLogueado?.nombreUsuario}
+            </Card.Header>
             <Card.Body className="">
               <Row>
                 <Col className="mx-1" sm={12} md={4}>
@@ -90,15 +112,15 @@ useEffect(()=>{
           </Card>
         </Tab>
         <Tab eventKey="Pacientes" title="Pacientes">
-        <Card className="bg-danger-subtle">
-<AdminPacientes></AdminPacientes>
-        </Card>
+          <Card className="bg-danger-subtle">
+            <AdminPacientes></AdminPacientes>
+          </Card>
         </Tab>
         <Tab eventKey="Turnos" title="Turnos">
-        <Card className="bg-success-subtle">
-<AdminTurnos></AdminTurnos>
-        </Card>
-          </Tab>
+          <Card className="bg-success-subtle">
+            <AdminTurnos></AdminTurnos>
+          </Card>
+        </Tab>
       </Tabs>
     </section>
   );

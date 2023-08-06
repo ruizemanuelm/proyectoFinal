@@ -2,6 +2,19 @@ const URL_usuarios = import.meta.env.VITE_API_USUARIOS;
 const URL_turnos = import.meta.env.VITE_API_TURNOS;
 const URL_pacientes = import.meta.env.VITE_API_PACIENTES;
 
+export const compararHorasFecha = (a, b)=>{
+    const horaA = a.hora;
+    const fechaA = new Date(a.fechaTurno);
+    const horaB = b.hora;
+    const fechaB = new Date(b.fechaTurno);
+  
+    // Compara primero las fechas
+    if (fechaA < fechaB) return -1;
+    if (fechaA > fechaB) return 1;
+  
+    // Si las fechas son iguales, compara las horas
+    return horaA.localeCompare(horaB);
+  }
 export const borrarTurnos = async (id)=>{
     try{
         const respuesta = await fetch(URL_turnos+'/'+id,{
