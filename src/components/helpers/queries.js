@@ -96,7 +96,8 @@ export const login = async (user)=>{
             mensaje: usuario.mensaje,
             nombreUsuario: usuario.nombreUsuario,
             email: usuario.email,
-            password: usuario.password
+            password: usuario.password,
+            token: usuario.token
         }
         
     }catch(error){
@@ -153,7 +154,8 @@ export const crearPacientes = async (pacientes) => {
       const respuesta = await fetch(URL_pacientes, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "x-token": JSON.parse(sessionStorage.getItem('usuario')).token
         },
         body: JSON.stringify(pacientes)
       });
