@@ -25,14 +25,13 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
   const formLogin = useForm();
 
   const onSubmit = (usuario)=>{
-    console.log('entro funcion');
     login(usuario).then((respuesta)=>{
-      console.log(respuesta)
-      if(respuesta){
+      if(respuesta && respuesta.nombreUsuario){
         sessionStorage.setItem('usuario', JSON.stringify(respuesta));
         setUsuarioLogueado(respuesta);
         setShow(false);
         navegacion('/admin');
+        formLogin.reset();
       }else{
         Swal.fire(
           'Ocurrio un error',
@@ -51,6 +50,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
           'Se creo un usuario nuevo'
         )
         setShowRegister(false)
+        formRegistro.reset();
       }else{
         Swal.fire(
           'Ocurrio un error',

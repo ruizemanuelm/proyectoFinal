@@ -38,9 +38,7 @@ function App() {
         <Route exact path='/crearturno' element={<CrearTurno/>}></Route>
         <Route exact path='/adminpaciente' element={<AdminPacientes/>}></Route>
         <Route exact path='/crearpaciente' element={<CrearPaciente/>}></Route>
-        <Route exact path='/admin' element={<Admin usuarioLogueado={usuarioLogueado}/>}></Route>
-        
-        <Route path="/admin/*" element={
+        <Route path="/admin" element={
           <RutasProtegidas>
             <RutasAdministrador></RutasAdministrador>
           </RutasProtegidas>
