@@ -28,7 +28,7 @@ function App() {
       <BrowserRouter>
       <Menu usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado} />
       <Routes>
-      <Route exact path='/' element={<Inicio/>}></Route>
+      <Route exact path='/' element={<Inicio usuarioLogueado={usuarioLogueado}/>}></Route>
         <Route exact path='*' element={<Error404/>}></Route>
         <Route exact path='/contacto' element={<Contacto/>}></Route>
         <Route exact path='/nosotros' element={<Nosotros/>}></Route>

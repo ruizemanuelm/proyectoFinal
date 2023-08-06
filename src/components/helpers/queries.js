@@ -1,6 +1,7 @@
 const URL_usuarios = import.meta.env.VITE_API_USUARIOS;
 const URL_turnos = import.meta.env.VITE_API_TURNOS;
 const URL_pacientes = import.meta.env.VITE_API_PACIENTES;
+const URL_comentarios = import.meta.env.VITE_API_COMENTARIOS;
 
 export const borrarTurnos = async (id)=>{
     try{
@@ -191,6 +192,34 @@ export const editarPaciente = async (paciente, id)=> {
     }catch{
         console.log(error)
     }
-
 }
 
+
+
+export const crearComentario = async (comentario) => {
+    try {
+      const respuesta = await fetch(URL_comentarios, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(comentario)
+      });
+  
+      return respuesta;
+    } catch{
+      console.log(error);
+    }
+  };
+
+
+  export const obtenerComentarios = async ()=> {
+    try{
+        const respuesta = await fetch(URL_comentarios);
+        const listaComentarios = await respuesta.json();
+        return listaComentarios;
+    }catch{
+        console.log(error)
+    }
+
+}

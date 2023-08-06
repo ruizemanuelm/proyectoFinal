@@ -18,7 +18,8 @@ import Comentarios from "./publicidad/Comentarios";
 
 
 
-const Inicio = () => {
+const Inicio = ({usuarioLogueado}) => {
+
   return (
     <section className="mainSection">
       <Carousel slide={false}>
@@ -93,7 +94,7 @@ const Inicio = () => {
       <CarouselCards></CarouselCards>
       <CardsOfertas></CardsOfertas>
       <CardsVeterinarios></CardsVeterinarios>
-      <Comentarios></Comentarios>
+      <Comentarios usuarioLogueado={usuarioLogueado}></Comentarios>
     </section>
   );
 };
