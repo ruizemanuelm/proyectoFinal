@@ -8,7 +8,9 @@ import Admin from './components/views/Admin';
 import Nosotros from './components/views/Nosotros';
 import Error404 from './components/views/Error404'
 import Contacto from './components/views/Contacto'
-import Checkout from './components/views/Checkout'
+import CheckoutCachorros from './components/views/CheckoutCachorros'
+import CheckoutMadurando from './components/views/CheckoutMadurando'
+import CheckoutAdultos from './components/views/CheckoutAdultos'
 import CrearTurno from './components/views/Administrador/Turnos/CrearTurno'
 import CrearPaciente from './components/views/Administrador/pacientes/CrearPaciente'
 import { useState } from 'react';
@@ -26,11 +28,13 @@ function App() {
       <BrowserRouter>
       <Menu usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado} />
       <Routes>
-      <Route exact path='/' element={<Inicio/>}></Route>
+      <Route exact path='/' element={<Inicio usuarioLogueado={usuarioLogueado}/>}></Route>
         <Route exact path='*' element={<Error404/>}></Route>
         <Route exact path='/contacto' element={<Contacto/>}></Route>
         <Route exact path='/nosotros' element={<Nosotros/>}></Route>
-        <Route exact path='/checkout' element={<Checkout/>}></Route>
+        <Route exact path='/checkout-cachorros' element={<CheckoutCachorros/>}></Route>
+        <Route exact path='/checkout-madurando' element={<CheckoutMadurando/>}></Route>
+        <Route exact path='/checkout-adultos' element={<CheckoutAdultos/>}></Route>
         <Route exact path='/crearturno' element={<CrearTurno/>}></Route>
         <Route exact path='/adminpaciente' element={<AdminPacientes/>}></Route>
         <Route exact path='/crearpaciente' element={<CrearPaciente/>}></Route>

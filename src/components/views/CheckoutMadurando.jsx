@@ -1,13 +1,11 @@
 import {
     Container,
-    Col,
     Card,
-    Button,
     Row,
-    Form,
+
     Accordion
   } from "react-bootstrap";
-import Pagos from './publicidad/Pagos'
+import Pagos from './Inicio/Pagos'
   
   
   const Planes = () => {
@@ -19,9 +17,9 @@ import Pagos from './publicidad/Pagos'
           <Card className="mt-5 mb-5" style={{ width: "400px" }}>
             <Card.Body>
               <Card.Title>
-                <h2>Plan cachorros</h2>
+                <h2>Plan madurando</h2>
               </Card.Title>
-              <Card.Text className="fw-bold">9.99 USD al mes</Card.Text>
+              <Card.Text className="fw-bold">7.99 USD al mes</Card.Text>
               <hr />
               <Card.Text>Vacunas y desparasitación</Card.Text>
               <Card.Text>Revisiones y chequeos regulares</Card.Text>
