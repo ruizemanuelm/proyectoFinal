@@ -36,11 +36,9 @@ function App() {
         <Route exact path='/checkout-madurando' element={<CheckoutMadurando/>}></Route>
         <Route exact path='/checkout-adultos' element={<CheckoutAdultos/>}></Route>
         <Route exact path='/crearturno' element={<CrearTurno/>}></Route>
-        <Route exact path='/adminpaciente' element={<AdminPacientes/>}></Route>
-        <Route exact path='/crearpaciente' element={<CrearPaciente/>}></Route>
-        <Route path="/admin" element={
+        <Route path="/admin/*" element={
           <RutasProtegidas>
-            <RutasAdministrador></RutasAdministrador>
+            <RutasAdministrador usuarioLogueado={usuarioLogueado}></RutasAdministrador>
           </RutasProtegidas>
         }></Route>
       </Routes>

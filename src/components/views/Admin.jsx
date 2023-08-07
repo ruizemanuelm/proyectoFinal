@@ -128,14 +128,6 @@ const Admin = ({ usuarioLogueado }) => {
                     >
                       {usuarioLogueado?.email}
                     </ListGroup.Item>
-                    <p className="fs-4 mt-3">Contraseña</p>
-                    <ListGroup.Item
-                      action
-                      variant="warning"
-                      className="fs-3 rounded-3"
-                    >
-                      {usuarioLogueado?.password}
-                    </ListGroup.Item>
                   </ListGroup>
                 </Col>
               </Row>

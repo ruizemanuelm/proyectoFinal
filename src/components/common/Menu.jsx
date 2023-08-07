@@ -35,7 +35,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
       }else{
         Swal.fire(
           'Ocurrio un error',
-          'El email o usuario son erroneos',
+          'El email o contraseña es incorrecto',
           'error'
         )
       }
@@ -54,7 +54,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
       }else{
         Swal.fire(
           'Ocurrio un error',
-          'error'
+          'el email o contraseña es invalido'
         )
       }
     })
