@@ -7,7 +7,7 @@ import {
     Form,
     Accordion
   } from "react-bootstrap";
-import Pagos from './publicidad/Pagos'
+import Pagos from './Inicio/Pagos'
   
   
   const Planes = () => {

@@ -23,7 +23,7 @@ useEffect(()=>{
         <section className="container-fluid mainSection">
         <div className="d-flex justify-content-end  align-items-center mt-1">
           <h1 className="display-6 text-center col-md-12"> Lista de pacientes</h1>
-          <Link className="btn btn-primary" to="/crearpaciente">
+          <Link className="btn btn-primary" to="/admin/crearpaciente">
           Agregar
         </Link>
         </div>

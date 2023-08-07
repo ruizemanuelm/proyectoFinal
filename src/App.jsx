@@ -28,7 +28,7 @@ function App() {
       <BrowserRouter>
       <Menu usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado} />
       <Routes>
-      <Route exact path='/' element={<Inicio/>}></Route>
+      <Route exact path='/' element={<Inicio usuarioLogueado={usuarioLogueado}/>}></Route>
         <Route exact path='*' element={<Error404/>}></Route>
         <Route exact path='/contacto' element={<Contacto/>}></Route>
         <Route exact path='/nosotros' element={<Nosotros/>}></Route>
@@ -36,13 +36,9 @@ function App() {
         <Route exact path='/checkout-madurando' element={<CheckoutMadurando/>}></Route>
         <Route exact path='/checkout-adultos' element={<CheckoutAdultos/>}></Route>
         <Route exact path='/crearturno' element={<CrearTurno/>}></Route>
-        <Route exact path='/adminpaciente' element={<AdminPacientes/>}></Route>
-        <Route exact path='/crearpaciente' element={<CrearPaciente/>}></Route>
-        <Route exact path='/admin' element={<Admin usuarioLogueado={usuarioLogueado}/>}></Route>
-        
         <Route path="/admin/*" element={
           <RutasProtegidas>
-            <RutasAdministrador></RutasAdministrador>
+            <RutasAdministrador usuarioLogueado={usuarioLogueado}></RutasAdministrador>
           </RutasProtegidas>
         }></Route>
       </Routes>

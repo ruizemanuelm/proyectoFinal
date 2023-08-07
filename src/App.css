@@ -29,4 +29,6 @@
 .cardacerca {
   border-radius: 50%;
 }
-
+.card-realizado {
+  background-color: lightgreen; /* O el color que desees para la card realizada */
+}
