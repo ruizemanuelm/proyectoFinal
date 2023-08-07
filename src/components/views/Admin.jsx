@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Tab from "react-bootstrap/Tab";
-import {
-  Tabs,
-  Card,
-  Table,
-  Col,
-  Row,
-  ListGroup,
-  CardGroup,
-} from "react-bootstrap";
+import {Tabs,Card,Table,Col,Row,ListGroup,CardGroup,Pagination,} from "react-bootstrap";
 import ItemAdmin from "./Administrador/ItemAdmin";
 import AdminPacientes from "./Administrador/AdminPacientes";
 import AdminTurnos from "./Administrador/AdminTurnos";
@@ -39,6 +31,37 @@ const Admin = ({ usuarioLogueado }) => {
   };
   turnos.sort(compararHorasFecha);
 
+  const ItemsPorPag = 3;
+  const [PagActual, setPagActual] = useState(1);
+  const UltimoIndice = PagActual * ItemsPorPag;
+  const primerIndice = UltimoIndice - ItemsPorPag;
+  const currentItems = turnos.slice(primerIndice, UltimoIndice);
+  const paginate = (numeroDePag) => setPagActual(numeroDePag);
+  const Pagination = ({ itemPorPaginas, totalItems, PagActual, paginate }) => {
+    const numeroDePaginas = [];
+    for (let i = 1; i <= Math.ceil(totalItems / itemPorPaginas); i++) {
+      numeroDePaginas.push(i);
+    } 
+    return ( 
+      <nav>
+        <ul className="pagination">
+          {numeroDePaginas.map((num) => (
+            <li key={num} className="page-item">
+              <a
+                onClick={() => paginate(num)}
+                href="#!"
+                className={
+                  num === PagActual ? 'page-link active' : 'page-link'
+                }
+              >
+                {num}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    );
+  };
   return (
     <section className="container-fluid mainSection my-3">
       <Tabs
@@ -54,7 +77,7 @@ const Admin = ({ usuarioLogueado }) => {
             <Card.Header className="display-6">Bienvenido</Card.Header>
             <Card.Body>
               <CardGroup>
-                {turnos.map((turnos) => (
+                {currentItems.map((turnos) => (
                   <ItemAdmin
                     turnos={turnos}
                     key={turnos._id}
@@ -62,7 +85,15 @@ const Admin = ({ usuarioLogueado }) => {
                   ></ItemAdmin>
                 ))}
               </CardGroup>
-            </Card.Body>
+              </Card.Body>
+              <div className="d-flex justify-content-center">
+            <Pagination
+        itemPorPaginas={ItemsPorPag}
+        totalItems={turnos.length}
+        PagActual={PagActual}
+        paginate={paginate}
+        />
+        </div>
           </Card>
         </Tab>
         <Tab eventKey="Perfil" title="Perfil">

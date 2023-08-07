@@ -1,15 +1,10 @@
 import React from 'react';
-import { Button, Card, OverlayTrigger, Tooltip,Col } from 'react-bootstrap';
+import { Button, Card,Col } from 'react-bootstrap';
 import veterinaria from '../../../assets/Veterinaria2.jpg'
 import veterinario from '../../../assets/Veterinario1.jpg'  
 
 
 const ItemAdmin = ({turnos}) => {
-      const BotonEliminar = (props) => (
-        <Tooltip id="botonEliminar" {...props}>
-          Eliminar
-        </Tooltip>
-      );
      const imagenVeterinario = () => {
         const imagenURL = turnos.veterinario === "Juan Carlos" ? veterinario : veterinaria;
       return imagenURL;
@@ -29,7 +24,7 @@ const ItemAdmin = ({turnos}) => {
           </Card.Text>
         </Card.Body>
         <Card.Footer>
-          <small className="text-">{turnos.hora + " " + turnos.fechaTurno}</small>
+          <small className="text-">{turnos.hora + " - " + turnos.fechaTurno}</small>
         </Card.Footer>
       </Card>
         </Col>
