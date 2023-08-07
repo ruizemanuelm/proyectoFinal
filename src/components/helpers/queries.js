@@ -1,6 +1,7 @@
 const URL_usuarios = import.meta.env.VITE_API_USUARIOS;
 const URL_turnos = import.meta.env.VITE_API_TURNOS;
 const URL_pacientes = import.meta.env.VITE_API_PACIENTES;
+const URL_comentarios = import.meta.env.VITE_API_COMENTARIOS;
 
 export const compararHorasFecha = (a, b) => {
   const horaA = a.hora;
@@ -91,48 +92,6 @@ export const obtenerHora = () => {
   return horaActual;
 };
 
-export const login = async (user) => {
-  try {
-    const respuesta = await fetch(URL_usuarios + "/login", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    });
-
-    const usuario = await respuesta.json();
-    return {
-      status: respuesta.status,
-      mensaje: usuario.mensaje,
-      nombreUsuario: usuario.nombreUsuario,
-      email: usuario.email,
-      password: usuario.password,
-    };
-  } catch (error) {
-    console.log(error);
-  }
-};
-export const register = async (user) => {
-  try {
-    const respuesta = await fetch(URL_usuarios + "/register", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    });
-
-    const usuario = await respuesta.json();
-    return {
-      status: respuesta.status,
-      mensaje: usuario.mensaje,
-    };
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 export const obtenerPacientePorId = async (_id) => {
   try {
     const respuesta = await fetch(URL_pacientes + "/" + _id);
@@ -155,19 +114,20 @@ export const obtenerPacientes = async () => {
 
 export const crearPacientes = async (pacientes) => {
   try {
-    const respuesta = await fetch(URL_pacientes, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(pacientes),
-    });
-
-    return respuesta;
-  } catch (error) {
-    console.log(error);
-  }
-};
+      const respuesta = await fetch(URL_pacientes, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "x-token": JSON.parse(sessionStorage.getItem('usuario')).token
+        },
+        body: JSON.stringify(pacientes)
+      });
+      
+      return respuesta;
+    } catch(error){
+      console.log(error);
+    }
+  };
 
 export const borrarPaciente = async (id) => {
   try {
@@ -195,3 +155,75 @@ export const editarPaciente = async (paciente, id) => {
     console.log(error);
   }
 };
+
+export const login = async (user)=>{
+    try{
+        const respuesta = await fetch(URL_usuarios+'/login',{
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(user)
+        });
+        
+        const usuario = await respuesta.json();
+        return {
+            status: respuesta.status,
+            mensaje: usuario.mensaje,
+            nombreUsuario: usuario.nombreUsuario,
+            email: usuario.email,
+            password: usuario.password,
+            token: usuario.token
+        }
+        
+    }catch(error){
+        console.log(error)
+    }
+}
+export const register = async (user)=>{
+    try{
+        const respuesta = await fetch(URL_usuarios+'/register',{
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(user)
+        });
+        
+        const usuario = await respuesta.json();
+        return {
+            status: respuesta.status,
+            mensaje: usuario.mensaje,
+        }
+        
+    }catch(error){
+        console.log(error)
+    }
+}
+export const crearComentario = async (comentario) => {
+    try {
+      const respuesta = await fetch(URL_comentarios, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(comentario)
+      });
+  
+      return respuesta;
+    } catch{
+      console.log(error);
+    }
+  };
+
+
+  export const obtenerComentarios = async ()=> {
+    try{
+        const respuesta = await fetch(URL_comentarios);
+        const listaComentarios = await respuesta.json();
+        return listaComentarios;
+    }catch{
+        console.log(error)
+    }
+
+}
