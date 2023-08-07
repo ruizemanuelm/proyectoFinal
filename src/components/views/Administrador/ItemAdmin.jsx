@@ -1,47 +1,33 @@
 import React from 'react';
-import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { PencilFill, TrashFill } from 'react-bootstrap-icons';
+import { Button, Card,Col } from 'react-bootstrap';
+import veterinaria from '../../../assets/Veterinaria2.jpg'
+import veterinario from '../../../assets/Veterinario1.jpg'  
 
-const ItemAdmin = () => {
-    const BotonEditar = (props) => (
-        <Tooltip id="botonEditar" {...props}>
-          Editar
-        </Tooltip>
-      );
-      const BotonEliminar = (props) => (
-        <Tooltip id="botonEliminar" {...props}>
-          Eliminar
-        </Tooltip>
-      );
+
+const ItemAdmin = ({turnos}) => {
+     const imagenVeterinario = () => {
+        const imagenURL = turnos.veterinario === "Juan Carlos" ? veterinario : veterinaria;
+      return imagenURL;
+    };      
     return (
         <>
-        <tr>
-          <td>1</td>
-          <td>12:00</td>
-          <td>Firulas</td>
-          <td>Lucio</td>
-          <td>algun detalle</td>
-          <td className="text-center ">
-          <OverlayTrigger
-        placement="top"
-        delay={{ show: 250, hide: 400 }}
-        overlay={BotonEditar}
-      >
-            <Button className="m-1" variant="success">
-              <PencilFill />
-            </Button>
-            </OverlayTrigger>
-            <OverlayTrigger
-        placement="top"
-        delay={{ show: 250, hide: 400 }}
-        overlay={BotonEliminar}
-      >
-            <Button className="m-1" variant="danger">
-              <TrashFill />
-            </Button>
-            </OverlayTrigger>
-          </td>
-        </tr>
+        <Col sm={12} md={4}>
+         <Card className='m-1'>
+        <div className="text-center m-1">
+        <Card.Img className="w-100" variant="top" src={imagenVeterinario()} />
+        </div>
+        <Card.Body>
+          <Card.Title><b className='text-danger'>Mascota:  </b>  {turnos.nombMascota}</Card.Title>
+          <hr />
+          <Card.Text> <b className='text-danger'>Detalle de la cita: </b> 
+           {turnos.detalleCita}
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-">{turnos.hora + " - " + turnos.fechaTurno}</small>
+        </Card.Footer>
+      </Card>
+        </Col>
       </>
     );
 };

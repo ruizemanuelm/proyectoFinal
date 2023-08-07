@@ -1,23 +1,71 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Tab from "react-bootstrap/Tab";
-import { Tabs, Card, Table, Col, Row, ListGroup } from "react-bootstrap";
+import {Tabs,Card,Table,Col,Row,ListGroup,CardGroup,Pagination,} from "react-bootstrap";
 import ItemAdmin from "./Administrador/ItemAdmin";
 import AdminPacientes from "./Administrador/AdminPacientes";
 import AdminTurnos from "./Administrador/AdminTurnos";
+import { compararHorasFecha, obtenerTurnos } from "../helpers/queries";
 
+const Admin = ({ usuarioLogueado }) => {
+  const [activeTab, setActiveTab] = useState(
+    localStorage.getItem("activeTab") || "tabla1"
+  );
+  const [turnos, setTurnos] = useState([]);
 
-const Admin = ({usuarioLogueado}) => {
-  const [activeTab, setActiveTab] = useState(localStorage.getItem('activeTab') || 'tabla1');
-
+  useEffect(() => {
+    obtenerTurnos().then((respuesta) => {
+      if (respuesta) {
+        setTurnos(respuesta);
+      } else {
+        Swal.fire(
+          "Ocurrio un error",
+          "Intente realizar esta operacion en unos minutos",
+          "error"
+        );
+      }
+    });
+  }, []);
   const handleTabSelect = (selectedTab) => {
     setActiveTab(selectedTab);
-    localStorage.setItem('activeTab', selectedTab);
+    localStorage.setItem("activeTab", selectedTab);
   };
+  turnos.sort(compararHorasFecha);
 
+  const ItemsPorPag = 3;
+  const [PagActual, setPagActual] = useState(1);
+  const UltimoIndice = PagActual * ItemsPorPag;
+  const primerIndice = UltimoIndice - ItemsPorPag;
+  const currentItems = turnos.slice(primerIndice, UltimoIndice);
+  const paginate = (numeroDePag) => setPagActual(numeroDePag);
+  const Pagination = ({ itemPorPaginas, totalItems, PagActual, paginate }) => {
+    const numeroDePaginas = [];
+    for (let i = 1; i <= Math.ceil(totalItems / itemPorPaginas); i++) {
+      numeroDePaginas.push(i);
+    } 
+    return ( 
+      <nav>
+        <ul className="pagination">
+          {numeroDePaginas.map((num) => (
+            <li key={num} className="page-item">
+              <a
+                onClick={() => paginate(num)}
+                href="#!"
+                className={
+                  num === PagActual ? 'page-link active' : 'page-link'
+                }
+              >
+                {num}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    );
+  };
   return (
-    <section className="container-fluid mainSection">
+    <section className="container-fluid mainSection my-3">
       <Tabs
-        activeKey={activeTab} 
+        activeKey={activeTab}
         onSelect={handleTabSelect}
         id="AdminGeneral"
         className="mb-3"
@@ -28,30 +76,31 @@ const Admin = ({usuarioLogueado}) => {
           <Card className="bg-primary-subtle">
             <Card.Header className="display-6">Bienvenido</Card.Header>
             <Card.Body>
-              <Card.Title className="fs-3 text-center">
-                Turnos del dia
-              </Card.Title>
-              <Table className="my-3" responsive striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Horario</th>
-                    <th>Paciente</th>
-                    <th>Dueño</th>
-                    <th>Detalle de la consulta</th>
-                    <th>Opciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <ItemAdmin></ItemAdmin>
-                </tbody>
-              </Table>
-            </Card.Body>
+              <CardGroup>
+                {currentItems.map((turnos) => (
+                  <ItemAdmin
+                    turnos={turnos}
+                    key={turnos._id}
+                    setTurnos={setTurnos}
+                  ></ItemAdmin>
+                ))}
+              </CardGroup>
+              </Card.Body>
+              <div className="d-flex justify-content-center">
+            <Pagination
+        itemPorPaginas={ItemsPorPag}
+        totalItems={turnos.length}
+        PagActual={PagActual}
+        paginate={paginate}
+        />
+        </div>
           </Card>
         </Tab>
         <Tab eventKey="Perfil" title="Perfil">
           <Card className="bg-dark-subtle">
-            <Card.Header className="display-6">Bienvenido {usuarioLogueado?.nombreUsuario}</Card.Header>
+            <Card.Header className="display-6">
+              Bienvenido {usuarioLogueado?.nombreUsuario}
+            </Card.Header>
             <Card.Body className="">
               <Row>
                 <Col className="mx-1" sm={12} md={4}>
@@ -94,15 +143,15 @@ const Admin = ({usuarioLogueado}) => {
           </Card>
         </Tab>
         <Tab eventKey="Pacientes" title="Pacientes">
-        <Card className="bg-danger-subtle">
-<AdminPacientes></AdminPacientes>
-        </Card>
+          <Card className="bg-danger-subtle">
+            <AdminPacientes></AdminPacientes>
+          </Card>
         </Tab>
         <Tab eventKey="Turnos" title="Turnos">
-        <Card className="bg-success-subtle">
-<AdminTurnos></AdminTurnos>
-        </Card>
-          </Tab>
+          <Card className="bg-success-subtle">
+            <AdminTurnos></AdminTurnos>
+          </Card>
+        </Tab>
       </Tabs>
     </section>
   );
