@@ -1,21 +1,29 @@
 import React from 'react';
 import { Button, Card, OverlayTrigger, Tooltip,Col } from 'react-bootstrap';
-const ItemAdmin = ({turnos}) => {
+import veterinaria from '../../../assets/Veterinaria2.jpg'
+import veterinario from '../../../assets/Veterinario1.jpg'  
 
+
+const ItemAdmin = ({turnos}) => {
       const BotonEliminar = (props) => (
         <Tooltip id="botonEliminar" {...props}>
           Eliminar
         </Tooltip>
       );
+     const imagenVeterinario = () => {
+        const imagenURL = turnos.veterinario === "Juan Carlos" ? veterinario : veterinaria;
+      return imagenURL;
+    };      
     return (
         <>
         <Col sm={12} md={4}>
          <Card className='m-1'>
-        <div className="text-center">
-        <Card.Img className="imagen" variant="top" src="https://img.freepik.com/vector-premium/avatar-perros-lindos-retrato-cabeza-perrito-adorable-hocico-cachorro-pura-raza-labrador-cara-cachorros-felices-lengua-fuera-ilustracion-vector-plano-hocico-mascotas-encantador-aislado-sobre-fondo-blanco_633472-124.jpg" />
+        <div className="text-center m-1">
+        <Card.Img className="w-100" variant="top" src={imagenVeterinario()} />
         </div>
         <Card.Body>
           <Card.Title><b className='text-danger'>Mascota:  </b>  {turnos.nombMascota}</Card.Title>
+          <hr />
           <Card.Text> <b className='text-danger'>Detalle de la cita: </b> 
            {turnos.detalleCita}
           </Card.Text>
