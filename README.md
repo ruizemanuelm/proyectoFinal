@@ -3,7 +3,7 @@
 
 ![Logo de Veterinaria Huellitas](./src/assets/logoveterinaria.png)
 
-¡Bienvenido al ultimo proyecto de nuestra comision 40i Rollingcode <>!
+¡Bienvenido al ultimo proyecto de nuestra comisión 40i Rollingcode <>!
 El objetivo del proyecto es plasmar todos los conocimientos adquiridos en estos 6-7 meses.
 Nuestra Veterinaria cuenta con las siguiente funcionalidades
 - Login.
@@ -24,7 +24,7 @@ Nuestra Veterinaria cuenta con las siguiente funcionalidades
 
 ## Framework
 - React 
-- Boostrap 
+- Bootstrap 
 
 ## Base de Datos
 - MongoDB
@@ -46,10 +46,8 @@ En nuestra veterinaria, cuidamos con amor y experiencia a nuestros amigos peludo
 
 1. [Matias Emanuel Ruiz Villalobo](https://github.com/ruizemanuelm)
 2. [Lucio Lazarte](https://github.com/luciolazarte9)
-3. [Alejandro sebastian Orosco](https://github.com/Diego2997)
+3. [Alejandro Sebastian Orosco](https://github.com/SebasAle95)
 
-
-© 2023 Veterinaria Huellitas. Todos los derechos reservados.
 
 ## Como clonar el repositorio
 En una terminal ejecuta el siguiente comando:
@@ -59,7 +57,7 @@ git clone https://github.com/ruizemanuelm/proyectoFinal
 
 ```
 
-## Dependecies
+## Dependencies
 
 ```
 - npm install -g nodemon
