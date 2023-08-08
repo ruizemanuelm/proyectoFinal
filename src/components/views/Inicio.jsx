@@ -50,7 +50,7 @@ const Inicio = ({usuarioLogueado}) => {
         <CardGroup className="mt-5 mb-5">
           <Card>
             <Card.Body className="justify-content-center">
-              <Card.Title className="text-danger text-center">
+              <Card.Title className="text-color text-center">
                 Atencion online
               </Card.Title>
               <Card.Text className="text-center">
@@ -60,7 +60,7 @@ const Inicio = ({usuarioLogueado}) => {
           </Card>
           <Card>
             <Card.Body>
-              <Card.Title className="text-danger text-center">
+              <Card.Title className="text-color text-center">
                 Atencion personalizada a domicilio
               </Card.Title>
               <Card.Text className="text-center">
@@ -70,7 +70,7 @@ const Inicio = ({usuarioLogueado}) => {
           </Card>
           <Card>
             <Card.Body>
-              <Card.Title className="text-danger text-center">
+              <Card.Title className="text-color text-center">
                 Salud preventiva
               </Card.Title>
               <Card.Text className="text-center">
@@ -80,7 +80,7 @@ const Inicio = ({usuarioLogueado}) => {
           </Card>
           <Card>
             <Card.Body>
-              <Card.Title className="text-danger text-center">
+              <Card.Title className="text-color text-center">
                 Hospitalización cómoda
               </Card.Title>
               <Card.Text className="text-center">

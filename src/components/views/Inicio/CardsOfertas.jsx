@@ -1,25 +1,29 @@
-import React from 'react';
+import React from "react";
 import {
-    Container,
-    Col,
-    Card,
-    CardGroup,
-    Carousel,
-    Button,
-  } from "react-bootstrap";
+  Container,
+  Col,
+  Card,
+  CardGroup,
+  Carousel,
+  Button,
+} from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-  
 const CardsOfertas = () => {
-    return (
-        <>
-        <Container>
+  return (
+    <>
+      <Container>
         <div className="d-flex">
-        <h2>Ofertas</h2>
-        <a className="ms-auto text-danger" href=""><h2>Ver ofertas</h2></a>
+          <h2>Ofertas</h2>
+          <Button className="d-flex ms-auto" variant="primary">
+            <Link
+              to={"/error404"}
+            ><h2 className="text-light">Ver ofertas</h2></Link>
+          </Button>
         </div>
         <Carousel>
           <Carousel.Item>
-            <CardGroup className="mt-1 mb-5">
+            <CardGroup className="mt-5 mb-5">
               <Col md={3} ld={3} className="mb-3 px-3">
                 <Card className="h-100">
                   <Card.Img
@@ -28,11 +32,16 @@ const CardsOfertas = () => {
                     alt="Cachorro"
                   />
                   <Card.Body>
-                    <Card.Title>Plan primeros pasos</Card.Title>
-                    <Card.Text>
-                      Servicios para mascotas de 0 a 5 años
-                    </Card.Text>
-                    <Button variant="primary">Hacer consulta</Button>
+                    <Card.Title>Pro Plan</Card.Title>
+                    <Card.Text>Perro adulto raza mediana.</Card.Text>
+                    <Button variant="primary">
+                      <Link
+                        to={"/error404"}
+                        style={{ color: "white", textDecoration: "none" }}
+                      >
+                        Comprar
+                      </Link>
+                    </Button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -44,11 +53,18 @@ const CardsOfertas = () => {
                     alt="Perro mediano"
                   />
                   <Card.Body>
-                    <Card.Title>Plan Madurando</Card.Title>
+                    <Card.Title>Agility</Card.Title>
                     <Card.Text>
-                      Servicios para mascotas de 5 a 10 años
+                      Carne sabor a pollo para gatos
                     </Card.Text>
-                    <Button variant="primary">Hacer consulta</Button>
+                    <Button variant="primary">
+                      <Link
+                        to={"/error404"}
+                        style={{ color: "white", textDecoration: "none" }}
+                      >
+                        Comprar
+                      </Link>
+                    </Button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -60,11 +76,18 @@ const CardsOfertas = () => {
                     alt="Perro adulto"
                   />
                   <Card.Body>
-                    <Card.Title>Plan adultos</Card.Title>
+                    <Card.Title>Agility</Card.Title>
                     <Card.Text>
-                      Servicios para mascotas de más de 10 años.
+                      Carne de vaca para gatos
                     </Card.Text>
-                    <Button variant="primary">Hacer consulta</Button>
+                    <Button variant="primary">
+                      <Link
+                        to={"/error404"}
+                        style={{ color: "white", textDecoration: "none" }}
+                      >
+                        Comprar
+                      </Link>
+                    </Button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -76,11 +99,16 @@ const CardsOfertas = () => {
                     alt="Cachorro"
                   />
                   <Card.Body>
-                    <Card.Title>Plan primeros pasos</Card.Title>
-                    <Card.Text>
-                      Servicios para mascotas de 0 a 5 años
-                    </Card.Text>
-                    <Button variant="primary">Hacer consulta</Button>
+                    <Card.Title>Agility</Card.Title>
+                    <Card.Text>Pate sabor natural</Card.Text>
+                    <Button variant="primary">
+                      <Link
+                        to={"/error404"}
+                        style={{ color: "white", textDecoration: "none" }}
+                      >
+                        Comprar
+                      </Link>
+                    </Button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -96,11 +124,18 @@ const CardsOfertas = () => {
                     alt="Perro mediano"
                   />
                   <Card.Body>
-                    <Card.Title>Plan Madurando</Card.Title>
+                    <Card.Title>Eukanuba</Card.Title>
                     <Card.Text>
-                      Servicios para mascotas de 5 a 10 años
+                      Para perros adultos raza pequeña.
                     </Card.Text>
-                    <Button variant="primary">Hacer consulta</Button>
+                    <Button variant="primary">
+                      <Link
+                        to={"/error404"}
+                        style={{ color: "white", textDecoration: "none" }}
+                      >
+                        Comprar
+                      </Link>
+                    </Button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -112,11 +147,18 @@ const CardsOfertas = () => {
                     alt="Perro adulto"
                   />
                   <Card.Body>
-                    <Card.Title>Plan adultos</Card.Title>
+                    <Card.Title>Dentalife</Card.Title>
                     <Card.Text>
-                      Servicios para mascotas de más de 10 años.
+                      Cuida la salud de tu mascota.
                     </Card.Text>
-                    <Button variant="primary">Hacer consulta</Button>
+                    <Button variant="primary">
+                      <Link
+                        to={"/error404"}
+                        style={{ color: "white", textDecoration: "none" }}
+                      >
+                        Comprar
+                      </Link>
+                    </Button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -124,9 +166,9 @@ const CardsOfertas = () => {
           </Carousel.Item>
         </Carousel>
         <hr />
-        </Container>
-        </>
-    );
+      </Container>
+    </>
+  );
 };
 
 export default CardsOfertas;
