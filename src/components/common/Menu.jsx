@@ -67,7 +67,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
   }
 
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-dark navbar-dark">
+    <Navbar collapseOnSelect expand="lg" className="navbar navbar-dark">
       <Container>
         <Navbar.Brand as={Link} to='/'><img src={logoveterinaria} alt="logo"  width='150' height='90' /></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav " />
@@ -88,7 +88,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
               <>
               <Nav>
                 <NavLink end to={'/admin'}  className={'nav-item nav-link '}>{<BsFillPersonPlusFill/>} Administrador</NavLink>
-                <Button variant='dark' onClick={logout}>Logout</Button>
+                <Button className='btn-primary' variant='dark' onClick={logout}>Logout</Button>
               </Nav>
               </>:
               <>

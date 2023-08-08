@@ -48,9 +48,10 @@ const Inicio = ({usuarioLogueado}) => {
       </Carousel>
       <Container>
         <CardGroup className="mt-5 mb-5">
-          <Card>
+          <Col className="mb-4" md={6} sm={12} lg={3}>
+          <Card className="h-100 rounded-end-0">
             <Card.Body className="justify-content-center">
-              <Card.Title className="text-danger text-center">
+              <Card.Title className="text-color text-center">
                 Atencion online
               </Card.Title>
               <Card.Text className="text-center">
@@ -58,9 +59,11 @@ const Inicio = ({usuarioLogueado}) => {
               </Card.Text>
             </Card.Body>
           </Card>
-          <Card>
+          </Col>
+          <Col className="mb-4" md={6} sm={12} lg={3}>
+          <Card className="h-100 rounded-0">
             <Card.Body>
-              <Card.Title className="text-danger text-center">
+              <Card.Title className="text-color text-center">
                 Atencion personalizada a domicilio
               </Card.Title>
               <Card.Text className="text-center">
@@ -68,9 +71,11 @@ const Inicio = ({usuarioLogueado}) => {
               </Card.Text>
             </Card.Body>
           </Card>
-          <Card>
+          </Col>
+          <Col className="mb-4" md={6} sm={12} lg={3}>
+          <Card className="h-100 rounded-0">
             <Card.Body>
-              <Card.Title className="text-danger text-center">
+              <Card.Title className="text-color text-center">
                 Salud preventiva
               </Card.Title>
               <Card.Text className="text-center">
@@ -78,9 +83,11 @@ const Inicio = ({usuarioLogueado}) => {
               </Card.Text>
             </Card.Body>
           </Card>
-          <Card>
+          </Col>
+          <Col className="mb-4" md={6} sm={12} lg={3}>
+          <Card className="h-100 rounded-start-0">
             <Card.Body>
-              <Card.Title className="text-danger text-center">
+              <Card.Title className="text-color text-center">
                 Hospitalización cómoda
               </Card.Title>
               <Card.Text className="text-center">
@@ -88,6 +95,7 @@ const Inicio = ({usuarioLogueado}) => {
               </Card.Text>
             </Card.Body>
           </Card>
+          </Col>
         </CardGroup>
         <hr className="mt-5" />
       </Container>

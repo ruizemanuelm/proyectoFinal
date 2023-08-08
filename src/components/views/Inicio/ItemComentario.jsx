@@ -21,11 +21,12 @@ const ItemComentario = ({ usuarioLogueado }) => {
       <Container>
             <CardGroup>
               {comentarios?.map((comentario) => (
-                <Col md={3} ld={3} className="mb-3 px-3" key={comentario._id}>
+                <Col md={6} ld={3} sm={6} lg={3} className="mb-3 px-3" key={comentario._id}>
                   <Card className="h-100">
                     <Card.Body>
-                      <Card.Title>{usuarioLogueado.nombreUsuario}</Card.Title>
-                      <Card.Text>{comentario.contenidoComentario}</Card.Text>
+                      <Card.Title className="text-color">Comentario</Card.Title>
+                      <hr />
+                      <Card.Text>{usuarioLogueado.nombreUsuario}: {comentario.contenidoComentario}</Card.Text>
                     </Card.Body>
                   </Card>
                 </Col>

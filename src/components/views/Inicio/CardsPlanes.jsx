@@ -13,13 +13,13 @@ const CardsPlanes = () => {
     <>
       <Container>
         <CardGroup className="mt-5 mb-5">
-          <Col md={4} ld={3} className="mb-3 px-3">
+          <Col md={6} sm={12} lg={4} className="mb-3 px-3">
             <Card className="h-100">
               <Card.Body>
                 <Card.Title className="text-danger">
                   <h2>Plan cachorros</h2>
                 </Card.Title>
-                <Card.Text className="fw-bold">9.99 USD al mes</Card.Text>
+                <Card.Text className="fw-bosm">9.99 USD al mes</Card.Text>
                 <hr />
                 <Card.Text>Vacunas y desparasitación</Card.Text>
                 <Card.Text>Revisiones y chequeos regulares</Card.Text>
@@ -34,13 +34,13 @@ const CardsPlanes = () => {
               </Card.Body>
             </Card>
           </Col>
-          <Col md={4} ld={3} className="mb-3 px-3">
+          <Col md={6} sm={12} lg={4} className="mb-3 px-3">
             <Card className="h-100">
               <Card.Body>
                 <Card.Title className="text-danger">
                   <h2>Plan madurando</h2>
                 </Card.Title>
-                <Card.Text className="fw-bold">7.99 USD al mes</Card.Text>
+                <Card.Text className="fw-bosm">7.99 USD al mes</Card.Text>
                 <hr />
                 <Card.Text>Vacunas y desparasitación</Card.Text>
                 <Card.Text>Revisiones y chequeos regulares</Card.Text>
@@ -55,7 +55,7 @@ const CardsPlanes = () => {
               </Card.Body>
             </Card>
           </Col>
-          <Col md={4} ld={3} className="mb-3 px-3">
+          <Col md={6} sm={12} lg={4} className="mb-3 px-3">
             <Card className="h-100">
               <Card.Body>
                 <Card.Title className="text-danger">
