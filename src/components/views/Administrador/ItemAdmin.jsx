@@ -1,20 +1,12 @@
 import React from 'react';
 import { Button, Card,Col } from 'react-bootstrap';
-import veterinaria from '../../../assets/veterinaria2.jpg'
-import veterinario from '../../../assets/veterinario1.jpg'  
+ 
 
-const ItemAdmin = ({turnos}) => {
-     const imagenVeterinario = () => {
-        const imagenURL = turnos.veterinario === "Juan Carlos" ? veterinario : veterinaria;
-      return imagenURL;
-    };      
+const ItemAdmin = ({turnos}) => {    
     return (
         <>
         <Col sm={12} md={4}>
          <Card className='m-1 h-100'>
-        <div className="text-center m-1">
-        <Card.Img className="w-100" variant="top" src={imagenVeterinario()} />
-        </div>
         <Card.Body>
           <Card.Title><b className='text-danger'>Mascota:  </b>  {turnos.nombMascota}</Card.Title>
           <hr />
