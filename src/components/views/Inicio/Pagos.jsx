@@ -1,6 +1,5 @@
 import React from 'react';
-import Cards from 'react-credit-cards';
-import 'react-credit-cards/es/styles-compiled.css';
+
 import {
     Container,
     Col,
@@ -32,7 +31,7 @@ export default class PaymentForm extends React.Component {
   render() {
     return (
       <div id="PaymentForm">
-        <Row>
+        {/* <Row>
         <Col md={6}>
         <Form onSubmit={this.handleSubmit}>
               <Form.Group className='mt-4'>
@@ -84,7 +83,7 @@ export default class PaymentForm extends React.Component {
             </Form>
         </Col>
         <Col className='mt-4' md={6}>
-        <Cards
+        <Card
           cvc={this.state.cvc}
           expiry={this.state.expiry}
           focused={this.state.focus}
@@ -92,7 +91,7 @@ export default class PaymentForm extends React.Component {
           number={this.state.number}
         />
         </Col>
-        </Row>
+        </Row> */}
       </div>
     );
   }

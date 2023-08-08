@@ -33,7 +33,7 @@ import Pagos from './Inicio/Pagos'
           </Card>
         </Container>
         </section>
-        <section>
+        {/* <section>
         <Container className="my-5">
         <Row className="justify-content-center">
         <Accordion defaultActiveKey="0" style={{width: "700px"}}>
@@ -52,7 +52,7 @@ import Pagos from './Inicio/Pagos'
       </Accordion>
         </Row>
       </Container>
-        </section>
+        </section> */}
         </>
     );
   };
