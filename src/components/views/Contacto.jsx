@@ -37,7 +37,7 @@ const Contacto = () => {
         <Container className="my-5">
           <Row className="justify-content-center">
             <Col md={8}>
-              <h1 className="text-center mb-4">Contáctanos</h1>
+              <h1 className="text-center mb-4">Contáctenos</h1>
               <Row>
                 <Col md={6}>
                   <Form>
@@ -82,7 +82,7 @@ const Contacto = () => {
                         <br />
                       </p>
                       <a href="https://wa.me/3816422895" className="mt-4">
-                      <BsWhatsapp className="text-color fs-2"/> Envianos un WhatsApp
+                      <BsWhatsapp className="text-color fs-2"/> Envíanos un WhatsApp
                         <br />
                       </a>
                       <p className="mt-4">

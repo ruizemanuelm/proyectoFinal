@@ -14,7 +14,7 @@ useEffect(()=>{
     if(respuesta){
       setPaciente(respuesta)
     }else{
-      Swal.fire('Ocurrio un error', 'Intente realizar esta operacion en unos minutos', 'error')
+      Swal.fire('Ocurrió un error', 'Intente realizar esta operación en unos minutos', 'error')
     }
   })
 },[])

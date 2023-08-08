@@ -52,10 +52,10 @@ const Inicio = ({usuarioLogueado}) => {
           <Card className="h-100 rounded-end-0">
             <Card.Body className="justify-content-center">
               <Card.Title className="text-color text-center">
-                Atencion online
+                Atención online
               </Card.Title>
               <Card.Text className="text-center">
-                Garantizamos la mejor atencion.
+                Garantizamos la mejor atención.
               </Card.Text>
             </Card.Body>
           </Card>
@@ -64,10 +64,10 @@ const Inicio = ({usuarioLogueado}) => {
           <Card className="h-100 rounded-0">
             <Card.Body>
               <Card.Title className="text-color text-center">
-                Atencion personalizada a domicilio
+                Atención personalizada a domicilio
               </Card.Title>
               <Card.Text className="text-center">
-                Rapida atencion en casos de urgencia.
+                Rápida atención en casos de urgencia.
               </Card.Text>
             </Card.Body>
           </Card>

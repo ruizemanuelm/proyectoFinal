@@ -15,7 +15,7 @@ const DetalleVeterinaria = () => {
               <Card.Title className="fw-bold display-3">Maria Jose</Card.Title>
               <hr />
               <Card.Text>
-                Especializacion en anestecia y cirugia ortopedica en especies
+                Especialización en anestesia y cirugía ortopédica en especies
                 mayores.
               </Card.Text>
               <hr />

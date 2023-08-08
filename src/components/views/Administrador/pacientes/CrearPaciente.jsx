@@ -19,7 +19,7 @@ const CrearPaciente = () => {
         Swal.fire('Paciente creado', `El paciente fue creado correctamente`, 'success');
         reset();
       }else{
-        Swal.fire('Oops! Ocurrio un error', `El paciente no fue creado correctamente, intente nuevamente mas tarde`, 'error');
+        Swal.fire('Oops! Ocurrió un error', `El paciente no fue creado correctamente, intente nuevamente mas tarde`, 'error');
       }
     })
   };

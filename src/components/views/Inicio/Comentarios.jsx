@@ -20,7 +20,7 @@ const Comentarios = ({usuarioLogueado}) => {
         Swal.fire('Comentario creado', `El comentario fue publicado correctamente`, 'success');
         reset();
       }else{
-        Swal.fire('Oops! Ocurrio un error', `El comentario no fue publicado correctamente, intente nuevamente mas tarde`, 'error');
+        Swal.fire('Oops! Ocurrió un error', `El comentario no fue publicado correctamente, intente nuevamente mas tarde`, 'error');
       }
     })
   }
@@ -42,11 +42,11 @@ const Comentarios = ({usuarioLogueado}) => {
                     required: "Por favor escribe algo.",
                     minLength: {
                       value: 2,
-                      message: "La cantidad minima de caracteres es de 2 digitos",
+                      message: "La cantidad minima de caracteres es de 2 dígitos",
                     },
                     maxLength: {
                       value: 500,
-                      message: "La cantidad maxima de caracteres es de 500 digitos",
+                      message: "La cantidad maxima de caracteres es de 500 dígitos",
                     },
                   })}
                   rows={3}
