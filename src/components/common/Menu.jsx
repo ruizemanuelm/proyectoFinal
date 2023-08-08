@@ -73,15 +73,15 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav " />
         <Navbar.Collapse id="responsive-navbar-nav" >
           <Nav className="m-auto ">
-            <NavLink exact to={'/'} className={'nav-item nav-link'}><BsHouseDoorFill/> Inicio</NavLink>
-            <NavLink exact to={'/error404'} className={'nav-item nav-link'}><FaCartShopping/> Tienda</NavLink>
+            <NavLink end to={'/'} className={'nav-item nav-link'}><BsHouseDoorFill/> Inicio</NavLink>
+            <NavLink end to={'/error404'} className={'nav-item nav-link'}><FaCartShopping/> Tienda</NavLink>
             <NavDropdown title={<span className='' id="collasible-nav-dropdown" to={'/error404'}><RiServiceFill/> Servicios</span>}>
               <NavDropdown.Item as={Link} to={'/checkout-cachorros'} className={'text-dark'}>Primeros Pasos</NavDropdown.Item>
               <NavDropdown.Item as={Link} to={'/checkout-madurando'}>Madurando</NavDropdown.Item>
               <NavDropdown.Item as={Link} to={'/checkout-adultos'}>Adultos</NavDropdown.Item>
             </NavDropdown>
-            <NavLink exact to={'/contacto'} className={'nav-item nav-link '}><BsTelephoneFill/> Contacto</NavLink>
-            <NavLink exact to={'/crearturno'} className={'nav-item nav-link buttonSolicitar'}><AiFillFileText/> Solicitar Turno</NavLink>
+            <NavLink end to={'/contacto'} className={'nav-item nav-link '}><BsTelephoneFill/> Contacto</NavLink>
+            <NavLink end to={'/crearturno'} className={'nav-item nav-link buttonSolicitar'}><AiFillFileText/> Solicitar Turno</NavLink>
           </Nav>
           {
           (usuarioLogueado.nombreUsuario)?
