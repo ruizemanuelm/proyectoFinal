@@ -8,6 +8,8 @@ import {
   } from "react-bootstrap";
 import veterinaria from '../../../assets/veterinaria2.jpg'
 import veterinario from '../../../assets/Veterinario1.jpg'
+import { Link } from "react-router-dom";
+
 
 const CardsVeterinarios = () => {
     return (
@@ -28,7 +30,9 @@ const CardsVeterinarios = () => {
                 <hr />
                 <Card.Text>Especializacion en anestecia y cirugia de pequeños animales.</Card.Text>
                 <Button className="w-100 mt-5" variant="primary">
+                  <Link className="text-light" to={'/detalleveterinario'}>
                   Ver perfil
+                  </Link>
                 </Button>
               </Card.Body>
             </Card>
@@ -47,7 +51,9 @@ const CardsVeterinarios = () => {
                 <hr />
                 <Card.Text>Especializacion en anestecia y cirugia ortopedica en especies mayores</Card.Text>
                 <Button className="w-100 mt-5" variant="primary">
+                  <Link className="text-light" to={'/detalleveterinaria'}>
                   Ver perfil
+                  </Link>
                 </Button>
               </Card.Body>
             </Card>
