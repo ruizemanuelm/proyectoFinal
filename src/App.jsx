@@ -17,6 +17,9 @@ import { useState } from 'react';
 import RutasProtegidas from './components/Routes/RutasProtegidas';
 import RutasAdministrador from './components/Routes/RutasAdministrador';
 import AdminPacientes from './components/views/Administrador/AdminPacientes';
+import DetalleVeterinaria from './components/views/Inicio/DetalleVeterinaria';
+import DetalleVeterinario from './components/views/Inicio/DetalleVeterinario';
+
 
 
 function App() {
@@ -36,6 +39,8 @@ function App() {
         <Route exact path='/checkout-madurando' element={<CheckoutMadurando/>}></Route>
         <Route exact path='/checkout-adultos' element={<CheckoutAdultos/>}></Route>
         <Route exact path='/crearturno' element={<CrearTurno/>}></Route>
+        <Route exact path='/detalleveterinaria' element={<DetalleVeterinaria/>}></Route>
+        <Route exact path='/detalleveterinario' element={<DetalleVeterinario/>}></Route>
         <Route path="/admin/*" element={
           <RutasProtegidas>
             <RutasAdministrador usuarioLogueado={usuarioLogueado}></RutasAdministrador>
