@@ -1,7 +1,6 @@
 import { Container, Card, Row, Col, Button } from "react-bootstrap";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import veterinaria from "../../../assets/veterinaria2.jpg";
-
 
 const DetalleVeterinaria = () => {
   return (
@@ -18,20 +17,26 @@ const DetalleVeterinaria = () => {
               <Card.Text>
                 Especializacion en anestecia y cirugia ortopedica en especies
                 mayores.
-                <br />
-                <hr />
-                Después de trabajar en una clínica veterinaria durante algunos años, Laura se dio cuenta de que su verdadera pasión y desafío estaban en ayudar a los animales de gran tamaño, como caballos y ganado, a superar sus problemas médicos. Decidió tomar un camino poco convencional y se inscribió en una especialización en anestesia y cirugía ortopédica en especies mayores.
               </Card.Text>
-              <Button variant="primary" type="submit" className="mb-5 ">
-                <Link className="text-light" to={"/"}>
+              <hr />
+              <Card.Text>
+                Después de trabajar en una clínica veterinaria durante algunos
+                años, Laura se dio cuenta de que su verdadera pasión y desafío
+                estaban en ayudar a los animales de gran tamaño, como caballos y
+                ganado, a superar sus problemas médicos. Decidió tomar un camino
+                poco convencional y se inscribió en una especialización en
+                anestesia y cirugía ortopédica en especies mayores.
+              </Card.Text>
+              <Link className="text-light btn btn-primary mb-5" to={"/"}>
                 Volver
-                </Link>
-              </Button>
-              <Button variant="success" type="submit" className="mb-5 ms-3 rounded-0">
-                <Link className="rounded-0 text-light" to={'/crearturno'}>
+              </Link>
+              <Link
+                className="btn btn-primary mb-5 ms-3"
+                to={"/crearturno"}
+                type="submit"
+              >
                 Sacar turno
-                </Link>
-              </Button>
+              </Link>
             </Card.Body>
           </Col>
         </Row>

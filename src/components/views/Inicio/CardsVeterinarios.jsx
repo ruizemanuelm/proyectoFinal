@@ -29,11 +29,9 @@ const CardsVeterinarios = () => {
                 <Card.Text className="fw-bold">Juan Carlos</Card.Text>
                 <hr />
                 <Card.Text>Especializacion en anestecia y cirugia de pequeños animales.</Card.Text>
-                <Button className="w-100 mt-5" variant="primary">
-                  <Link className="text-light" to={'/detalleveterinario'}>
+                  <Link className="btn btn-primary text-light w-100 mt-5" to={'/detalleveterinario'}>
                   Ver perfil
                   </Link>
-                </Button>
               </Card.Body>
             </Card>
           </Col>
@@ -50,11 +48,9 @@ const CardsVeterinarios = () => {
                 <Card.Text className="fw-bold">Maria Jose</Card.Text>
                 <hr />
                 <Card.Text>Especializacion en anestecia y cirugia ortopedica en especies mayores</Card.Text>
-                <Button className="w-100 mt-5" variant="primary">
-                  <Link className="text-light" to={'/detalleveterinaria'}>
+                  <Link className="text-light btn btn-primary w-100 mt-5" to={'/detalleveterinaria'}>
                   Ver perfil
                   </Link>
-                </Button>
               </Card.Body>
             </Card>
           </Col>

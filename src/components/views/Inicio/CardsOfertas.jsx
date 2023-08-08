@@ -24,7 +24,7 @@ const CardsOfertas = () => {
         <Carousel>
           <Carousel.Item>
             <CardGroup className="mt-5 mb-5">
-              <Col md={3} ld={3} className="mb-3 px-3">
+              <Col md={6} sm={12} lg={3} className="mb-3 px-3">
                 <Card className="h-100">
                   <Card.Img
                     variant="top"
@@ -45,7 +45,7 @@ const CardsOfertas = () => {
                   </Card.Body>
                 </Card>
               </Col>
-              <Col md={3} ld={3} className="mb-3 px-3">
+              <Col md={6} sm={12} lg={3} className="mb-3 px-3">
                 <Card className="h-100">
                   <Card.Img
                     variant="top"
@@ -68,7 +68,7 @@ const CardsOfertas = () => {
                   </Card.Body>
                 </Card>
               </Col>
-              <Col md={3} ld={3} className="mb-3 px-3">
+              <Col md={6} sm={12} lg={3} className="mb-3 px-3">
                 <Card className="h-100">
                   <Card.Img
                     variant="top"
@@ -91,7 +91,7 @@ const CardsOfertas = () => {
                   </Card.Body>
                 </Card>
               </Col>
-              <Col md={3} ld={3} className="mb-3 px-3">
+              <Col md={6} sm={12} lg={3} className="mb-3 px-3">
                 <Card className="h-100">
                   <Card.Img
                     variant="top"
@@ -116,7 +116,7 @@ const CardsOfertas = () => {
           </Carousel.Item>
           <Carousel.Item>
             <CardGroup className="mt-5 mb-5">
-              <Col md={3} ld={3} className="mb-3 px-3">
+              <Col md={6} sm={12} lg={3} className="mb-3 px-3">
                 <Card className="h-100">
                   <Card.Img
                     variant="top"
@@ -139,7 +139,7 @@ const CardsOfertas = () => {
                   </Card.Body>
                 </Card>
               </Col>
-              <Col md={3} ld={3} className="mb-3 px-3">
+              <Col md={6} sm={12} lg={3} className="mb-3 px-3">
                 <Card className="h-100">
                   <Card.Img
                     variant="top"

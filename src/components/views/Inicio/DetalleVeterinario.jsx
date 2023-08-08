@@ -17,20 +17,21 @@ const DetalleVeterinaria = () => {
               <hr />
               <Card.Text>
               Especializacion en anestecia y cirugia de pequeños animales.
-                <br />
-                <hr />
+              </Card.Text>
+              <hr />
+              <Card.Text>
                 Después de completar su formación en medicina veterinaria, Juan Carlos se encontró frente a un emocionante camino. Si bien su amor por todos los animales era profundo, su pasión estaba arraigada en los pequeños compañeros que llenaban los hogares de muchas familias. Tomó la audaz decisión de buscar una especialización en anestesia y cirugía de pequeños animales, un mundo donde cada detalle cuenta y cada vida es preciosa.
               </Card.Text>
-              <Button variant="primary" type="submit" className="mb-5 ">
-                <Link className="text-light" to={"/"}>
+              <Link className="text-light btn btn-primary mb-5" to={"/"}>
                 Volver
-                </Link>
-              </Button>
-              <Button variant="success" type="submit" className="mb-5 ms-3 rounded-0">
-                <Link className="rounded-0 text-light" to={'/crearturno'}>
+              </Link>
+              <Link
+                className="btn btn-primary mb-5 ms-3"
+                to={"/crearturno"}
+                type="submit"
+              >
                 Sacar turno
-                </Link>
-              </Button>
+              </Link>
             </Card.Body>
           </Col>
         </Row>

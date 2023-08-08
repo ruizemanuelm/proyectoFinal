@@ -9,6 +9,10 @@ import {
 } from "react-bootstrap";
 import bannercontacto from "../../assets/Contact.png";
 import bannercontacto2 from "../../assets/Home.png";
+import { BsWhatsapp } from 'react-icons/bs'
+import { BiTime } from 'react-icons/bi'
+import { FaLocationDot } from 'react-icons/fa6'
+import { TbMailFilled } from 'react-icons/tb'
 
 const Contacto = () => {
   return (
@@ -72,21 +76,21 @@ const Contacto = () => {
                 <Col md={6}>
                   <Card className="info-box mt-5 border-0">
                     <Card.Body>
-                      <h4 className="mb-4">Información de Contacto</h4>
+                      <h4 className="mb-4"> Información de contacto</h4>
                       <p className="mt-4">
-                        Dirección: Av. Veterinaria #1234
+                      <FaLocationDot className="fs-2 text-color"/> General Paz 556
                         <br />
                       </p>
+                      <a href="https://wa.me/3816422895" className="mt-4">
+                      <BsWhatsapp className="text-color fs-2"/> Envianos un WhatsApp
+                        <br />
+                      </a>
                       <p className="mt-4">
-                        Teléfono: (123) 456-7890
+                       <BiTime className="fs-1 text-color"/> Lunes a Viernes, 9:00 - 12:00  & 14:00 - 18:00 
                         <br />
                       </p>
-                      <p className="mt-4">
-                        Horario: Lunes a Viernes, 9:00 AM - 6:00 PM
-                        <br />
-                      </p>
-                      <p className="mt-4">Email: info@veterinariaejemplo.com</p>
-                      <a href="#">Envianos un WhatsApp</a>
+                      <p className="mt-4"><TbMailFilled className="fs-2 text-color"/> info@huellitas.com</p>
+                      <a href=""></a>
                     </Card.Body>
                   </Card>
                 </Col>
