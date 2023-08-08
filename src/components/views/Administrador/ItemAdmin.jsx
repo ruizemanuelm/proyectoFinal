@@ -12,7 +12,7 @@ const ItemAdmin = ({turnos}) => {
     return (
         <>
         <Col sm={12} md={4}>
-         <Card className='m-1'>
+         <Card className='m-1 h-100'>
         <div className="text-center m-1">
         <Card.Img className="w-100" variant="top" src={imagenVeterinario()} />
         </div>
