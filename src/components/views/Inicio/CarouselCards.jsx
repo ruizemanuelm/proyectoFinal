@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Card, Container } from "react-bootstrap";
+import { Card, Container, Col } from "react-bootstrap";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 
 const CarouselCards = () => {
   const initialCards = [
@@ -65,7 +66,13 @@ const CarouselCards = () => {
     speed: 2000,
     responsive: [
       {
-        breakpoint: 768,
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 1024,
         settings: {
           slidesToShow: 2,
         },
@@ -81,6 +88,7 @@ const CarouselCards = () => {
         <Slider {...settings}>
           {cards.map((card) => (
             <div key={card.id}>
+              <Col md={12} ld={12} sm={12} lg={12}>
               <Card>
                 <Card.Body className="justify-content-center">
                   <img
@@ -94,6 +102,7 @@ const CarouselCards = () => {
                   />
                 </Card.Body>
               </Card>
+        </Col>
             </div>
           ))}
         </Slider>

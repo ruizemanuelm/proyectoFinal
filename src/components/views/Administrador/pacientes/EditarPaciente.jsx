@@ -1,31 +1,51 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, Button, Col, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { crearPacientes } from "../../../helpers/queries";
 import Swal from "sweetalert2";
+import { editarPaciente, obtenerPacientePorId } from "../../../helpers/queries";
+import { useParams } from "react-router-dom";
 
 
-const CrearPaciente = () => {
+
+
+const EditarPaciente = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
+    setValue,
   } = useForm();
-  const onSubmit = (pacienteNuevo) => {
-    console.log(pacienteNuevo);
-    crearPacientes(pacienteNuevo).then((respuesta)=>{
-      if(respuesta && respuesta.status === 201){
-        Swal.fire('Paciente creado', `El paciente fue creado correctamente`, 'success');
-        reset();
+  const { id } = useParams();
+
+  useEffect(()=>{
+    obtenerPacientePorId( id ).then((respuesta)=>{
+      console.log(respuesta)
+      setValue('nombreDueno', respuesta.nombreDueno)
+      setValue('apellidoDueno', respuesta.apellidoDueno)
+      setValue('email', respuesta.email)
+      setValue('telefono', respuesta.telefono)
+      setValue('direccion', respuesta.direccion)
+      setValue('nombreMascota', respuesta.nombreMascota)
+      setValue('especie', respuesta.especie)
+      setValue('raza', respuesta.raza)
+
+    })
+  }, [])
+
+  const onSubmit = (pacienteEditado) => {
+    console.log(pacienteEditado);
+    editarPaciente(pacienteEditado, _id).then((respuesta)=>{
+      if(respuesta && respuesta.status === 200){
+        Swal.fire('Paciente editado', `El paciente fue editado correctamente`, 'success');
       }else{
-        Swal.fire('Oops! Ocurrió un error', `El paciente no fue creado correctamente, intente nuevamente mas tarde`, 'error');
+        Swal.fire('Oops! Ocurrió un error', `El paciente no fue editado correctamente, intente nuevamente mas tarde`, 'error');
       }
     })
   };
   return (
     <section className="container mainSection">
-      <h1 className="display-4 mt-5">Nuevo paciente</h1>
+      <h1 className="display-4 mt-5">Editar paciente</h1>
       <hr />
       <h2>Información del dueño</h2>
       <Form onSubmit={handleSubmit(onSubmit)}>
@@ -212,4 +232,4 @@ const CrearPaciente = () => {
   );
 };
 
-export default CrearPaciente;
+export default EditarPaciente;

@@ -14,10 +14,11 @@
   left: 0;
   width: 100%;
   padding-top: 18px;
+  background-color: #394867;
 }
 
 .buttonSolicitar{
-  color: #FDFD5D;
+  color: #2cdf4a;
   text-decoration: none;
   letter-spacing: 0.1em;
 }
@@ -29,4 +30,61 @@
 .cardacerca {
   border-radius: 50%;
 }
+.card-realizado {
+  background-color: lightgreen; /* O el color que desees para la card realizada */
+}
+
+.cards-disenio{
+  margin: 0 0.5em;
+  box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+ border: none;
+}
+
+body {
+  background-color: #ececec;
+}
+p{
+  color: #000000;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.card {
+  background-color: #F6F6F6;
+  margin: 0 0.5em;
+  box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+ border: none;
+}
+
+
+.btn-primary {
+  background-color: #394867;
+
+  border-radius: 0;
+  border-style: none;
+}
+.btn-primary:hover {
+  background-color: #30388b;
+
+}
+
+.navbar{
+  background-color: #394867;
+  color: #000000;
+}
+
+.text-color {
+  color: #394867
+}
+
+h2 {
+  color: #394867;
+}
+h5 {
+  color: #394867;
+}
+
 

@@ -2,8 +2,7 @@ import React from 'react';
 import sebastian from '../../assets/sebastian.jpeg'
 import lucio from '../../assets/lucio.jpg'
 import emanuel from '../../assets/emanuel.jpg'
-import { NavLink, Link } from 'react-router-dom';
-import { Facebook, Git, Github, Linkedin } from 'react-bootstrap-icons';
+import { Facebook, Github, Linkedin } from 'react-bootstrap-icons';
 
 
 const Nosotros = () => {
@@ -34,14 +33,14 @@ const Nosotros = () => {
       return (
 
         <section className="container mt-5">
-          <h1 className="display-4 text-center py-5">Acercá de nosotros</h1>
+          <h1 className="display-4 text-center py-5">Acerca de nosotros</h1>
           <h3 className='text-center'>En nuestra veterinaria, cuidamos con amor y experiencia a nuestros amigos peludos, brindando atención de calidad y servicios especializados para garantizar su bienestar en cada etapa de sus vidas. ¡Porque su salud y felicidad son nuestra pasión!</h3>
           
           <h2 className="display-4 text-center py-5">Equipo de Trabajó</h2>
           <hr/>
       <article className="row">
         {miembros.map((miembro, index) => (
-          <aside className="col-md-12 card mb-5 border-0">
+          <aside className="col-md-12 card mb-5 border-0" key={index}>
               <div className="row m-5">
                 <div className="col-md-6">
                   <img
@@ -51,7 +50,7 @@ const Nosotros = () => {
                     style={{ height: '200px', width: '200px', objectFit: 'cover' }}
                   />
                 </div>
-                <div className="col-md-6 ">
+                <div className="col-md-6 text-center">
                   <div className="card-body">
                     <h5 className="card-title ">{miembro.nombre}</h5>
                     <h5 className="card-text ">{miembro.descripcion}</h5>

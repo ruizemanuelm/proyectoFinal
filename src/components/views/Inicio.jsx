@@ -9,13 +9,18 @@ import {
 import banner from "../../assets/banner.jpg";
 import banner1 from "../../assets/banner1.png";
 import banner2 from "../../assets/banner2.png";
-import CarouselCards from "./publicidad/CarouselCards";
-import CardsPlanes from "./publicidad/CardsPlanes";
-import CardsOfertas from "./publicidad/CardsOfertas";
-import VideoInicio from "./publicidad/VideoInicio";
+import CarouselCards from "./Inicio/CarouselCards";
+import CardsPlanes from "./Inicio/CardsPlanes";
+import CardsOfertas from "./Inicio/CardsOfertas";
+import CardsVeterinarios from "./Inicio/CardsVeterinarios";
+import Comentarios from "./Inicio/Comentarios";
+import ItemComentario from "./Inicio/ItemComentario";
 
 
-const Inicio = () => {
+
+
+const Inicio = ({usuarioLogueado}) => {
+
   return (
     <section className="mainSection">
       <Carousel slide={false}>
@@ -43,29 +48,34 @@ const Inicio = () => {
       </Carousel>
       <Container>
         <CardGroup className="mt-5 mb-5">
-          <Card>
+          <Col className="mb-4" md={6} sm={12} lg={3}>
+          <Card className="h-100 rounded-end-0">
             <Card.Body className="justify-content-center">
-              <Card.Title className="text-danger text-center">
-                Atencion online
+              <Card.Title className="text-color text-center">
+                Atención online
               </Card.Title>
               <Card.Text className="text-center">
-                Garantizamos la mejor atencion.
+                Garantizamos la mejor atención.
               </Card.Text>
             </Card.Body>
           </Card>
-          <Card>
+          </Col>
+          <Col className="mb-4" md={6} sm={12} lg={3}>
+          <Card className="h-100 rounded-0">
             <Card.Body>
-              <Card.Title className="text-danger text-center">
-                Atencion personalizada a domicilio
+              <Card.Title className="text-color text-center">
+                Atención personalizada a domicilio
               </Card.Title>
               <Card.Text className="text-center">
-                Rapida atencion en casos de urgencia.
+                Rápida atención en casos de urgencia.
               </Card.Text>
             </Card.Body>
           </Card>
-          <Card>
+          </Col>
+          <Col className="mb-4" md={6} sm={12} lg={3}>
+          <Card className="h-100 rounded-0">
             <Card.Body>
-              <Card.Title className="text-danger text-center">
+              <Card.Title className="text-color text-center">
                 Salud preventiva
               </Card.Title>
               <Card.Text className="text-center">
@@ -73,9 +83,11 @@ const Inicio = () => {
               </Card.Text>
             </Card.Body>
           </Card>
-          <Card>
+          </Col>
+          <Col className="mb-4" md={6} sm={12} lg={3}>
+          <Card className="h-100 rounded-start-0">
             <Card.Body>
-              <Card.Title className="text-danger text-center">
+              <Card.Title className="text-color text-center">
                 Hospitalización cómoda
               </Card.Title>
               <Card.Text className="text-center">
@@ -83,13 +95,16 @@ const Inicio = () => {
               </Card.Text>
             </Card.Body>
           </Card>
+          </Col>
         </CardGroup>
         <hr className="mt-5" />
       </Container>
         <CardsPlanes></CardsPlanes>
       <CarouselCards></CarouselCards>
       <CardsOfertas></CardsOfertas>
-      <VideoInicio></VideoInicio>
+      <CardsVeterinarios></CardsVeterinarios>
+      <Comentarios usuarioLogueado={usuarioLogueado}></Comentarios>
+      <ItemComentario usuarioLogueado={usuarioLogueado}></ItemComentario>
     </section>
   );
 };
