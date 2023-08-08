@@ -1,8 +1,7 @@
 import React from 'react';
 import { Button, Card,Col } from 'react-bootstrap';
-import veterinaria from '../../../assets/Veterinaria2.jpg'
-import veterinario from '../../../assets/Veterinario1.jpg'  
-
+import veterinaria from '../../../assets/veterinaria2.jpg'
+import veterinario from '../../../assets/veterinario1.jpg'  
 
 const ItemAdmin = ({turnos}) => {
      const imagenVeterinario = () => {
