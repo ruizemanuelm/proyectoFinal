@@ -30,7 +30,7 @@ const Planes = () => {
           <Row className="justify-content-center">
             <Accordion defaultActiveKey="0" style={{ width: "700px" }}>
               <Accordion.Item eventKey="0">
-                <Accordion.Header>Tarjeta de credito</Accordion.Header>
+                <Accordion.Header>Tarjeta de crédito</Accordion.Header>
                 <Accordion.Body>
                   <Pagos></Pagos>
                 </Accordion.Body>
@@ -38,7 +38,7 @@ const Planes = () => {
               <Accordion.Item eventKey="1">
                 <Accordion.Header>Abonar en el local</Accordion.Header>
                 <Accordion.Body>
-                  Por favor acerquese a la sucursal mas cercana.
+                  Por favor acérquese a la sucursal mas cercana.
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>

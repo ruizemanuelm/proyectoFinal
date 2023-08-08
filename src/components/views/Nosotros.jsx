@@ -33,7 +33,7 @@ const Nosotros = () => {
       return (
 
         <section className="container mt-5">
-          <h1 className="display-4 text-center py-5">Acercá de nosotros</h1>
+          <h1 className="display-4 text-center py-5">Acerca de nosotros</h1>
           <h3 className='text-center'>En nuestra veterinaria, cuidamos con amor y experiencia a nuestros amigos peludos, brindando atención de calidad y servicios especializados para garantizar su bienestar en cada etapa de sus vidas. ¡Porque su salud y felicidad son nuestra pasión!</h3>
           
           <h2 className="display-4 text-center py-5">Equipo de Trabajó</h2>

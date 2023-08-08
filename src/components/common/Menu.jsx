@@ -94,7 +94,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
               <>
               <Nav>
                 <NavLink onClick={handleShowRegister} className={'nav-item nav-link'}>{<BsFillPersonPlusFill/>} Registrar</NavLink>
-                <NavLink  onClick={handleShow} className={'nav-item nav-link'}><BsFillPersonFill/> Iniciar sesion</NavLink>
+                <NavLink  onClick={handleShow} className={'nav-item nav-link'}><BsFillPersonFill/> Iniciar sesión</NavLink>
               </Nav>
               </>
           }
@@ -108,7 +108,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
         <Modal.Body>
           <Form onSubmit={formRegistro.handleSubmit(onRegistro)}> 
             <Form.Group className="mb-3" controlId="emailForm">
-              <Form.Label>Correo electronico</Form.Label>
+              <Form.Label>Correo electrónico</Form.Label>
               <Form.Control
                 type="email"
                 placeholder="email@ejemplo.com"
@@ -154,7 +154,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
                   required: 'El password es un dato obligatorio',
                   pattern:{
                   value: /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/,
-                  message: 'El password debe contener entre 8 y 16 caracteres y debe incluir numeros, caracteres en mayuscula, miniscula y almenos un caracter especial'
+                  message: 'El password debe contener entre 8 y 16 caracteres y debe incluir números, caracteres en mayúscula, minúscula y por lo menos un carácter especial'
                   }})
               }
               />
@@ -162,7 +162,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
                 { formRegistro.formState.errors.password?.message}
               </Form.Text>
             </Form.Group>
-            <Button variant="secondary" onClick={handleCloseRegister}>
+            <Button className='rounded-0 me-2' variant="secondary" onClick={handleCloseRegister}>
               Cerrar
             </Button>
             <Button variant="primary" type='submit'>
@@ -176,12 +176,12 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Iniciar sesion</Modal.Title>
+            <Modal.Title>Iniciar sesión</Modal.Title>
           </Modal.Header>
         <Modal.Body>
           <Form onSubmit={formLogin.handleSubmit(onSubmit)}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Correo electronico</Form.Label>
+              <Form.Label>Correo electrónico</Form.Label>
               <Form.Control
                 type="email"
                 placeholder="name@example.com"
@@ -208,7 +208,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
                   required: 'El password es un dato obligatorio',
                   pattern:{
                   value: /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/,
-                  message: 'El password debe contener entre 8 y 16 caracteres y debe incluir numeros, caracteres en mayuscula, miniscula y almenos un caracter especial'
+                  message: 'El password debe contener entre 8 y 16 caracteres y debe incluir números, caracteres en mayúscula, minúscula y por lo menos un carácter especial'
                   }})
               }
               />
@@ -216,7 +216,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
                   { formLogin.formState.errors.password?.message}
                 </Form.Text>
             </Form.Group>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button className='rounded-0 me-2' variant="secondary" onClick={handleClose}>
               Cerrar
             </Button>
             <Button variant="primary" type='submit'>

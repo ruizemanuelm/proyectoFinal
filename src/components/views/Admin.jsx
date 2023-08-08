@@ -18,8 +18,8 @@ const Admin = ({ usuarioLogueado }) => {
         setTurnos(respuesta);
       } else {
         Swal.fire(
-          "Ocurrio un error",
-          "Intente realizar esta operacion en unos minutos",
+          "Ocurrió un error",
+          "Intente realizar esta operación en unos minutos",
           "error"
         );
       }

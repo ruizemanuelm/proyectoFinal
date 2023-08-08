@@ -39,7 +39,7 @@ const EditarPaciente = () => {
       if(respuesta && respuesta.status === 200){
         Swal.fire('Paciente editado', `El paciente fue editado correctamente`, 'success');
       }else{
-        Swal.fire('Oops! Ocurrio un error', `El paciente no fue editado correctamente, intente nuevamente mas tarde`, 'error');
+        Swal.fire('Oops! Ocurrió un error', `El paciente no fue editado correctamente, intente nuevamente mas tarde`, 'error');
       }
     })
   };

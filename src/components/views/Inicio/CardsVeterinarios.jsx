@@ -47,7 +47,7 @@ const CardsVeterinarios = () => {
                 </Card.Title>
                 <Card.Text className="fw-bold">Maria Jose</Card.Text>
                 <hr />
-                <Card.Text>Especializacion en anestecia y cirugia ortopedica en especies mayores</Card.Text>
+                <Card.Text>Especialización en anestesia y cirugía ortopédica en especies mayores</Card.Text>
                   <Link className="text-light btn btn-primary w-100 mt-5" to={'/detalleveterinaria'}>
                   Ver perfil
                   </Link>
