@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Card,Col } from 'react-bootstrap';
- 
 
 const ItemAdmin = ({turnos}) => {    
     return (
