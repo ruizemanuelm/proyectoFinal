@@ -3,10 +3,7 @@ import { Form, Button, Col, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { editarPaciente, obtenerPacientePorId } from "../../../helpers/queries";
-import { useParams } from "react-router-dom";
-
-
-
+import { useNavigate, useParams } from "react-router-dom";
 
 const EditarPaciente = () => {
   const {
@@ -17,7 +14,7 @@ const EditarPaciente = () => {
     setValue,
   } = useForm();
   const { id } = useParams();
-
+  const navegacion = useNavigate();
   useEffect(()=>{
     obtenerPacientePorId( id ).then((respuesta)=>{
       console.log(respuesta)
@@ -35,9 +32,10 @@ const EditarPaciente = () => {
 
   const onSubmit = (pacienteEditado) => {
     console.log(pacienteEditado);
-    editarPaciente(pacienteEditado, _id).then((respuesta)=>{
+    editarPaciente(pacienteEditado, id).then((respuesta)=>{
       if(respuesta && respuesta.status === 200){
         Swal.fire('Paciente editado', `El paciente fue editado correctamente`, 'success');
+        navegacion("/admin");
       }else{
         Swal.fire('Oops! Ocurrió un error', `El paciente no fue editado correctamente, intente nuevamente mas tarde`, 'error');
       }
@@ -224,8 +222,8 @@ const EditarPaciente = () => {
             </Form.Group>
           </Col>
         </Row>
-        <Button variant="primary" type="submit" className="mb-3">
-          Guardar
+        <Button variant="primary" type="submit" className="mb-3 w-100">
+          Guardar cambios
         </Button>
       </Form>
     </section>
