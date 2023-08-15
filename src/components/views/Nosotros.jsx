@@ -2,7 +2,7 @@ import React from 'react';
 import sebastian from '../../assets/sebastian.jpeg'
 import lucio from '../../assets/lucio.jpg'
 import emanuel from '../../assets/emanuel.jpg'
-import { Facebook, Github, Linkedin } from 'react-bootstrap-icons';
+import { Github, Linkedin } from 'react-bootstrap-icons';
 
 
 const Nosotros = () => {
@@ -13,6 +13,7 @@ const Nosotros = () => {
           descripcion: 'Estudiante de Programación',
           edad: 'Edad: 22',
           imagen: lucio,
+          github: 'https://github.com/luciolazarte9'
         },
         {
           nombre: 'Matias Emanuel Ruiz Villalobo',
@@ -57,7 +58,6 @@ const Nosotros = () => {
                     <h6 className="card-text ">{miembro.edad}</h6>
                     <a href={miembro.github} target="_blank" className="btn btn-"><h4><Github></Github></h4></a>
                     <a href="https://www.linkedin.com/" target="_blank" className="btn btn-"><h4><Linkedin></Linkedin></h4></a>
-                    <a href="https://www.facebook.com/" target="_blank" className="btn btn-"><h4><Facebook></Facebook></h4></a>
                   </div>
                 </div>
               </div>
@@ -65,10 +65,7 @@ const Nosotros = () => {
           
         ))}
       </article>
-    </section>
-     
-    
-      
+    </section> 
     );
 };
 
