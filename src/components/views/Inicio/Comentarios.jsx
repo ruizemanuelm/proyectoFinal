@@ -19,6 +19,7 @@ const Comentarios = ({usuarioLogueado}) => {
       if(respuesta && respuesta.status === 201){
         Swal.fire('Comentario creado', `El comentario fue publicado correctamente`, 'success');
         reset();
+        location.reload()
       }else{
         Swal.fire('Oops! Ocurrió un error', `El comentario no fue publicado correctamente, intente nuevamente mas tarde`, 'error');
       }
