@@ -87,6 +87,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
           (usuarioLogueado.nombreUsuario)?
               <>
               <Nav>
+              <NavLink end to={'/perfil'} className={'nav-item nav-link'}><AiFillFileText/>Perfil</NavLink>
                 <NavLink end to={'/admin'}  className={'nav-item nav-link '}>{<BsFillPersonPlusFill/>} Administrador</NavLink>
                 <Button className='btn-primary' variant='dark' onClick={logout}>Logout</Button>
               </Nav>

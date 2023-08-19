@@ -112,7 +112,7 @@ const Admin = ({ usuarioLogueado }) => {
               <Row>
                 <Col className="mx-1" sm={12} md={4}>
                   <Card.Img
-                    className="rounded-5"
+                    className="rounded-5 w-75"
                     variant="top"
                     src="https://img.freepik.com/vector-gratis/avatar-personaje-empresario-aislado_24877-60111.jpg"
                   />
