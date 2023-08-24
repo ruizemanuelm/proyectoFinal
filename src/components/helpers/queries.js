@@ -200,6 +200,28 @@ export const register = async (user)=>{
         console.log(error)
     }
 }
+
+export const registerAdmin = async (user)=>{
+    try{
+        const respuesta = await fetch(URL_usuarios+'/register',{
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(user)
+        });
+        
+        const usuario = await respuesta.json();
+        return {
+            status: respuesta.status,
+            mensaje: usuario.mensaje,
+        }
+        
+    }catch(error){
+        console.log(error)
+    }
+}
+
 export const crearComentario = async (comentario) => {
     try {
       const respuesta = await fetch(URL_comentarios, {

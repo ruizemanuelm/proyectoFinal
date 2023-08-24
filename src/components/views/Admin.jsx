@@ -14,7 +14,7 @@ import ItemAdmin from "./Administrador/ItemAdmin";
 import AdminPacientes from "./Administrador/AdminPacientes";
 import AdminTurnos from "./Administrador/AdminTurnos";
 import { compararHorasFecha, obtenerTurnos } from "../helpers/queries";
-
+import { Link } from "react-router-dom";
 const Admin = ({ usuarioLogueado }) => {
   const [activeTab, setActiveTab] = useState(
     localStorage.getItem("activeTab") || "tabla1"
@@ -105,14 +105,19 @@ const Admin = ({ usuarioLogueado }) => {
         </Tab>
         <Tab eventKey="Perfil" title="Perfil">
           <Card className="bg-dark-subtle">
-            <Card.Header className="display-6">
-              Bienvenido {usuarioLogueado?.nombreUsuario}
+            <Card.Header className="display-6 d-flex justify-content-between">
+              Bienvenido {usuarioLogueado?.nombreUsuario} 
+              <div>
+              <Link className="btn btn-primary" to="/admin/crearAdmin">
+          Nuevo admin
+        </Link>
+              </div>
             </Card.Header>
             <Card.Body className="">
               <Row>
                 <Col className="mx-1" sm={12} md={4}>
                   <Card.Img
-                    className="rounded-5"
+                    className="rounded-5 w-75"
                     variant="top"
                     src="https://img.freepik.com/vector-gratis/avatar-personaje-empresario-aislado_24877-60111.jpg"
                   />
