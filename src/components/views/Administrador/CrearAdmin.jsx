@@ -1,22 +1,38 @@
 import React from "react";
 import { Button, Col, Row , Container, Form, Card, CardGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { registerAdmin } from "../../helpers/queries";
+import Swal from "sweetalert2";
 
 const CrearAdmin = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
-    getValues,
+    reset
   } = useForm();
+  const Registro = (usuario)=>{
+    registerAdmin(usuario).then((respuesta)=>{
+      if(respuesta?.status===201){
+        Swal.fire(
+          'Se creo un usuario nuevo'
+        )
+        reset();
+      }else{
+        Swal.fire(
+          'Ocurrió un error',
+          'el email o contraseña es invalido'
+        )
+      }
+    })
+  }
   return (
     <section className="container-fluid mainSection my-4">
         <Container>
             <div className="text-center">
             <h1 className="display-6">Nuevo administrador</h1>
             </div>
-      <Form>
+      <Form onSubmit={handleSubmit(Registro)}>
      <Row>
         <Form.Group className="my-3" controlId="emailForm">
           <Form.Label>Correo electrónico</Form.Label>
