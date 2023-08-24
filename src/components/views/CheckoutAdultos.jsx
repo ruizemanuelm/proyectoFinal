@@ -2,6 +2,7 @@ import { Container, Card, Row, Accordion } from "react-bootstrap";
 import Compras from "./Inicio/Compras";
 
 const Planes = () => {
+
   return (
     <>
     <section className="bg-color mainSection seccion">
