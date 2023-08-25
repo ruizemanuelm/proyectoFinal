@@ -174,6 +174,7 @@ export const login = async (user)=>{
             nombreUsuario: usuario.nombreUsuario,
             email: usuario.email,
             password: usuario.password,
+            rol: usuario.rol,
             token: usuario.token
         }
         
@@ -181,7 +182,7 @@ export const login = async (user)=>{
         console.log(error)
     }
 }
-export const register = async (user)=>{
+export const registro = async (user)=>{
     try{
         const respuesta = await fetch(URL_usuarios+'/register',{
             method: "POST",
@@ -202,49 +203,26 @@ export const register = async (user)=>{
     }
 }
 
-/*export const registerAdmin = async (user)=>{
-    try{
-        const respuesta = await fetch(URL_administrador+{
-            method: "POST",
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify(user)
-        });
-        
-        const usuario = await respuesta.json();
-        return {
-            status: respuesta.status,
-            mensaje: usuario.mensaje,
-        }
-        
-    }catch(error){
-        console.log(error)
-    }
-}*/
-
-
-
-export const registerAdmin = async (admin)=>{
-  try{
-      const respuesta = await fetch(URL_administrador+'/register',{
-          method: "POST",
-          headers: {
-              "Content-type": "application/json"
-          },
-          body: JSON.stringify(admin)
-      });
+// export const registerAdmin = async (admin)=>{
+//   try{
+//       const respuesta = await fetch(URL_administrador+'/register',{
+//           method: "POST",
+//           headers: {
+//               "Content-type": "application/json"
+//           },
+//           body: JSON.stringify(admin)
+//       });
       
-      const administrador = await respuesta.json();
-      return {
-          status: respuesta.status,
-          mensaje: administrador.mensaje,
-      }
+//       const administrador = await respuesta.json();
+//       return {
+//           status: respuesta.status,
+//           mensaje: administrador.mensaje,
+//       }
       
-  }catch(error){
-      console.log(error)
-  }
-}
+//   }catch(error){
+//       console.log(error)
+//   }
+// }
 
 
 
