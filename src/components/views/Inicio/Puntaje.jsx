@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef } from "react";
 import { FaStar } from "react-icons/fa";
 
-const Puntaje = () => {
+const Puntaje = forwardRef(({ onChange }, ref ) => {
     const [puntaje, setPuntaje] = useState(null);
     const [hover, setHover] = useState(null);
     return (
@@ -33,6 +33,6 @@ const Puntaje = () => {
       </div>
       </>
     );
-  };
+  })
 
 export default Puntaje;

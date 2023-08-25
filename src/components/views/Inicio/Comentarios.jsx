@@ -5,7 +5,6 @@ import { crearComentario } from "../../helpers/queries";
 import Swal from "sweetalert2";
 import Puntaje from "./Puntaje";
 
-
 const Comentarios = ({ usuarioLogueado }) => {
   const {
     register,
@@ -35,6 +34,7 @@ const Comentarios = ({ usuarioLogueado }) => {
     });
   };
 
+  const evaluacionRef = React.useRef(null);
   return (
     <>
       <Container className="mb-5">
@@ -87,7 +87,17 @@ const Comentarios = ({ usuarioLogueado }) => {
                 </Form.Text>
               </Form.Group>
               <Form.Group className="d-flex mt-3">
-                <Puntaje></Puntaje>
+                <Puntaje
+                  onChange={(value) => {
+                    if (evaluacionRef.current) {
+                      evaluacionRef.current.value = value;
+                    }
+                  }}
+                  ref={evaluacionRef}
+                />
+                <Form.Text className="text-danger">
+                  {errors.evaluacion?.message}
+                </Form.Text>
               </Form.Group>
               <Button className="mt-3" variant="primary" type="submit">
                 Enviar comentario
