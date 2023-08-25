@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Col, Row , Container, Form, Card, CardGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { registerAdmin } from "../../helpers/queries";
+import {registro } from "../../helpers/queries";
 
 import Swal from "sweetalert2";
 
@@ -13,7 +13,7 @@ const CrearAdmin = () => {
     reset
   } = useForm();
   const Registro = (administrador)=>{
-    registerAdmin(administrador).then((respuesta)=>{
+    registro(administrador).then((respuesta)=>{
       if(respuesta?.status===201){
         Swal.fire(
           'Se creo un usuario nuevo'
@@ -34,7 +34,21 @@ const CrearAdmin = () => {
             <h1 className="display-6">Nuevo administrador</h1>
             </div>
       <Form onSubmit={handleSubmit(Registro)}>
-     <Row>
+     <Row>          <Form.Group className="mb-3" controlId="roll">
+              <Form.Label>Rol</Form.Label>
+              <Form.Select
+                {...register("rol", {
+                  required: "Seleccione un rol",
+                })}
+              >
+                <option  defaultValue="admin">
+                 Administrador
+                </option>
+              </Form.Select>
+              <Form.Text className="text-danger">
+                {errors.rol?.message}
+              </Form.Text>
+            </Form.Group>
         <Form.Group className="my-3" controlId="emailForm">
           <Form.Label>Correo electrónico</Form.Label>
           <Form.Control
@@ -62,8 +76,8 @@ const CrearAdmin = () => {
             type="text"
             placeholder="nombre de usuario"
             autoFocus
-            {...register("nombreAdmin", {
-                /*required: "ingrese el nombre de usuario",*/
+            {...register("nombreUsuario", {
+                required: "ingrese el nombre de usuario",
                 pattern: {
                     value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s']+$/,
                     message: "ingrese el nombre de usuario",

@@ -10,7 +10,7 @@ import {RiServiceFill} from 'react-icons/ri'
 import {AiFillFileText} from 'react-icons/ai'
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { login, register } from '../helpers/queries';
+import { login, registro } from '../helpers/queries';
 import Swal from 'sweetalert2';
 
 const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
@@ -30,7 +30,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
         sessionStorage.setItem('usuario', JSON.stringify(respuesta));
         setUsuarioLogueado(respuesta);
         setShow(false);
-        navegacion('/admin');
+        navegacion('/');
         formLogin.reset();
       }else{
         Swal.fire(
@@ -43,7 +43,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
   }
 
   const onRegistro = (usuario)=>{
-    register(usuario).then((respuesta)=>{
+    registro(usuario).then((respuesta)=>{
       
       if(respuesta?.status===201){
         Swal.fire(
@@ -83,7 +83,33 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
             <NavLink end to={'/contacto'} className={'nav-item nav-link '}><BsTelephoneFill/> Contacto</NavLink>
             <NavLink end to={'/crearturno'} className={'nav-item nav-link buttonSolicitar'}><AiFillFileText/> Solicitar Turno</NavLink>
           </Nav>
-          {
+          {usuarioLogueado.nombreUsuario && usuarioLogueado.rol === 'Administrador' && (
+               <>
+               <Nav>
+                 <NavLink end to={'/admin'}  className={'nav-item nav-link '}>{<BsFillPersonPlusFill/>} Administrador</NavLink>
+                 <Button className='btn-primary' variant='dark' onClick={logout}>Logout</Button>
+               </Nav>
+               </>
+            )}
+
+            {usuarioLogueado.nombreUsuario && usuarioLogueado.rol === 'Usuario' && (
+              <>
+              <Nav>
+              <NavLink end to={'/perfil'} className={'nav-item nav-link'}><AiFillFileText/>Perfil</NavLink>
+                <Button className='btn-primary' variant='dark' onClick={logout}>Logout</Button>
+              </Nav>
+              </>
+            )}
+
+            {!usuarioLogueado.nombreUsuario && (
+             <>
+             <Nav>
+               <NavLink onClick={handleShowRegister} className={'nav-item nav-link'}>{<BsFillPersonPlusFill/>} Registrar</NavLink>
+               <NavLink  onClick={handleShow} className={'nav-item nav-link'}><BsFillPersonFill/> Iniciar sesión</NavLink>
+             </Nav>
+             </>
+            )}
+          {/* {
           (usuarioLogueado.nombreUsuario)?
               <>
               <Nav>
@@ -98,7 +124,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
                 <NavLink  onClick={handleShow} className={'nav-item nav-link'}><BsFillPersonFill/> Iniciar sesión</NavLink>
               </Nav>
               </>
-          }
+          } */}
         </Navbar.Collapse>
       </Container>
 
@@ -108,6 +134,21 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
           </Modal.Header>
         <Modal.Body>
           <Form onSubmit={formRegistro.handleSubmit(onRegistro)}> 
+          <Form.Group className="mb-3" controlId="roll">
+              <Form.Label>Rol</Form.Label>
+              <Form.Select
+                {...formRegistro.register("rol", {
+                  required: "Seleccione un rol",
+                })}
+              >
+                <option  defaultValue="usuario">
+                 Usuario
+                </option>
+              </Form.Select>
+              <Form.Text className="text-danger">
+                {formRegistro.formState.errors.rol?.message}
+              </Form.Text>
+            </Form.Group>
             <Form.Group className="mb-3" controlId="emailForm">
               <Form.Label>Correo electrónico</Form.Label>
               <Form.Control
