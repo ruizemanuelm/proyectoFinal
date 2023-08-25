@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Col, Row , Container, Form, Card, CardGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { registerAdmin } from "../../helpers/queries";
+
 import Swal from "sweetalert2";
 
 const CrearAdmin = () => {
@@ -11,8 +12,8 @@ const CrearAdmin = () => {
     formState: { errors },
     reset
   } = useForm();
-  const Registro = (usuario)=>{
-    registerAdmin(usuario).then((respuesta)=>{
+  const Registro = (administrador)=>{
+    registerAdmin(administrador).then((respuesta)=>{
       if(respuesta?.status===201){
         Swal.fire(
           'Se creo un usuario nuevo'
@@ -61,8 +62,8 @@ const CrearAdmin = () => {
             type="text"
             placeholder="nombre de usuario"
             autoFocus
-            {...register("nombreUsuario", {
-                required: "ingrese el nombre de usuario",
+            {...register("nombreAdmin", {
+                /*required: "ingrese el nombre de usuario",*/
                 pattern: {
                     value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s']+$/,
                     message: "ingrese el nombre de usuario",
@@ -70,7 +71,7 @@ const CrearAdmin = () => {
             })}
             />
           <Form.Text className="text-danger">
-            {errors.nombreUsuario?.message}
+            {errors.nombreAdministrador?.message}
           </Form.Text>
         </Form.Group>
             </Col>
