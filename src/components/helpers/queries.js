@@ -2,6 +2,7 @@ const URL_usuarios = import.meta.env.VITE_API_USUARIOS;
 const URL_turnos = import.meta.env.VITE_API_TURNOS;
 const URL_pacientes = import.meta.env.VITE_API_PACIENTES;
 const URL_comentarios = import.meta.env.VITE_API_COMENTARIOS;
+const URL_administrador = import.meta.env.VITE_API_ADMINISTRADOR
 
 export const compararHorasFecha = (a, b) => {
   const horaA = a.hora;
@@ -201,9 +202,9 @@ export const register = async (user)=>{
     }
 }
 
-export const registerAdmin = async (user)=>{
+/*export const registerAdmin = async (user)=>{
     try{
-        const respuesta = await fetch(URL_usuarios+'/register',{
+        const respuesta = await fetch(URL_administrador+{
             method: "POST",
             headers: {
                 "Content-type": "application/json"
@@ -220,7 +221,34 @@ export const registerAdmin = async (user)=>{
     }catch(error){
         console.log(error)
     }
+}*/
+
+
+
+export const registerAdmin = async (admin)=>{
+  try{
+      const respuesta = await fetch(URL_administrador+'/register',{
+          method: "POST",
+          headers: {
+              "Content-type": "application/json"
+          },
+          body: JSON.stringify(admin)
+      });
+      
+      const administrador = await respuesta.json();
+      return {
+          status: respuesta.status,
+          mensaje: administrador.mensaje,
+      }
+      
+  }catch(error){
+      console.log(error)
+  }
 }
+
+
+
+
 
 export const crearComentario = async (comentario) => {
     try {
