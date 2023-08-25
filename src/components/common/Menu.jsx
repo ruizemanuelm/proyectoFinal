@@ -30,6 +30,13 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
         sessionStorage.setItem('usuario', JSON.stringify(respuesta));
         setUsuarioLogueado(respuesta);
         setShow(false);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Bienvenido',
+          showConfirmButton: false,
+          timer: 1500
+        })
         navegacion('/');
         formLogin.reset();
       }else{
@@ -95,7 +102,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
             {usuarioLogueado.nombreUsuario && usuarioLogueado.rol === 'Usuario' && (
               <>
               <Nav>
-              <NavLink end to={'/perfil'} className={'nav-item nav-link'}><AiFillFileText/>Perfil</NavLink>
+              <NavLink end to={'/usuario/perfil'} className={'nav-item nav-link'}><BsFillPersonPlusFill/>Perfil</NavLink>
                 <Button className='btn-primary' variant='dark' onClick={logout}>Logout</Button>
               </Nav>
               </>

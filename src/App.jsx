@@ -16,8 +16,8 @@ import RutasProtegidas from './components/Routes/RutasProtegidas';
 import RutasAdministrador from './components/Routes/RutasAdministrador';
 import DetalleVeterinaria from './components/views/Inicio/DetalleVeterinaria';
 import DetalleVeterinario from './components/views/Inicio/DetalleVeterinario';
-import PerfilUsuario from './components/views/PerfilUsuario';
-
+import RutasProtegidasUser from './components/Routes/RutasProtegidasUser';
+import RutasUsuario from './components/Routes/RutasUsuario';
 function App() {
   const usuario = JSON.parse(sessionStorage.getItem('usuario')) || {}
   const [usuarioLogueado, setUsuarioLogueado] = useState(usuario);
@@ -31,7 +31,6 @@ function App() {
         <Route exact path='*' element={<Error404/>}></Route>
         <Route exact path='/contacto' element={<Contacto/>}></Route>
         <Route exact path='/nosotros' element={<Nosotros/>}></Route>
-        <Route exact path='/perfil' element={<PerfilUsuario usuarioLogueado={usuarioLogueado}/>}></Route>
         <Route exact path='/checkout-cachorros' element={<CheckoutCachorros/>}></Route>
         <Route exact path='/checkout-madurando' element={<CheckoutMadurando/>}></Route>
         <Route exact path='/checkout-adultos' element={<CheckoutAdultos/>}></Route>
@@ -42,6 +41,11 @@ function App() {
           <RutasProtegidas>
             <RutasAdministrador usuarioLogueado={usuarioLogueado}></RutasAdministrador>
           </RutasProtegidas>
+        }></Route>
+        <Route path="/usuario/*" element={
+   <RutasProtegidasUser>
+    <RutasUsuario usuarioLogueado={usuarioLogueado}></RutasUsuario>
+   </RutasProtegidasUser>
         }></Route>
       </Routes>
       
