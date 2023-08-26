@@ -14,6 +14,8 @@ import { BiTime } from "react-icons/bi";
 import { FaLocationDot } from "react-icons/fa6";
 import { TbMailFilled } from "react-icons/tb";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+
 
 const Contacto = () => {
   const {
@@ -28,6 +30,18 @@ const Contacto = () => {
   const onSubmit = (validar) => {
     getValues();
   };
+
+  const enviar = ()=>{
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Mensaje enviado',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    reset
+  }
+
 
   return (
     <>
@@ -54,7 +68,7 @@ const Contacto = () => {
               <h1 className="text-center mb-4">Contáctenos</h1>
               <Row>
                 <Col md={6}>
-                  <Form onSubmit={handleSubmit(onSubmit)}>
+                  <Form onSubmit={handleSubmit(enviar)}>
                     <Form.Group className="mt-3" controlId="formName">
                       <Form.Label>Nombre</Form.Label>
                       <Form.Control
@@ -73,7 +87,7 @@ const Contacto = () => {
                         })}
                       />
                       <Form.Text className="text-danger">
-                        {errors.nombreComentario?.message}
+                        {errors.nombreContacto?.message}
                       </Form.Text>
                     </Form.Group>
                     <Form.Group className="mt-3" controlId="formEmail">
@@ -124,7 +138,6 @@ const Contacto = () => {
                       className="mt-3 w-100"
                       variant="primary"
                       type="submit"
-                      block
                     >
                       Enviar
                     </Button>
