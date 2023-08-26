@@ -16,6 +16,17 @@ const Compras = () => {
     getValues();
   };
 
+  const enviar = ()=>{
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Mensaje enviado',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    reset
+  }
+
   return (
     <div>
       <Row>
