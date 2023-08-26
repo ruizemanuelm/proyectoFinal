@@ -1,9 +1,8 @@
-import React from "react";
-import { Form, Container, Button, Card, Col, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { Form, Container, Button, Col, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { crearComentario } from "../../helpers/queries";
 import Swal from "sweetalert2";
-import Puntaje from "./Puntaje";
 
 const Comentarios = ({ usuarioLogueado }) => {
   const {
@@ -38,7 +37,7 @@ const Comentarios = ({ usuarioLogueado }) => {
   return (
     <>
       <Container className="mb-5">
-        <h5>Dejanos una reseña</h5>
+        <h2 className="text-center">Dejanos una reseña</h2>
         <hr />
         <Row>
           <Col>
@@ -84,19 +83,6 @@ const Comentarios = ({ usuarioLogueado }) => {
                 />
                 <Form.Text className="text-danger">
                   {errors.contenidoComentario?.message}
-                </Form.Text>
-              </Form.Group>
-              <Form.Group className="d-flex mt-3">
-                <Puntaje
-                  onChange={(value) => {
-                    if (evaluacionRef.current) {
-                      evaluacionRef.current.value = value;
-                    }
-                  }}
-                  ref={evaluacionRef}
-                />
-                <Form.Text className="text-danger">
-                  {errors.evaluacion?.message}
                 </Form.Text>
               </Form.Group>
               <Button className="mt-3" variant="primary" type="submit">
