@@ -4,6 +4,7 @@ const URL_pacientes = import.meta.env.VITE_API_PACIENTES;
 const URL_comentarios = import.meta.env.VITE_API_COMENTARIOS;
 const URL_administrador = import.meta.env.VITE_API_ADMINISTRADOR
 
+
 export const compararHorasFecha = (a, b) => {
   const horaA = a.hora;
   const fechaA = new Date(a.fechaTurno);
@@ -15,6 +16,8 @@ export const compararHorasFecha = (a, b) => {
 
   return horaA.localeCompare(horaB);
 };
+
+
 export const borrarTurnos = async (id) => {
   try {
     const respuesta = await fetch(URL_turnos + "/" + id, {
@@ -25,6 +28,8 @@ export const borrarTurnos = async (id) => {
     console.log(error);
   }
 };
+
+
 export const editarTurno = async (turno, id) => {
   try {
     const respuesta = await fetch(URL_turnos + "/" + id, {
@@ -41,6 +46,7 @@ export const editarTurno = async (turno, id) => {
   }
 };
 
+
 export const obtenerUnTurno = async (id) => {
   try {
     console.log(id);
@@ -51,6 +57,8 @@ export const obtenerUnTurno = async (id) => {
     console.log(error);
   }
 };
+
+
 export const crearTurno = async (turno) => {
   try {
     const respuesta = await fetch(URL_turnos, {
@@ -66,6 +74,7 @@ export const crearTurno = async (turno) => {
   }
 };
 
+
 export const obtenerTurnos = async () => {
   try {
     const respuesta = await fetch(URL_turnos);
@@ -76,6 +85,7 @@ export const obtenerTurnos = async () => {
   }
 };
 
+
 export const obtenerFecha = () => {
   const fecha = new Date();
   const year = fecha.getFullYear();
@@ -85,6 +95,7 @@ export const obtenerFecha = () => {
   return fechaActual;
 };
 
+
 export const obtenerHora = () => {
   const fecha = new Date();
   const hora = String(fecha.getHours()).padStart(2, "0");
@@ -92,6 +103,7 @@ export const obtenerHora = () => {
   const horaActual = `${hora}:${minutos}`;
   return horaActual;
 };
+
 
 export const obtenerPacientePorId = async (_id) => {
   try {
@@ -103,6 +115,7 @@ export const obtenerPacientePorId = async (_id) => {
   }
 };
 
+
 export const obtenerPacientes = async () => {
   try {
     const respuesta = await fetch(URL_pacientes);
@@ -112,6 +125,7 @@ export const obtenerPacientes = async () => {
     console.log(error);
   }
 };
+
 
 export const crearPacientes = async (pacientes) => {
   try {
@@ -130,6 +144,7 @@ export const crearPacientes = async (pacientes) => {
     }
   };
 
+
 export const borrarPaciente = async (id) => {
   try {
     const respuesta = await fetch(URL_pacientes + "/" + id, {
@@ -141,6 +156,7 @@ export const borrarPaciente = async (id) => {
     console.log(error);
   }
 };
+
 
 export const editarPaciente = async (paciente, id) => {
   try {
@@ -156,6 +172,7 @@ export const editarPaciente = async (paciente, id) => {
     console.log(error);
   }
 };
+
 
 export const login = async (user)=>{
     try{
@@ -182,6 +199,8 @@ export const login = async (user)=>{
         console.log(error)
     }
 }
+
+
 export const registro = async (user)=>{
     try{
         const respuesta = await fetch(URL_usuarios+'/register',{
@@ -202,30 +221,6 @@ export const registro = async (user)=>{
         console.log(error)
     }
 }
-
-// export const registerAdmin = async (admin)=>{
-//   try{
-//       const respuesta = await fetch(URL_administrador+'/register',{
-//           method: "POST",
-//           headers: {
-//               "Content-type": "application/json"
-//           },
-//           body: JSON.stringify(admin)
-//       });
-      
-//       const administrador = await respuesta.json();
-//       return {
-//           status: respuesta.status,
-//           mensaje: administrador.mensaje,
-//       }
-      
-//   }catch(error){
-//       console.log(error)
-//   }
-// }
-
-
-
 
 
 export const crearComentario = async (comentario) => {
