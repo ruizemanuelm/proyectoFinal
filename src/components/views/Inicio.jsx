@@ -103,7 +103,15 @@ const Inicio = ({usuarioLogueado}) => {
       <CarouselCards></CarouselCards>
       <CardsOfertas></CardsOfertas>
       <CardsVeterinarios></CardsVeterinarios>
-      <Comentarios usuarioLogueado={usuarioLogueado}></Comentarios>
+      {usuarioLogueado.nombreUsuario && (
+        <>
+        <Comentarios usuarioLogueado={usuarioLogueado}></Comentarios>
+        </>
+      )} 
+      <Container>
+      <h2 className="text-center">Reseñas</h2>
+      <hr />
+      </Container>
       <ItemComentario usuarioLogueado={usuarioLogueado}></ItemComentario>
     </section>
   );

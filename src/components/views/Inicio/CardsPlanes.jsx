@@ -19,7 +19,7 @@ const CardsPlanes = () => {
                 <Card.Title className="text-danger">
                   <h2>Plan cachorros</h2>
                 </Card.Title>
-                <Card.Text className="fw-bosm">9.99 USD al mes</Card.Text>
+                <Card.Text className="fw-bold">9.99 USD al mes</Card.Text>
                 <hr />
                 <Card.Text>Vacunas y desparasitación</Card.Text>
                 <Card.Text>Revisiones y chequeos regulares</Card.Text>
@@ -40,7 +40,7 @@ const CardsPlanes = () => {
                 <Card.Title className="text-danger">
                   <h2>Plan madurando</h2>
                 </Card.Title>
-                <Card.Text className="fw-bosm">7.99 USD al mes</Card.Text>
+                <Card.Text className="fw-bold">7.99 USD al mes</Card.Text>
                 <hr />
                 <Card.Text>Vacunas y desparasitación</Card.Text>
                 <Card.Text>Revisiones y chequeos regulares</Card.Text>
