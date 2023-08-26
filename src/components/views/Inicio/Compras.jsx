@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Col, Row, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { Link } from 'react-router-dom'
 
 const Compras = () => {
   const {
@@ -109,7 +110,7 @@ const Compras = () => {
                 </Form.Group>
               </Col>
             </Row>
-            <Button className="mt-3 w-100" type="submit">
+            <Button as={Link} to={"/error404"} className="mt-3 w-100" type="submit">
               Suscribirse
             </Button>
           </Form>
