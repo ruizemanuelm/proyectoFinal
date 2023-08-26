@@ -116,22 +116,6 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
              </Nav>
              </>
             )}
-          {/* {
-          (usuarioLogueado.nombreUsuario)?
-              <>
-              <Nav>
-              <NavLink end to={'/perfil'} className={'nav-item nav-link'}><AiFillFileText/>Perfil</NavLink>
-                <NavLink end to={'/admin'}  className={'nav-item nav-link '}>{<BsFillPersonPlusFill/>} Administrador</NavLink>
-                <Button className='btn-primary' variant='dark' onClick={logout}>Logout</Button>
-              </Nav>
-              </>:
-              <>
-              <Nav>
-                <NavLink onClick={handleShowRegister} className={'nav-item nav-link'}>{<BsFillPersonPlusFill/>} Registrar</NavLink>
-                <NavLink  onClick={handleShow} className={'nav-item nav-link'}><BsFillPersonFill/> Iniciar sesión</NavLink>
-              </Nav>
-              </>
-          } */}
         </Navbar.Collapse>
       </Container>
 
@@ -141,7 +125,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
           </Modal.Header>
         <Modal.Body>
           <Form onSubmit={formRegistro.handleSubmit(onRegistro)}> 
-          <Form.Group className="mb-3" controlId="roll">
+          <Form.Group className="mb-3 d-none" controlId="roll">
               <Form.Label>Rol</Form.Label>
               <Form.Select
                 {...formRegistro.register("rol", {

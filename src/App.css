@@ -96,3 +96,6 @@ h5 {
   background-image: url(../src/assets/Compras.png);
 }
 
+.star {
+  cursor: pointer;
+}
