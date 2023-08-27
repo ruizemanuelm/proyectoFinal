@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Col, Row, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const Compras = () => {
   const {
@@ -47,6 +48,10 @@ const Compras = () => {
                     value: 19,
                     message: "La tarjeta no debe exceder los 19 numeros",
                   },
+                  min: {
+                    value: 0,
+                    message: "El número de tarjeta no puede ser negativo",
+                  },
                 })}
               />
               <Form.Text className="text-danger">
@@ -67,6 +72,10 @@ const Compras = () => {
                   maxLength: {
                     value: 20,
                     message: "El nombre no debe exceder los 20 caracteres",
+                  },
+                  pattern: {
+                    value: /^[A-Za-zñÑáÁéÉíÍóÓúÚ\s]+$/,
+                    message: "El nombre no debe contener números ni caracteres especiales",
                   },
                 })}
               />
@@ -121,7 +130,9 @@ const Compras = () => {
               </Col>
             </Row>
             <Button className="mt-3 w-100" type="submit">
+              <Link to={'/error404'} style={{ color: 'white', textDecoration: 'none' }}>
               Suscribirse
+              </Link>
             </Button>
           </Form>
         </Col>
