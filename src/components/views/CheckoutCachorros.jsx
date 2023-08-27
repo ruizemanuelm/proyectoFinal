@@ -9,6 +9,8 @@ import {
 } from "react-bootstrap";
 import Compras from "./Inicio/Compras";
 
+
+
 const Planes = () => {
   return (
     <>

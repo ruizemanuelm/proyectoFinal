@@ -1,8 +1,11 @@
 import React from "react";
 import { Form, Col, Row, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const Compras = () => {
+
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -12,8 +15,9 @@ const Compras = () => {
     setValue,
   } = useForm();
 
-  const onSubmit = (validar) => {
-    getValues();
+  const onSubmit = async (validar) => {
+    navigate("/error404");
+    
   };
 
   const enviar = ()=>{
@@ -26,6 +30,7 @@ const Compras = () => {
     })
     reset
   }
+  
 
   return (
     <div>
@@ -46,6 +51,10 @@ const Compras = () => {
                   maxLength: {
                     value: 19,
                     message: "La tarjeta no debe exceder los 19 numeros",
+                  },
+                  min: {
+                    value: 0,
+                    message: "El número de tarjeta no puede ser negativo",
                   },
                 })}
               />
@@ -68,6 +77,10 @@ const Compras = () => {
                     value: 20,
                     message: "El nombre no debe exceder los 20 caracteres",
                   },
+                  pattern: {
+                    value: /^[A-Za-zñÑáÁéÉíÍóÓúÚ\s]+$/,
+                    message: "El nombre no debe contener números ni caracteres especiales",
+                  },
                 })}
               />
               <Form.Text className="text-danger">
@@ -83,15 +96,10 @@ const Compras = () => {
                     placeholder="Vencimiento"
                     {...register("fechaVencimientoTarjeta", {
                       required: "Escriba la fecha como aparece en la tarjeta",
-                      validate: {
-                        value: 4,
-                        message: "Escriba una fecha valida",
-                      },
-                      maxLength: {
-                        value: 10,
-                        message: "La fecha debe contener 8 caracteres",
-                      },
+                      minLength: 4,
+                      maxLength: 10 
                     })}
+                    min={new Date().toISOString().split("T")[0]}
                   />
                   <Form.Control
                     className="ms-2"
@@ -99,17 +107,19 @@ const Compras = () => {
                     name="cvc"
                     placeholder="Codigo"
                     {...register("cvcTarjeta", {
-                        required: "Escriba el codigo como aparece en la tarjeta",
-                        validate: {
-                            value: 4,
-                            message: "Escriba un codigo valido",
-                        },
-                        maxLength: {
-                            value: 4,
-                            message:
-                          "El codigo debe contener 4 caracteres como maximo",
-                        },
+                        required: "Escriba el codigo como aparece en la tarjeta los 3 digitos",
+                        minLength: {
+                          value: 3,
+                          message: "escriba los 3 numeros de su tarjeta",
+                          },
+                            maxLength: {
+                              value: 3,
+                              message: "escriba los 3 numeros de su tarjeta",
+                            }
+                            
+                        
                     })}
+                    
                   />
                     <Form.Text className="text-danger">
                       {errors.fechaVencimientoTarjeta?.message}
@@ -120,8 +130,9 @@ const Compras = () => {
                 </Form.Group>
               </Col>
             </Row>
-            <Button className="mt-3 w-100" type="submit">
+            <Button className="mt-3 w-100" type="submit" >
               Suscribirse
+              
             </Button>
           </Form>
         </Col>
