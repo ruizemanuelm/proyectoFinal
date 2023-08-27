@@ -107,10 +107,15 @@ const Compras = () => {
                     name="cvc"
                     placeholder="Codigo"
                     {...register("cvcTarjeta", {
-                        required: "Escriba el codigo como aparece en la tarjeta",
-                            
-                            maxLength: 3,
-                            message: "Escriba un codigo valido",
+                        required: "Escriba el codigo como aparece en la tarjeta los 3 digitos",
+                        minLength: {
+                          value: 3,
+                          message: "escriba los 3 numeros de su tarjeta",
+                          },
+                            maxLength: {
+                              value: 3,
+                              message: "escriba los 3 numeros de su tarjeta",
+                            }
                             
                         
                     })}
