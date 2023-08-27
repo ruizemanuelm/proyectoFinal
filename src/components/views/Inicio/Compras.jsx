@@ -1,9 +1,11 @@
 import React from "react";
 import { Form, Col, Row, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const Compras = () => {
+
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -13,8 +15,9 @@ const Compras = () => {
     setValue,
   } = useForm();
 
-  const onSubmit = (validar) => {
-    getValues();
+  const onSubmit = async (validar) => {
+    navigate("/error404");
+    
   };
 
   const enviar = ()=>{
@@ -27,6 +30,7 @@ const Compras = () => {
     })
     reset
   }
+  
 
   return (
     <div>
@@ -92,15 +96,10 @@ const Compras = () => {
                     placeholder="Vencimiento"
                     {...register("fechaVencimientoTarjeta", {
                       required: "Escriba la fecha como aparece en la tarjeta",
-                      validate: {
-                        value: 4,
-                        message: "Escriba una fecha valida",
-                      },
-                      maxLength: {
-                        value: 10,
-                        message: "La fecha debe contener 8 caracteres",
-                      },
+                      minLength: 4,
+                      maxLength: 10 
                     })}
+                    min={new Date().toISOString().split("T")[0]}
                   />
                   <Form.Control
                     className="ms-2"
@@ -109,16 +108,13 @@ const Compras = () => {
                     placeholder="Codigo"
                     {...register("cvcTarjeta", {
                         required: "Escriba el codigo como aparece en la tarjeta",
-                        validate: {
-                            value: 4,
+                            
+                            maxLength: 3,
                             message: "Escriba un codigo valido",
-                        },
-                        maxLength: {
-                            value: 4,
-                            message:
-                          "El codigo debe contener 4 caracteres como maximo",
-                        },
+                            
+                        
                     })}
+                    
                   />
                     <Form.Text className="text-danger">
                       {errors.fechaVencimientoTarjeta?.message}
@@ -129,10 +125,9 @@ const Compras = () => {
                 </Form.Group>
               </Col>
             </Row>
-            <Button className="mt-3 w-100" type="submit">
-              <Link to={'/error404'} style={{ color: 'white', textDecoration: 'none' }}>
+            <Button className="mt-3 w-100" type="submit" >
               Suscribirse
-              </Link>
+              
             </Button>
           </Form>
         </Col>
